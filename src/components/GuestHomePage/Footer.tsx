@@ -6,7 +6,7 @@ const navigation = [
 
 export default function Footer() {
   return (
-    <footer className="mt-[250px] bg-white">
+    <footer className="mt-[250px] bg-white shadow-2xl">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 text-center sm:py-14 lg:px-8">
         <div className="mb-4 inline-block">
           <a href="#" className="-m-1.5 p-1.5">

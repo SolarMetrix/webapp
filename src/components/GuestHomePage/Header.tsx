@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -18,10 +19,12 @@ export default function Header() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">SolarMetrix</span>
-            <img className="h-10 w-auto" src="/img/logo.svg" alt="" />
-          </a>
+          <Link href="/">
+            <a className="-m-1.5 p-1.5">
+              <span className="sr-only">SolarMetrix</span>
+              <img className="h-10 w-auto" src="/img/logo.svg" alt="" />
+            </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -38,7 +41,7 @@ export default function Header() {
             <a
               key={item.name}
               href={item.href}
-              className="text-md font-semibold leading-6 text-smMain-600"
+              className="text-md font-semibold leading-6 text-smMain-600 hover:text-smMain-700"
             >
               {item.name}
             </a>
