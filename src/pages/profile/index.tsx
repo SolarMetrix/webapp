@@ -35,7 +35,7 @@ export async function getServerSideProps(context: any) {
   ) {
     return {
       redirect: {
-        destination: "/join",
+        destination: "/signin",
         permanent: false,
       },
     };

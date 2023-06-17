@@ -10,25 +10,25 @@ import {
 
 import SEO from "../components/SEO";
 import useAuth from "../context/AuthContext";
-import classnames from "../utils/classnames";
+// import classnames from "../utils/classnames";
 
 export default function NotFoundPage() {
   const { isLoggedIn } = useAuth();
-  const marginStyles = isLoggedIn
-    ? "mt-[60px] lg:mt-[100px]"
-    : "md:mt-[50px] lg:mt-[60px]";
+  // const marginStyles = isLoggedIn
+  //   ? "mt-[60px] lg:mt-[100px]"
+  //   : "md:mt-[50px] lg:mt-[60px]";
 
   const links = [
     {
       title: "Home page",
-      description: "Go to the home page and see the categories",
+      description: "Go to the home page",
       href: "/",
       icon: faHouse,
     },
     {
       title: "Join page",
       description: "Sign in to your account",
-      href: "/join",
+      href: "/signin",
       icon: faRightToBracket,
     },
     {
@@ -36,13 +36,6 @@ export default function NotFoundPage() {
       description: "View my profile and other contact information",
       href: "/profile",
       icon: faUser,
-    },
-    {
-      title: "Frequently Asked Questions",
-      description:
-        "Read answers to different questions about the website and its services",
-      href: "/faq",
-      icon: faCircleQuestion,
     },
   ];
 
@@ -53,11 +46,11 @@ export default function NotFoundPage() {
   return (
     <>
       <SEO url={`${process.env.NEXT_PUBLIC_WEB_APP_ENDPOINT}/`} />
-      <div className={classnames("mx-4 bg-gray-50", marginStyles)}>
+      <div className="mx-4 md:mt-[50px] lg:mt-[200px]">
         <div className="mx-auto max-w-xl">
           <div className="text-center">
-            <p className="text-ebGreen-500 text-base font-semibold">404</p>
-            <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-600 sm:tracking-tight md:text-4xl">
+            <p className="text-base font-semibold text-smMain-400">404</p>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-smMain-600 sm:tracking-tight md:text-4xl">
               Page not found
             </h1>
             <p className="mt-3 text-lg text-gray-500">
@@ -81,7 +74,7 @@ export default function NotFoundPage() {
                     <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-200/50">
                       <FontAwesomeIcon
                         icon={link.icon}
-                        className="text-ebGreen-500 h-6 w-6"
+                        className="h-6 w-6 text-smMain-500"
                         aria-hidden="true"
                       />
                     </span>

@@ -33,7 +33,7 @@ function SEO(props: any) {
 }
 
 SEO.defaultProps = {
-  title: "Էլեկտրոնային գրքերի քո գրադարանը",
+  title: "SolarMetrix",
   description:
     "Track your solar panel performance from anywhere in the world with SolarMetrix solar monitoring service.",
   url: "https://localhost:3000",

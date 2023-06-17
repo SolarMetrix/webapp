@@ -15,7 +15,7 @@ export default function Hero() {
               fugiat aliqua.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link href="/join">
+              <Link href="/signin">
                 <a className="rounded-md bg-smMain-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-smMain-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                   Get started
                 </a>
