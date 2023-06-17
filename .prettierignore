@@ -1,0 +1,14 @@
+node_modules
+
+*.html
+
+# Ignore artifacts:
+build
+coverage
+
+*.css
+
+.next
+
+api/dist
+public
