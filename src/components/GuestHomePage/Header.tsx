@@ -3,10 +3,9 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
+  { name: "About", href: "#about" },
+  { name: "Features", href: "#features" },
+  { name: "FAQ", href: "#faq" },
 ];
 
 export default function Header() {
@@ -20,7 +19,7 @@ export default function Header() {
       >
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+            <span className="sr-only">SolarMetrix</span>
             <img className="h-10 w-auto" src="/img/logo.svg" alt="" />
           </a>
         </div>
@@ -39,14 +38,17 @@ export default function Header() {
             <a
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900"
+              className="text-md font-semibold leading-6 text-smMain-600"
             >
               {item.name}
             </a>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a
+            href="#"
+            className="text-md font-semibold leading-6 text-smMain-600"
+          >
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
         </div>

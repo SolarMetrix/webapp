@@ -11,7 +11,7 @@ function SEO(props: any) {
       <meta name="theme-color" content="#008f68" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href="/images/logos/green.svg" />
+      <link rel="icon" href="/favicon.svg" />
       <meta itemProp="name" content={title} />
       <meta itemProp="description" content={description} />
       <meta itemProp="image" content={image} />
