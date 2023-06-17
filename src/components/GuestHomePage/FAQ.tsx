@@ -28,19 +28,23 @@ const faqs = [
 export default function FAQ() {
   return (
     <div
-      className="mx-auto max-w-7xl border px-6 py-16 sm:py-24 lg:px-8"
+      className="mx-auto max-w-7xl px-6 sm:mt-56 lg:mb-32 lg:px-8 lg:pt-6"
       id="faq"
     >
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900">
-          Frequently asked questions
+        <h2 className="text-base font-semibold leading-7 text-smMain-400">
+          FAQ
         </h2>
+        <p className="mt-2 text-3xl font-bold tracking-tight text-smMain-600 sm:text-4xl">
+          Frequently asked questions{" "}
+        </p>
+
         <p className="mt-6 text-base leading-7 text-gray-600">
           Have a different question and can’t find the answer you’re looking
           for? Reach out to our support team by{" "}
           <a
-            href="#"
-            className="font-semibold text-indigo-600 hover:text-indigo-500"
+            href="mailto:info@solarmetrix.com"
+            className="font-semibold text-smMain-400 hover:text-smMain-500"
           >
             sending us an email
           </a>{" "}
@@ -51,7 +55,7 @@ export default function FAQ() {
         <dl className="space-y-16 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-16 sm:space-y-0 lg:gap-x-10">
           {faqs.map((faq) => (
             <div key={faq.id}>
-              <dt className="text-base font-semibold leading-7 text-gray-900">
+              <dt className="text-base font-semibold leading-7 text-smMain-700">
                 {faq.question}
               </dt>
               <dd className="mt-2 text-base leading-7 text-gray-600">

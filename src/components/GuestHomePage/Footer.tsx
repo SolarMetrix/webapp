@@ -22,7 +22,7 @@ export default function Footer() {
             <div key={item.name} className="pb-6">
               <a
                 href={item.href}
-                className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                className="text-sm leading-6 text-gray-600 hover:text-smMain-700"
               >
                 {item.name}
               </a>

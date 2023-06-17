@@ -29,7 +29,7 @@ const features = [
 export default function About() {
   return (
     <div
-      className="mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8"
+      className="mx-auto max-w-7xl sm:mt-56 sm:px-6 lg:px-8 lg:pt-6"
       id="about"
     >
       <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-20 sm:rounded-3xl sm:px-10 sm:py-24 lg:py-24 xl:px-24">
