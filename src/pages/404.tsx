@@ -2,7 +2,6 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
-  faCircleQuestion,
   faUser,
   faRightToBracket,
   faChevronRight,
