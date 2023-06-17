@@ -1,7 +1,6 @@
 import { createContext, useReducer, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import { IUser } from "../../../types";
 import { fetchAuthUser } from "../../services/auth.service";
 import { FETCH_AUTH_USER_KEY } from "../../utils/queryKeys";
 import Reducer, { initialState } from "./reducer";
@@ -9,7 +8,7 @@ import Reducer, { initialState } from "./reducer";
 interface IAuth {
   isLoading: boolean;
   isLoggedIn: boolean;
-  user: IUser | null;
+  user: any | null;
   setAuthUser: Function;
 }
 
@@ -18,7 +17,7 @@ const Context = createContext<any>(initialState);
 export function AuthProvider({ children }: { children: any }) {
   const [state, dispatch] = useReducer(Reducer, initialState);
 
-  function setAuthUser(user: IUser | null) {
+  function setAuthUser(user: any | null) {
     dispatch({
       type: "SET_AUTH_USER",
       payload: {
@@ -27,18 +26,18 @@ export function AuthProvider({ children }: { children: any }) {
     });
   }
 
-  useQuery([FETCH_AUTH_USER_KEY], () => fetchAuthUser(), {
-    onSuccess: (user: any) => {
-      if (user) {
-        localStorage.setItem("auth", "1");
-        setAuthUser(user);
-      } else {
-        localStorage.removeItem("auth");
-      }
-    },
-    staleTime: 1000 * 60 * 15,
-    retry: 1,
-  });
+  // useQuery([FETCH_AUTH_USER_KEY], () => fetchAuthUser(), {
+  //   onSuccess: (user: any) => {
+  //     if (user) {
+  //       localStorage.setItem("auth", "1");
+  //       setAuthUser(user);
+  //     } else {
+  //       localStorage.removeItem("auth");
+  //     }
+  //   },
+  //   staleTime: 1000 * 60 * 15,
+  //   retry: 1,
+  // });
 
   const value = {
     isLoading: state.isLoading,

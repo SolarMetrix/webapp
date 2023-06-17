@@ -5,9 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 
 import { fetchAuthUser } from "../services/auth.service";
 import { FETCH_AUTH_USER_KEY } from "../utils/queryKeys";
-import Footer from "./Footer";
-// import SidebarWithLayout from "./UserHomePage/SidebarWithLayout";
-// import GuestHeaderContent from "./GuestHomePage/HeaderContent";
 import useAuth from "../context/AuthContext";
 import DotsLoader from "./HelperComponents/DotsLoader";
 
@@ -36,26 +33,26 @@ export default function Layout({ children }: { children: any }) {
     Without this request, the guest layout is rendered first, 
     then if there is a signed in user, the auth layout is rendered finally, causing a bad UX.
   */
-  const { status: authStatus } = useQuery(
-    [FETCH_AUTH_USER_KEY],
-    () => fetchAuthUser(),
-    {
-      onSuccess: (user: any) => {
-        if (user) {
-          localStorage.setItem("auth", "1");
-          setAuthUser(user);
-        } else {
-          localStorage.removeItem("auth");
-        }
-      },
-      staleTime: 1000 * 60 * 15,
-      retry: 1,
-    }
-  );
+  // const { status: authStatus } = useQuery(
+  //   [FETCH_AUTH_USER_KEY],
+  //   () => fetchAuthUser(),
+  //   {
+  //     onSuccess: (user: any) => {
+  //       if (user) {
+  //         localStorage.setItem("auth", "1");
+  //         setAuthUser(user);
+  //       } else {
+  //         localStorage.removeItem("auth");
+  //       }
+  //     },
+  //     staleTime: 1000 * 60 * 15,
+  //     retry: 1,
+  //   }
+  // );
 
-  if (authStatus === "loading") {
-    return <DotsLoader showLoadingText={false} />;
-  }
+  // if (authStatus === "loading") {
+  //   return <DotsLoader showLoadingText={false} />;
+  // }
 
   return (
     <>

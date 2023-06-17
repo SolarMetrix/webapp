@@ -28,7 +28,10 @@ export default function FAQ() {
                 <p>
                   If you cant find the answer to your question, you can send us
                   an email by clicking{" "}
-                  <a href="mailto:info@solarmetrix.com" className="lhe font-medium">
+                  <a
+                    href="mailto:info@solarmetrix.com"
+                    className="lhe font-medium"
+                  >
                     here
                   </a>
                 </p>
