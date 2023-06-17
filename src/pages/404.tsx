@@ -56,7 +56,7 @@ export default function NotFoundPage() {
       <div className={classnames("mx-4 bg-gray-50", marginStyles)}>
         <div className="mx-auto max-w-xl">
           <div className="text-center">
-            <p className="text-base font-semibold text-ebGreen-500">404</p>
+            <p className="text-ebGreen-500 text-base font-semibold">404</p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-600 sm:tracking-tight md:text-4xl">
               Page not found
             </h1>
@@ -81,7 +81,7 @@ export default function NotFoundPage() {
                     <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-200/50">
                       <FontAwesomeIcon
                         icon={link.icon}
-                        className="h-6 w-6 text-ebGreen-500"
+                        className="text-ebGreen-500 h-6 w-6"
                         aria-hidden="true"
                       />
                     </span>

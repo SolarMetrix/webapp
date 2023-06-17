@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/20/solid";
 import Header from "./Header";
 import Hero from "./Hero";
+import Footer from "./Footer";
 
 const primaryFeatures = [
   {
@@ -208,7 +209,7 @@ const footerNavigation = {
 
 export default function Example() {
   return (
-    <div className="bg-white">
+    <div>
       {/* Header */}
       <Header />
 
@@ -217,7 +218,7 @@ export default function Example() {
 
         {/* Logo cloud */}
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+          <div className="mx-auto flex items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
             <img
               className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
               src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-400.svg"
@@ -236,20 +237,6 @@ export default function Example() {
               className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
               src="https://tailwindui.com/img/logos/158x48/tuple-logo-gray-400.svg"
               alt="Tuple"
-              width={158}
-              height={48}
-            />
-            <img
-              className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-              src="https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-400.svg"
-              alt="SavvyCal"
-              width={158}
-              height={48}
-            />
-            <img
-              className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-              src="https://tailwindui.com/img/logos/158x48/statamic-logo-gray-400.svg"
-              alt="Statamic"
               width={158}
               height={48}
             />
@@ -353,209 +340,9 @@ export default function Example() {
             </dl>
           </div>
         </div>
-
-        {/* Newsletter section */}
-        <div className="mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8">
-          <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
-            <h2 className="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Get notified when we’re launching.
-            </h2>
-            <p className="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-gray-300">
-              Reprehenderit ad esse et non officia in nulla. Id proident tempor
-              incididunt nostrud nulla et culpa.
-            </p>
-            <form className="mx-auto mt-10 flex max-w-md gap-x-4">
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
-                placeholder="Enter your email"
-              />
-              <button
-                type="submit"
-                className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              >
-                Notify me
-              </button>
-            </form>
-            <svg
-              viewBox="0 0 1024 1024"
-              className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2"
-              aria-hidden="true"
-            >
-              <circle
-                cx={512}
-                cy={512}
-                r={512}
-                fill="url(#759c1415-0410-454c-8f7c-9a820de03641)"
-                fillOpacity="0.7"
-              />
-              <defs>
-                <radialGradient
-                  id="759c1415-0410-454c-8f7c-9a820de03641"
-                  cx={0}
-                  cy={0}
-                  r={1}
-                  gradientUnits="userSpaceOnUse"
-                  gradientTransform="translate(512 512) rotate(90) scale(512)"
-                >
-                  <stop stopColor="#7775D6" />
-                  <stop offset={1} stopColor="#E935C1" stopOpacity={0} />
-                </radialGradient>
-              </defs>
-            </svg>
-          </div>
-        </div>
       </main>
 
-      {/* Footer */}
-      <footer
-        className="mt-32 bg-gray-900 sm:mt-56"
-        aria-labelledby="footer-heading"
-      >
-        <h2 id="footer-heading" className="sr-only">
-          Footer
-        </h2>
-        <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
-          <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-            <img
-              className="h-7"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-              alt="Company name"
-            />
-            <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 className="text-sm font-semibold leading-6 text-white">
-                    Solutions
-                  </h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {footerNavigation.solutions.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm leading-6 text-gray-300 hover:text-white"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-10 md:mt-0">
-                  <h3 className="text-sm font-semibold leading-6 text-white">
-                    Support
-                  </h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {footerNavigation.support.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm leading-6 text-gray-300 hover:text-white"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 className="text-sm font-semibold leading-6 text-white">
-                    Company
-                  </h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {footerNavigation.company.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm leading-6 text-gray-300 hover:text-white"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-10 md:mt-0">
-                  <h3 className="text-sm font-semibold leading-6 text-white">
-                    Legal
-                  </h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {footerNavigation.legal.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm leading-6 text-gray-300 hover:text-white"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
-            <div>
-              <h3 className="text-sm font-semibold leading-6 text-white">
-                Subscribe to our newsletter
-              </h3>
-              <p className="mt-2 text-sm leading-6 text-gray-300">
-                The latest news, articles, and resources, sent to your inbox
-                weekly.
-              </p>
-            </div>
-            <form className="mt-6 sm:flex sm:max-w-md lg:mt-0">
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                type="email"
-                name="email-address"
-                id="email-address"
-                autoComplete="email"
-                required
-                className="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-56 sm:text-sm sm:leading-6"
-                placeholder="Enter your email"
-              />
-              <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
-                <button
-                  type="submit"
-                  className="flex w-full items-center justify-center rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                >
-                  Subscribe
-                </button>
-              </div>
-            </form>
-          </div>
-          <div className="mt-8 border-t border-white/10 pt-8 md:flex md:items-center md:justify-between">
-            <div className="flex space-x-6 md:order-2">
-              {footerNavigation.social.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-500 hover:text-gray-400"
-                >
-                  <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-6 w-6" aria-hidden="true" />
-                </a>
-              ))}
-            </div>
-            <p className="mt-8 text-xs leading-5 text-gray-400 md:order-1 md:mt-0">
-              &copy; 2020 Your Company, Inc. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -19,7 +19,7 @@ export default function Stats() {
             </div>
 
             <svg
-              className="h-auto w-4 text-ebGreen-500"
+              className="text-ebGreen-500 h-auto w-4"
               viewBox="0 0 16 81"
               fill="none"
               stroke="currentColor"

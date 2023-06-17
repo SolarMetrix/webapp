@@ -15,7 +15,7 @@ export default function NewItemBtn({
     <button
       type="button"
       title={text}
-      className="text-md inline-flex w-[11rem] items-center justify-center rounded-md border border-transparent bg-ebGreen-500 py-2 font-bold text-white shadow-lg transition hover:bg-ebGreen-600 hover:shadow-md md:py-3"
+      className="text-md bg-ebGreen-500 hover:bg-ebGreen-600 inline-flex w-[11rem] items-center justify-center rounded-md border border-transparent py-2 font-bold text-white shadow-lg transition hover:shadow-md md:py-3"
       onClick={() => onclickFn()}
     >
       <FontAwesomeIcon

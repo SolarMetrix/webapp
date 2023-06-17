@@ -25,7 +25,7 @@ export default function AuthSuccessNotification({
 
   return (
     <NotificationWrapper show={show}>
-      <div className="pointer-events-auto min-w-[300px] max-w-sm overflow-hidden rounded-md bg-ebGreen-500  shadow-lg">
+      <div className="bg-ebGreen-500 pointer-events-auto min-w-[300px] max-w-sm overflow-hidden rounded-md  shadow-lg">
         <div className="p-4">
           <div className="flex items-center">
             <div className="flex-shrink-0">
