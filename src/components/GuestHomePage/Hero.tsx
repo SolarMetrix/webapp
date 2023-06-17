@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Hero() {
   return (
     <div>
@@ -13,14 +15,13 @@ export default function Hero() {
               fugiat aliqua.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
+              <Link href="/join">
+                <a className="rounded-md bg-smMain-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-smMain-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  Get started
+                </a>
+              </Link>
               <a
-                href="#"
-                className="rounded-md bg-smMain-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-smMain-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Get started
-              </a>
-              <a
-                href="#"
+                href="#about"
                 className="text-md font-semibold leading-6 text-smMain-400"
               >
                 Learn more <span aria-hidden="true">→</span>
