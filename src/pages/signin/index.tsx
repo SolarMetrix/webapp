@@ -1,9 +1,25 @@
 import Link from "next/link";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 import SEO from "../../components/SEO";
 import getParsedCookies from "../../utils/cookie-parser";
 
+type Inputs = {
+  email: string;
+  password: string;
+};
+
 export default function JoinPage() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+  };
+
   return (
     <>
       <SEO
@@ -25,7 +41,7 @@ export default function JoinPage() {
             Sign in to your account
           </h2>
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
               <div>
                 <label
                   htmlFor="email"
@@ -35,12 +51,10 @@ export default function JoinPage() {
                 </label>
                 <div>
                   <input
-                    id="email"
-                    name="email"
                     type="email"
-                    autoComplete="email"
                     required
                     className="sm:text-md block w-full rounded-md border-0 py-2 text-smMain-600 shadow-sm ring-1 ring-inset ring-gray-300 transition placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-smMain-400 sm:leading-6"
+                    {...register("email", { required: true })}
                   />
                 </div>
               </div>
@@ -54,40 +68,12 @@ export default function JoinPage() {
                 </label>
                 <div>
                   <input
-                    id="password"
-                    name="password"
                     type="password"
-                    autoComplete="current-password"
                     required
                     className="sm:text-md block w-full rounded-md border-0 py-2 text-smMain-600 shadow-sm ring-1 ring-inset ring-gray-300 transition placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-smMain-400 sm:leading-6"
+                    {...register("password", { required: true })}
                   />
                 </div>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-smMain-400 transition focus:ring-smMain-400"
-                  />
-                  <label
-                    htmlFor="remember-me"
-                    className="ml-3 block text-sm leading-6 text-smMain-600"
-                  >
-                    Remember me
-                  </label>
-                </div>
-                {/* 
-                <div className="text-sm leading-6">
-                  <a
-                    href="#"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot password?
-                  </a>
-                </div> */}
               </div>
 
               <div>
