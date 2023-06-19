@@ -11,6 +11,15 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 
+import useAuth from "../../../context/AuthContext";
+import classnames from "../../../utils/classnames";
+import constructUserInitials from "../../../helpers/construct-user-initials";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import Tooltip from "../../HelperComponents/Tooltip";
+import { logout } from "../../../services/auth.service";
+
 const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
   { name: "Team", href: "#", icon: UsersIcon, current: false },
@@ -25,23 +34,23 @@ const teams = [
   { id: 3, name: "Workcation", href: "#", initial: "W", current: false },
 ];
 
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function SidebarWithLayout({ children }: { children: any }) {
+  const { user } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const signout = () => {
+    return logout()
+      .then((result: any) => {
+        if (result.success) {
+          localStorage.removeItem("auth");
+          window.location.replace("/");
+        }
+      })
+      .catch((_) => {});
+  };
 
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-50">
-        <body class="h-full">
-        ```
-      */}
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog
@@ -112,7 +121,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                               <li key={item.name}>
                                 <a
                                   href={item.href}
-                                  className={classNames(
+                                  className={classnames(
                                     item.current
                                       ? "bg-gray-50 text-indigo-600"
                                       : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
@@ -120,7 +129,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                                   )}
                                 >
                                   <item.icon
-                                    className={classNames(
+                                    className={classnames(
                                       item.current
                                         ? "text-indigo-600"
                                         : "text-gray-400 group-hover:text-indigo-600",
@@ -143,7 +152,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                               <li key={team.name}>
                                 <a
                                   href={team.href}
-                                  className={classNames(
+                                  className={classnames(
                                     team.current
                                       ? "bg-gray-50 text-indigo-600"
                                       : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
@@ -151,7 +160,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                                   )}
                                 >
                                   <span
-                                    className={classNames(
+                                    className={classnames(
                                       team.current
                                         ? "border-indigo-600 text-indigo-600"
                                         : "border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600",
@@ -194,7 +203,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                       <li key={item.name}>
                         <a
                           href={item.href}
-                          className={classNames(
+                          className={classnames(
                             item.current
                               ? "bg-gray-50 text-indigo-600"
                               : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
@@ -202,7 +211,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                           )}
                         >
                           <item.icon
-                            className={classNames(
+                            className={classnames(
                               item.current
                                 ? "text-indigo-600"
                                 : "text-gray-400 group-hover:text-indigo-600",
@@ -225,7 +234,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                       <li key={team.name}>
                         <a
                           href={team.href}
-                          className={classNames(
+                          className={classnames(
                             team.current
                               ? "bg-gray-50 text-indigo-600"
                               : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
@@ -233,7 +242,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                           )}
                         >
                           <span
-                            className={classNames(
+                            className={classnames(
                               team.current
                                 ? "border-indigo-600 text-indigo-600"
                                 : "border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600",
@@ -248,19 +257,24 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                     ))}
                   </ul>
                 </li>
-                <li className="-mx-6 mt-auto">
-                  <a
-                    href="#"
-                    className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50"
-                  >
-                    <img
-                      className="h-8 w-8 rounded-full bg-gray-50"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
+                <li className="-mx-6 mt-auto flex w-full items-center justify-between">
+                  <Link href="/profile">
+                    <a className="flex items-center gap-x-2 border px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50">
+                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-smMain-500">
+                        <span className="text-xs font-medium leading-none text-white">
+                          {constructUserInitials(user)}
+                        </span>
+                      </span>
+                      <span aria-hidden="true">Profile</span>
+                    </a>
+                  </Link>
+                  <Tooltip text="Sign out">
+                    <FontAwesomeIcon
+                      icon={faRightFromBracket}
+                      className="h-5 w-5 cursor-pointer text-smMain-500"
+                      onClick={() => signout()}
                     />
-                    <span className="sr-only">Your profile</span>
-                    <span aria-hidden="true">Tom Cook</span>
-                  </a>
+                  </Tooltip>
                 </li>
               </ul>
             </nav>

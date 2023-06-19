@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import SEO from "../../components/SEO";
 import getParsedCookies from "../../utils/cookie-parser";
 import { useMutation } from "@tanstack/react-query";
-import { login } from "../../services/user.service";
+import { login } from "../../services/auth.service";
 
 type Inputs = {
   email: string;
