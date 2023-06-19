@@ -8,11 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
     "upgrade:versions": "npm-check -u",
-    "prettier": "prettier --write \"**/*.+(js|ts|jsx|tsx)\"",
-    "postinstall": "node src/helpers/copy-webviewer-files.js",
-    "analyze": "ANALYZE=true next build"
+    "prettier": "prettier --write \"**/*.+(js|ts|jsx|tsx)\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.4.0",
