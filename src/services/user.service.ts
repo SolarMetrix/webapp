@@ -26,7 +26,8 @@ export const createAccount = async ({
       .post(`${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/auth/register`, {
         email,
         password,
-      })
+      },
+      { withCredentials: true })
       .then((res) => res.data.uuid);
   } catch (error: any) {
     console.log(error?.response.data);

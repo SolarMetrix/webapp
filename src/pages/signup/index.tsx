@@ -31,6 +31,7 @@ export default function JoinPage() {
 
   const { mutate: registrationMutation, isLoading: registrationLoading } =
     useMutation(createAccount, {
+      onSuccess: () => window.location.replace("/"),
       onError: (err: any) => setError(err.response.data.message),
     });
 
@@ -86,6 +87,7 @@ export default function JoinPage() {
                 <div>
                   <input
                     type="password"
+                    placeholder="Minimum 5 characters"
                     required
                     className="sm:text-md block w-full rounded-md border-0 py-2 text-smMain-600 shadow-sm ring-1 ring-inset ring-gray-300 transition placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-smMain-400 sm:leading-6"
                     {...register("password", {
@@ -106,12 +108,11 @@ export default function JoinPage() {
                   type="submit"
                   className="text-md flex w-full items-center justify-center rounded-md bg-smMain-500 px-3 py-2.5 font-semibold leading-6 text-white shadow-sm transition hover:bg-smMain-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-smMain-600"
                 >
-                  <span>Sign up</span>
                   {registrationLoading && (
                     <div role="status">
                       <svg
                         aria-hidden="true"
-                        className="ml-2 h-4 w-4 animate-spin fill-smMain-500 text-white"
+                        className="mr-2 h-4 w-4 animate-spin fill-smMain-500 text-white"
                         viewBox="0 0 100 101"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -127,6 +128,7 @@ export default function JoinPage() {
                       </svg>
                     </div>
                   )}
+                  <span>Sign up</span>
                 </button>
               </div>
               {error && (

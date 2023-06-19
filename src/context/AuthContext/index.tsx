@@ -26,18 +26,18 @@ export function AuthProvider({ children }: { children: any }) {
     });
   }
 
-  // useQuery([FETCH_AUTH_USER_KEY], () => fetchAuthUser(), {
-  //   onSuccess: (user: any) => {
-  //     if (user) {
-  //       localStorage.setItem("auth", "1");
-  //       setAuthUser(user);
-  //     } else {
-  //       localStorage.removeItem("auth");
-  //     }
-  //   },
-  //   staleTime: 1000 * 60 * 15,
-  //   retry: 1,
-  // });
+  useQuery([FETCH_AUTH_USER_KEY], () => fetchAuthUser(), {
+    onSuccess: (user: any) => {
+      if (user) {
+        localStorage.setItem("auth", "1");
+        setAuthUser(user);
+      } else {
+        localStorage.removeItem("auth");
+      }
+    },
+    staleTime: 1000 * 60 * 15,
+    retry: 1,
+  });
 
   const value = {
     isLoading: state.isLoading,
