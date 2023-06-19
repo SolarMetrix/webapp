@@ -2,9 +2,14 @@ import SEO from "../components/SEO";
 import GuestHomePage from "../components/GuestHomePage/index";
 // import UserHomePage from "../components/UserHomePage/index";
 import useAuth from "../context/AuthContext";
+import DotsLoader from "../components/HelperComponents/DotsLoader";
 
 export default function Home(): JSX.Element {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, isLoading } = useAuth();
+
+  if (isLoading) {
+    return <DotsLoader showLoadingText={false} />;
+  }
 
   return (
     <>
@@ -13,8 +18,7 @@ export default function Home(): JSX.Element {
         description="Track your solar panels"
         title="SolarMetrix"
       />
-      <GuestHomePage />
-      {/* {isLoggedIn ? <UserHomePage /> : <GuestHomePage />} */}
+      {isLoggedIn ? <span>ascascascas</span> : <GuestHomePage />}
     </>
   );
 }

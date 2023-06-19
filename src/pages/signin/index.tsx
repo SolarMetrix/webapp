@@ -121,6 +121,14 @@ export default function JoinPage() {
                   <span>Sign in</span>
                 </button>
               </div>
+              {error && (
+                <p
+                  role="alert"
+                  className="text-md mt-2 text-center text-red-400"
+                >
+                  {error}
+                </p>
+              )}
             </form>
           </div>
 

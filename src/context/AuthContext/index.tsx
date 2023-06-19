@@ -30,10 +30,10 @@ export function AuthProvider({ children }: { children: any }) {
     onSuccess: (user: any) => {
       if (user) {
         localStorage.setItem("auth", "1");
-        setAuthUser(user);
       } else {
         localStorage.removeItem("auth");
       }
+      setAuthUser(user);
     },
     staleTime: 1000 * 60 * 15,
     retry: 1,
