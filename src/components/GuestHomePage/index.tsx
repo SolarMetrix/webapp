@@ -8,7 +8,7 @@ import LogoCloud from "./LogoCloud";
 
 export default function GuestHomePage() {
   return (
-    <div>
+    <>
       <Header />
       <main>
         <Hero />
@@ -18,6 +18,6 @@ export default function GuestHomePage() {
         <FAQ />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }

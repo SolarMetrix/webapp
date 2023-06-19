@@ -1,8 +1,8 @@
 import SEO from "../components/SEO";
 import GuestHomePage from "../components/GuestHomePage/index";
-// import UserHomePage from "../components/UserHomePage/index";
 import useAuth from "../context/AuthContext";
 import DotsLoader from "../components/HelperComponents/DotsLoader";
+import UserHomePage from "../components/UserHomePage";
 
 export default function Home(): JSX.Element {
   const { isLoggedIn, isLoading } = useAuth();
@@ -18,7 +18,7 @@ export default function Home(): JSX.Element {
         description="Track your solar panels"
         title="SolarMetrix"
       />
-      {isLoggedIn ? <span>ascascascas</span> : <GuestHomePage />}
+      {isLoggedIn ? <UserHomePage /> : <GuestHomePage />}
     </>
   );
 }

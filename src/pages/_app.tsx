@@ -8,8 +8,9 @@ const AuthJoinResult = dynamic(
 import { UIProvider } from "../context/UIContext";
 import { AuthProvider } from "../context/AuthContext";
 import { queryClient } from "../helpers/queryClient";
-import "../../styles/globals.css";
 import ProgressBar from "../components/ProgressBar";
+import Layout from "../components/Layout";
+import "../../styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -18,8 +19,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <AuthProvider>
           <UIProvider>
             <ProgressBar />
-            <Component {...pageProps} />
-            <AuthJoinResult />
+            <Layout>
+              <Component {...pageProps} />
+              <AuthJoinResult />
+            </Layout>
           </UIProvider>
         </AuthProvider>
       </Hydrate>
