@@ -1,13 +1,17 @@
 import React from "react";
 import classnames from "../../utils/classnames";
 
-export default function Loader({ classes }: { classes?: "mr-2 h-4 w-4" }) {
+export default function Loader({
+  classes = "mr-2 h-4 w-4",
+}: {
+  classes?: string;
+}) {
   return (
     <div role="status">
       <svg
         aria-hidden="true"
         className={classnames(
-          "animate-spin fill-smMain-500 text-white",
+          "animate-spin fill-white text-smMain-600",
           classes
         )}
         viewBox="0 0 100 101"

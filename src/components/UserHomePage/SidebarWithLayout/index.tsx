@@ -19,6 +19,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "../../HelperComponents/Tooltip";
 import { logout } from "../../../services/auth.service";
+import Loader from "../../HelperComponents/Loader";
 
 const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
@@ -37,8 +38,10 @@ const teams = [
 export default function SidebarWithLayout({ children }: { children: any }) {
   const { user } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [signoutLoading, setSignoutLoading] = useState(false);
 
   const signout = () => {
+    setSignoutLoading(true);
     return logout()
       .then((result: any) => {
         if (result.success) {
@@ -269,11 +272,15 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                     </a>
                   </Link>
                   <Tooltip text="Sign out">
-                    <FontAwesomeIcon
-                      icon={faRightFromBracket}
-                      className="mr-3 h-5 w-5 cursor-pointer text-smMain-500"
-                      onClick={() => signout()}
-                    />
+                    {signoutLoading ? (
+                      <Loader classes="w-5 h-5" />
+                    ) : (
+                      <FontAwesomeIcon
+                        icon={faRightFromBracket}
+                        className="h-5 w-5 cursor-pointer text-smMain-500"
+                        onClick={() => signout()}
+                      />
+                    )}
                   </Tooltip>
                 </li>
               </ul>
