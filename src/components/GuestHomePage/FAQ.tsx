@@ -32,10 +32,8 @@ export default function FAQ() {
       id="faq"
     >
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-base font-semibold leading-7 text-smMain-400">
-          FAQ
-        </h2>
-        <p className="mt-2 text-3xl font-bold tracking-tight text-smMain-600 sm:text-4xl">
+        <h2 className="text-base font-semibold leading-7 text-gray-400">FAQ</h2>
+        <p className="mt-2 text-3xl font-bold tracking-tight text-smMain-500 sm:text-4xl">
           Frequently asked questions{" "}
         </p>
 
@@ -44,7 +42,7 @@ export default function FAQ() {
           for? Reach out to our support team by{" "}
           <a
             href="mailto:info@solarmetrix.com"
-            className="font-semibold text-smMain-400 hover:text-smMain-500"
+            className="font-semibold text-smMain-500 hover:text-smMain-600"
           >
             sending us an email
           </a>{" "}
@@ -55,10 +53,10 @@ export default function FAQ() {
         <dl className="space-y-16 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-16 sm:space-y-0 lg:gap-x-10">
           {faqs.map((faq) => (
             <div key={faq.id}>
-              <dt className="text-base font-semibold leading-7 text-smMain-700">
+              <dt className="text-base font-semibold leading-7 text-gray-600">
                 {faq.question}
               </dt>
-              <dd className="mt-2 text-base leading-7 text-gray-600">
+              <dd className="mt-2 text-base leading-7 text-gray-500">
                 {faq.answer}
               </dd>
             </div>

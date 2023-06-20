@@ -19,7 +19,7 @@ body {
 
 .lds-ellipsis div {
     position: absolute;
-    background: #1f3b69;
+    background: #00917c;
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
@@ -76,12 +76,12 @@ body {
 
 #nprogress .bar {
     position: fixed;
-    background: #6b7d9b;
+    background: #00917c;
     z-index: 19 !important;
     top: 0;
     left: 0;
     width: 100%;
-    height: 3px;
+    height: 4px;
 }
 
 #nprogress .spinner {
@@ -98,8 +98,8 @@ body {
     box-sizing: border-box;
 
     border: solid 2px transparent;
-    border-top-color: #6b7d9b;
-    border-left-color: #6b7d9b;
+    border-top-color: #00917c;
+    border-left-color: #00917c;
     border-radius: 50%;
 
     -webkit-animation: nprogress-spinner 400ms linear infinite;

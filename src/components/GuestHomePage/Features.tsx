@@ -37,13 +37,13 @@ export default function Features() {
       id="features"
     >
       <div className="mx-auto max-w-2xl lg:text-center">
-        <h2 className="text-base font-semibold leading-7 text-smMain-400">
+        <h2 className="text-base font-semibold leading-7 text-gray-400">
           Deploy faster
         </h2>
-        <p className="mt-2 text-3xl font-bold tracking-tight text-smMain-600 sm:text-4xl">
+        <p className="mt-2 text-3xl font-bold tracking-tight text-smMain-500 sm:text-4xl">
           Everything you need to deploy your app
         </p>
-        <p className="mt-6 text-lg leading-8 text-gray-600">
+        <p className="mt-6 text-lg leading-8 text-gray-500">
           Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
           Suspendisse eget egestas a elementum pulvinar et feugiat blandit at.
           In mi viverra elit nunc.
@@ -53,18 +53,18 @@ export default function Features() {
         <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
           {features.map((feature) => (
             <div key={feature.name} className="flex flex-col">
-              <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-smMain-700">
+              <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-600">
                 <feature.icon
-                  className="h-5 w-5 flex-none text-smMain-400"
+                  className="h-5 w-5 flex-none text-gray-600"
                   aria-hidden="true"
                 />
                 {feature.name}
               </dt>
-              <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+              <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-500">
                 <p className="flex-auto">{feature.description}</p>
                 <p className="mt-6">
                   <Link href="/signin">
-                    <a className="text-sm font-semibold leading-6 text-smMain-600">
+                    <a className="text-sm font-semibold leading-6 text-gray-400">
                       Learn more <span aria-hidden="true">→</span>
                     </a>
                   </Link>

@@ -16,13 +16,13 @@ export default function Hero() {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link href="/signin">
-                <a className="rounded-md bg-smMain-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-smMain-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                <a className="rounded-md bg-smMain-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-smMain-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                   Get started
                 </a>
               </Link>
               <a
                 href="#about"
-                className="text-md font-semibold leading-6 text-smMain-400"
+                className="text-md font-semibold leading-6 text-gray-400"
               >
                 Learn more <span aria-hidden="true">→</span>
               </a>
