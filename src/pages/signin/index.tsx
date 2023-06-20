@@ -49,11 +49,7 @@ export default function JoinPage() {
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <Link href="/">
             <a>
-              <img
-                className="mx-auto h-10 w-auto"
-                src="/img/logo.svg"
-                alt=""
-              />
+              <img className="mx-auto h-10 w-auto" src="/img/logo.svg" alt="" />
             </a>
           </Link>
         </div>

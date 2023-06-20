@@ -45,10 +45,10 @@ export default function NotFoundPage() {
   return (
     <>
       <SEO url={`${process.env.NEXT_PUBLIC_WEB_APP_ENDPOINT}/`} />
-      <div className="mx-4 md:mt-[50px] lg:mt-[200px]">
+      <div className="mx-4 md:mt-[50px] lg:mt-[100px]">
         <div className="mx-auto max-w-xl">
+          <img src="/404.gif" alt="404" className="mx-auto h-auto w-[300px]" />
           <div className="text-center">
-            <p className="text-base font-semibold text-smMain-400">404</p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight text-smMain-500 sm:tracking-tight md:text-4xl">
               Page not found
             </h1>

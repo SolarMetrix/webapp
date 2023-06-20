@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import Image from "next/image"
+import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
@@ -105,7 +105,13 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-2">
                     <div className="flex h-16 shrink-0 items-center">
-                      <Image src="/img/logo.svg" alt="Logo" className="border" width={150} height={40} />
+                      <Image
+                        src="/img/logo.svg"
+                        alt="Logo"
+                        className="border"
+                        width={150}
+                        height={40}
+                      />
                     </div>
                     <nav className="flex flex-1 flex-col">
                       <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -139,7 +145,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                         </li>
                         <li>
                           <div className="text-xs font-semibold leading-6 text-gray-400">
-                           Projects
+                            Projects
                           </div>
                           <ul role="list" className="-mx-2 mt-2 space-y-1">
                             {teams.map((team) => (
@@ -183,7 +189,13 @@ export default function SidebarWithLayout({ children }: { children: any }) {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
             <div className="flex h-16 shrink-0 items-center">
-              <Image src="/img/logo.svg" alt="Logo" className="border" width={170} height={40} />
+              <Image
+                src="/img/logo.svg"
+                alt="Logo"
+                className="border"
+                width={170}
+                height={40}
+              />
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -217,7 +229,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                 </li>
                 <li>
                   <div className="text-xs font-semibold leading-6 text-gray-400">
-                  Projects
+                    Projects
                   </div>
                   <ul role="list" className="-mx-2 mt-2 space-y-1">
                     {teams.map((team) => (
@@ -249,13 +261,18 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                 </li>
                 <li className="-mx-6 mt-auto flex items-center justify-between px-7 py-3">
                   <Link href="/profile">
-                    <a className="flex items-center gap-x-2 text-sm font-semibold leading-6 text-gray-900">
-                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-smMain-500">
+                    <a className="flex w-[180px] items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+                      <span className="inline-flex h-7 w-10 items-center justify-center rounded-md bg-smMain-500">
                         <span className="text-xs font-medium leading-none text-white">
                           {constructUserInitials(user)}
                         </span>
                       </span>
-                      <span aria-hidden="true" className="text-gray-500">Profile</span>
+                      <span
+                        aria-hidden="true"
+                        className="truncate overflow-ellipsis text-gray-500"
+                      >
+                        {user?.email}
+                      </span>
                     </a>
                   </Link>
                   <Tooltip text="Sign out">
