@@ -257,9 +257,9 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                     ))}
                   </ul>
                 </li>
-                <li className="-mx-6 mt-auto flex w-full items-center justify-between">
+                <li className="-mx-6 mt-auto flex items-center justify-between px-7 py-3">
                   <Link href="/profile">
-                    <a className="flex items-center gap-x-2 border px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50">
+                    <a className="flex items-center gap-x-2 text-sm font-semibold leading-6 text-gray-900">
                       <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-smMain-500">
                         <span className="text-xs font-medium leading-none text-white">
                           {constructUserInitials(user)}
@@ -271,7 +271,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                   <Tooltip text="Sign out">
                     <FontAwesomeIcon
                       icon={faRightFromBracket}
-                      className="h-5 w-5 cursor-pointer text-smMain-500"
+                      className="mr-3 h-5 w-5 cursor-pointer text-smMain-500"
                       onClick={() => signout()}
                     />
                   </Tooltip>
