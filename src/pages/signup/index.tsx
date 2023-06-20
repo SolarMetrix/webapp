@@ -68,7 +68,7 @@ export default function JoinPage() {
                   <input
                     type="email"
                     required
-                    className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 transition placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:leading-6"
+                    className="sm:text-md border-1 block w-full rounded-md border-gray-100 py-2 text-gray-600 shadow transition focus:border-gray-100 focus:shadow-md focus:ring-0 sm:leading-6"
                     {...register("email", {
                       required: "Email is required",
                       minLength: 4,
@@ -89,7 +89,7 @@ export default function JoinPage() {
                     type="password"
                     placeholder="Minimum 5 characters"
                     required
-                    className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 transition placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:leading-6"
+                    className="sm:text-md border-1 block w-full rounded-md border-gray-100 py-2 text-gray-600 shadow transition focus:border-gray-100 focus:shadow-md focus:ring-0 sm:leading-6"
                     {...register("password", {
                       required: "Password is required",
                       minLength: 5,
@@ -97,7 +97,7 @@ export default function JoinPage() {
                   />
                 </div>
                 {errors.password?.type === "minLength" && (
-                  <p role="alert" className="mt-2 text-xs text-gray-400">
+                  <p role="alert" className="mt-2 text-sm text-red-400">
                     Password must be at least 5 characters
                   </p>
                 )}

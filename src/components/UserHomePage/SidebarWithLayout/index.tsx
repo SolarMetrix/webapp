@@ -275,7 +275,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                       </span>
                     </a>
                   </Link>
-                  <Tooltip text="Sign out">
+                  <Tooltip text={signoutLoading ? "Signing out" : "Sign out"}>
                     {signoutLoading ? (
                       <Loader classes="w-5 h-5" />
                     ) : (

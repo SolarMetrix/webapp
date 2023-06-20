@@ -31,7 +31,7 @@ export default function ProfilePage(): JSX.Element {
                 certain.
               </span>
               <button className="mt-4 rounded-md border border-gray-300 bg-gray-200/60 px-3 py-2 font-semibold text-red-600 transition hover:bg-red-700 hover:text-white">
-                Delete account
+                Delete forever
               </button>
             </div>
           </div>

@@ -6,6 +6,7 @@ import { IUser } from "../../../../types";
 import { FETCH_AUTH_USER_KEY } from "../../../utils/queryKeys";
 import { useMutation } from "@tanstack/react-query";
 import HttpButton from "../../HelperComponents/HttpButton";
+import classnames from "../../../utils/classnames";
 
 export default function PersonalInformation({ user }: { user: IUser }) {
   const [firstname, setFirstname] = useState<string>(user?.firstname);
@@ -35,7 +36,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
               id="first-name"
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
-              className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 transition placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:leading-6"
+              className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
             />
           </div>
         </div>
@@ -54,7 +55,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
               id="last-name"
               value={lastname}
               onChange={(e) => setLastname(e.target.value)}
-              className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 transition placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:leading-6"
+              className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
             />
           </div>
         </div>
@@ -67,7 +68,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
             Email address
           </label>
           <div className="mt-2">
-            <span className="sm:text-md block w-full cursor-not-allowed rounded-md border-0 px-2 py-2 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 transition placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:leading-6">
+            <span className="sm:text-md block w-full cursor-not-allowed rounded-md px-2 py-2 text-gray-600 shadow sm:leading-6">
               {user?.email}
             </span>
           </div>
@@ -85,7 +86,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
               type="text"
               name="Country"
               id="Country"
-              className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 transition placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:leading-6"
+              className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
             />
           </div>
         </div>
@@ -102,7 +103,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
               type="text"
               name="city"
               id="city"
-              className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 transition placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:leading-6"
+              className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
             />
           </div>
         </div>
@@ -112,7 +113,10 @@ export default function PersonalInformation({ user }: { user: IUser }) {
             text="Save updates"
             faIcon={faPen}
             iconSize={4}
-            customClasses="w-full shadow-md py-3 bg-smMain-500 hover:bg-ebGreen-600 transition"
+            customClasses={classnames(
+              "w-full shadow-md py-3 bg-smMain-500",
+              valuesAreDifferent && "hover:bg-smMain-600 transition"
+            )}
             fnc={() => {}}
             isLoading={false}
             disabled={!valuesAreDifferent}
