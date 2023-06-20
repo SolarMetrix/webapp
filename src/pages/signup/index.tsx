@@ -48,7 +48,7 @@ export default function JoinPage() {
             <a>
               <img
                 className="mx-auto h-10 w-auto"
-                src="/img/logo1.svg"
+                src="/img/logo.svg"
                 alt=""
               />
             </a>

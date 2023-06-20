@@ -24,7 +24,7 @@ export default function Header() {
           <Link href="/">
             <a className="-m-1.5 p-1.5">
               <span className="sr-only">SolarMetrix</span>
-              <img className="h-10 w-auto" src="/img/logo1.svg" alt="" />
+              <img className="h-10 w-auto" src="/img/logo.svg" alt="" />
             </a>
           </Link>
         </div>

@@ -1,13 +1,11 @@
 import { Fragment, useState } from "react";
+import Image from "next/image"
 import { Dialog, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
-  CalendarIcon,
   ChartPieIcon,
-  DocumentDuplicateIcon,
   FolderIcon,
   HomeIcon,
-  UsersIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 
@@ -23,10 +21,7 @@ import Loader from "../../HelperComponents/Loader";
 
 const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  { name: "Team", href: "#", icon: UsersIcon, current: false },
   { name: "Projects", href: "#", icon: FolderIcon, current: false },
-  { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
-  { name: "Documents", href: "#", icon: DocumentDuplicateIcon, current: false },
   { name: "Reports", href: "#", icon: ChartPieIcon, current: false },
 ];
 const teams = [
@@ -110,11 +105,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-2">
                     <div className="flex h-16 shrink-0 items-center">
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        alt="Your Company"
-                      />
+                      <Image src="/img/logo.svg" alt="Logo" className="border" width={150} height={40} />
                     </div>
                     <nav className="flex flex-1 flex-col">
                       <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -148,7 +139,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                         </li>
                         <li>
                           <div className="text-xs font-semibold leading-6 text-gray-400">
-                            Your teams
+                           Projects
                           </div>
                           <ul role="list" className="-mx-2 mt-2 space-y-1">
                             {teams.map((team) => (
@@ -192,11 +183,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
             <div className="flex h-16 shrink-0 items-center">
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt="Your Company"
-              />
+              <Image src="/img/logo.svg" alt="Logo" className="border" width={170} height={40} />
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -208,16 +195,16 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                           href={item.href}
                           className={classnames(
                             item.current
-                              ? "bg-gray-50 text-indigo-600"
-                              : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
+                              ? "bg-gray-50 text-gray-600"
+                              : "text-gray-500 hover:bg-gray-50 hover:text-gray-600",
                             "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                           )}
                         >
                           <item.icon
                             className={classnames(
                               item.current
-                                ? "text-indigo-600"
-                                : "text-gray-400 group-hover:text-indigo-600",
+                                ? "text-gray-600"
+                                : "text-gray-400 group-hover:text-gray-600",
                               "h-6 w-6 shrink-0"
                             )}
                             aria-hidden="true"
@@ -230,7 +217,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                 </li>
                 <li>
                   <div className="text-xs font-semibold leading-6 text-gray-400">
-                    Your teams
+                  Projects
                   </div>
                   <ul role="list" className="-mx-2 mt-2 space-y-1">
                     {teams.map((team) => (
@@ -268,7 +255,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                           {constructUserInitials(user)}
                         </span>
                       </span>
-                      <span aria-hidden="true">Profile</span>
+                      <span aria-hidden="true" className="text-gray-500">Profile</span>
                     </a>
                   </Link>
                   <Tooltip text="Sign out">
@@ -277,7 +264,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                     ) : (
                       <FontAwesomeIcon
                         icon={faRightFromBracket}
-                        className="h-5 w-5 cursor-pointer text-smMain-500"
+                        className="h-5 w-5 cursor-pointer text-gray-500"
                         onClick={() => signout()}
                       />
                     )}
@@ -300,14 +287,15 @@ export default function SidebarWithLayout({ children }: { children: any }) {
           <div className="flex-1 text-sm font-semibold leading-6 text-gray-900">
             Dashboard
           </div>
-          <a href="#">
-            <span className="sr-only">Your profile</span>
-            <img
-              className="h-8 w-8 rounded-full bg-gray-50"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt=""
-            />
-          </a>
+          <Link href="/profile">
+            <a className="flex items-center gap-x-2 text-sm font-semibold leading-6 text-gray-900">
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-smMain-500">
+                <span className="text-xs font-medium leading-none text-white">
+                  {constructUserInitials(user)}
+                </span>
+              </span>
+            </a>
+          </Link>
         </div>
 
         <main className="py-10 lg:pl-72">

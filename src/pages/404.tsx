@@ -49,7 +49,7 @@ export default function NotFoundPage() {
         <div className="mx-auto max-w-xl">
           <div className="text-center">
             <p className="text-base font-semibold text-smMain-400">404</p>
-            <h1 className="mt-2 text-3xl font-bold tracking-tight text-smMain-600 sm:tracking-tight md:text-4xl">
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-smMain-500 sm:tracking-tight md:text-4xl">
               Page not found
             </h1>
             <p className="mt-3 text-lg text-gray-500">

@@ -10,10 +10,10 @@ import { faPen } from "@fortawesome/free-solid-svg-icons";
 import HttpButton from "../../HelperComponents/HttpButton";
 
 export default function ProfileData({ user }: { user: IUser }) {
-  const [firstname, setFirstname] = useState<string>(user.firstname);
-  const [lastname, setLastname] = useState<string>(user.lastname);
+  const [firstname, setFirstname] = useState<string>(user?.firstname);
+  const [lastname, setLastname] = useState<string>(user?.lastname);
   const valuesAreDifferent =
-    firstname !== user.firstname || lastname !== user.lastname;
+    firstname !== user?.firstname || lastname !== user?.lastname;
 
   const springAnimation = useSpring({
     from: { display: "none", opacity: 0 },
@@ -52,13 +52,13 @@ export default function ProfileData({ user }: { user: IUser }) {
       <div className="mb-8 flex flex-col">
         <span className="mb-1 font-medium text-gray-600">Email</span>
         <span className="text-md cursor-not-allowed rounded-md border border-gray-200 px-2 py-3 text-gray-500 shadow-sm">
-          {user.email}
+          {user?.email}
         </span>
       </div>
 
       <animated.div style={springAnimation}>
         <HttpButton
-          text="Պահպանել"
+          text="Save updates"
           faIcon={faPen}
           customClasses="w-full shadow-md py-3 bg-ebGreen-500 hover:bg-ebGreen-600 transition"
           fnc={() => {}}

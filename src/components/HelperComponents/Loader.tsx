@@ -11,7 +11,7 @@ export default function Loader({
       <svg
         aria-hidden="true"
         className={classnames(
-          "animate-spin fill-white text-smMain-600",
+          "animate-spin fill-white text-smMain-500",
           classes
         )}
         viewBox="0 0 100 101"

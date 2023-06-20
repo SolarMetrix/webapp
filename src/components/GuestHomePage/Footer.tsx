@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="mb-4 inline-block">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">SolarMetrix</span>
-            <img className="h-8 w-auto" src="/img/logo1.svg" alt="" />
+            <img className="h-8 w-auto" src="/img/logo.svg" alt="" />
           </a>
         </div>
         <nav
