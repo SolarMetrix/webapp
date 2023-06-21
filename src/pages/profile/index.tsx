@@ -40,7 +40,7 @@ export default function ProfilePage(): JSX.Element {
               <h3 className="font-semibold text-gray-600">Delete Account</h3>
               <span className="text-sm text-gray-600">
                 Once you delete your account, there is no going back. <br /> The
-                deletion process will immediately start when you click the
+                deletion process will start immediately when you click the
                 button below.
               </span>
               <button

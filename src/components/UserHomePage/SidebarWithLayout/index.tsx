@@ -20,9 +20,9 @@ import { logout } from "../../../services/user.service";
 import Loader from "../../HelperComponents/Loader";
 
 const navigation = [
-  { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  { name: "Projects", href: "#", icon: FolderIcon, current: false },
-  { name: "Reports", href: "#", icon: ChartPieIcon, current: false },
+  { name: "Dashboard", href: "/", icon: HomeIcon, current: true },
+  { name: "Projects", href: "/projects", icon: FolderIcon, current: false },
+  { name: "Reports", href: "/reports", icon: ChartPieIcon, current: false },
 ];
 const teams = [
   { id: 1, name: "Heroicons", href: "#", initial: "H", current: false },
@@ -118,9 +118,8 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                         <li>
                           <ul role="list" className="-mx-2 space-y-1">
                             {navigation.map((item) => (
-                              <li key={item.name}>
+                              <Link href={item.href} key={item.name}>
                                 <a
-                                  href={item.href}
                                   className={classnames(
                                     item.current
                                       ? "bg-gray-50 text-indigo-600"
@@ -139,7 +138,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                                   />
                                   {item.name}
                                 </a>
-                              </li>
+                              </Link>
                             ))}
                           </ul>
                         </li>
@@ -202,9 +201,8 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                 <li>
                   <ul role="list" className="-mx-2 space-y-1">
                     {navigation.map((item) => (
-                      <li key={item.name}>
+                      <Link href={item.href} key={item.name}>
                         <a
-                          href={item.href}
                           className={classnames(
                             item.current
                               ? "bg-gray-50 text-gray-600"
@@ -223,7 +221,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                           />
                           {item.name}
                         </a>
-                      </li>
+                      </Link>
                     ))}
                   </ul>
                 </li>
