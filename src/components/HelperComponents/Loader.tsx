@@ -17,7 +17,7 @@ export default function Loader({
       <svg
         aria-hidden="true"
         className={classnames(
-          "mr-2 animate-spin fill-white text-smMain-700",
+          "mr-2 animate-spin fill-white",
           sizeClass,
           color,
           classes

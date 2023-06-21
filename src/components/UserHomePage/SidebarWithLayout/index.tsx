@@ -277,7 +277,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                   </Link>
                   <Tooltip text={signoutLoading ? "Signing out" : "Sign out"}>
                     {signoutLoading ? (
-                      <Loader size={5} />
+                      <Loader size={5} classes="mr-0" />
                     ) : (
                       <FontAwesomeIcon
                         icon={faRightFromBracket}

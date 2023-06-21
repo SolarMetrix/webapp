@@ -1,5 +1,19 @@
 import axios from "axios";
 
+export const fetchAuthUser = async () => {
+  try {
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/auth`,
+      { withCredentials: true }
+    );
+
+    return data;
+  } catch (error: any) {
+    console.log(error?.response.data);
+    return Promise.reject(error?.response.data);
+  }
+};
+
 export const login = async ({
   email,
   password,
@@ -18,20 +32,6 @@ export const login = async ({
         { withCredentials: true }
       )
       .then((res) => res.data.uuid);
-  } catch (error: any) {
-    console.log(error?.response.data);
-    return Promise.reject(error?.response.data);
-  }
-};
-
-export const fetchAuthUser = async () => {
-  try {
-    const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/auth`,
-      { withCredentials: true }
-    );
-
-    return data;
   } catch (error: any) {
     console.log(error?.response.data);
     return Promise.reject(error?.response.data);
@@ -63,7 +63,7 @@ export const createAccount = async ({
   try {
     return axios
       .post(
-        `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/auth/register`,
+        `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/users`,
         {
           email,
           password,
@@ -80,7 +80,7 @@ export const createAccount = async ({
 export const deleteAccount = async () => {
   try {
     const { data } = await axios.delete(
-      `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/auth`,
+      `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/users`,
       {
         withCredentials: true,
       }

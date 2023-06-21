@@ -61,7 +61,7 @@ export default function SignupPage() {
         <div className="sm:mx-auto sm:w-full sm:max-w-[480px] lg:mt-36">
           <div className="bg-white px-6 pb-12 pt-6 shadow sm:rounded-lg">
             <h2 className="mb-10 text-center text-3xl font-semibold leading-9 tracking-tight text-gray-500">
-              Sign up
+              Create account
             </h2>
             <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
               <div>
@@ -116,7 +116,7 @@ export default function SignupPage() {
                   className="text-md flex w-full items-center justify-center rounded-md bg-smMain-500 px-3 py-2.5 font-semibold leading-6 text-white shadow-sm transition hover:bg-smMain-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-smMain-600"
                 >
                   {registrationLoading && <Loader size={5} />}
-                  <span>Register</span>
+                  <span>Sign up</span>
                 </button>
               </div>
               {error && (

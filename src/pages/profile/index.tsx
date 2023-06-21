@@ -5,13 +5,17 @@ import useAuth from "../../context/AuthContext";
 import getParsedCookies from "../../utils/cookie-parser";
 import PersonalInformation from "../../components/UserHomePage/ProfilePage/PersonalInformation";
 import { deleteAccount } from "../../services/user.service";
+import Loader from "../../components/HelperComponents/Loader";
 
 export default function ProfilePage(): JSX.Element {
   const { user } = useAuth();
 
   const { mutate: deleteAccountMutation, isLoading: deleteAccountLoading } =
     useMutation(deleteAccount, {
-      onSuccess: () => window.location.replace("/"),
+      onSuccess: () => {
+        localStorage.removeItem("auth");
+        window.location.replace("/");
+      },
     });
 
   return (
@@ -40,11 +44,14 @@ export default function ProfilePage(): JSX.Element {
                 button below.
               </span>
               <button
-                className="mt-4 block rounded-md border border-gray-300 bg-gray-200/60 px-3 py-2 font-semibold text-red-600 transition hover:bg-red-700 hover:text-white"
+                className="mt-4 flex items-center rounded-md border border-gray-300 bg-gray-200/40 px-3 py-2 font-semibold text-red-600 transition hover:bg-red-700 hover:text-white"
                 onClick={() => deleteAccountMutation()}
                 disabled={deleteAccountLoading}
               >
-                Delete forever
+                {deleteAccountLoading && <Loader color="text-red-600" />}
+                <span>
+                  {deleteAccountLoading ? "Deleting..." : "Delete forever"}
+                </span>
               </button>
             </div>
           </div>
