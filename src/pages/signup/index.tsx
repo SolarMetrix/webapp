@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useMutation } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -42,20 +43,25 @@ export default function JoinPage() {
         description="Create account"
         title="Sign up"
       />
-      <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+      <div className="flex min-h-full flex-1 flex-col justify-center sm:px-6 lg:px-8">
+        <div className="mx-auto inline-block sm:w-full sm:max-w-md">
           <Link href="/">
-            <a>
-              <img className="mx-auto h-10 w-auto" src="/img/logo.svg" alt="" />
+            <a className="mt-20 block w-full text-center">
+              <Image
+                src="/img/logo.svg"
+                alt="SolarMetrix logo"
+                width={250}
+                height={40}
+              />
             </a>
           </Link>
         </div>
 
         <div className="sm:mx-auto sm:w-full sm:max-w-[480px] lg:mt-36">
-          <h2 className="mb-4 mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-smMain-500">
-            Create account
-          </h2>
-          <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+          <div className="bg-white px-6 pb-12 pt-6 shadow sm:rounded-lg">
+            <h2 className="mb-10 text-center text-3xl font-semibold leading-9 tracking-tight text-gray-500">
+              Sign up
+            </h2>
             <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
               <div>
                 <label
