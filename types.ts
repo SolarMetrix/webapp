@@ -4,3 +4,8 @@ export interface IUser {
   lastname: string;
   email: string;
 }
+
+export interface IModal {
+  isOpen: boolean;
+  close: () => void;
+}

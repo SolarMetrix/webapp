@@ -1,5 +1,9 @@
 import { Fragment, useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { Dialog, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
@@ -12,9 +16,6 @@ import {
 import useAuth from "../../../context/AuthContext";
 import classnames from "../../../utils/classnames";
 import constructUserInitials from "../../../helpers/construct-user-initials";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "../../HelperComponents/Tooltip";
 import { logout } from "../../../services/user.service";
 import Loader from "../../HelperComponents/Loader";
@@ -32,6 +33,8 @@ const teams = [
 
 export default function SidebarWithLayout({ children }: { children: any }) {
   const { user } = useAuth();
+  const router = useRouter();
+  console.log(router.pathname);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [signoutLoading, setSignoutLoading] = useState(false);
 
@@ -204,8 +207,8 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                       <Link href={item.href} key={item.name}>
                         <a
                           className={classnames(
-                            item.current
-                              ? "bg-gray-50 text-gray-600"
+                            router.pathname === item.href
+                              ? "bg-gray-100 text-gray-600"
                               : "text-gray-500 hover:bg-gray-50 hover:text-gray-600",
                             "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                           )}

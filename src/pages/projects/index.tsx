@@ -4,6 +4,7 @@ import SEO from "../../components/SEO";
 import useAuth from "../../context/AuthContext";
 import getParsedCookies from "../../utils/cookie-parser";
 import Loader from "../../components/HelperComponents/Loader";
+import NewProject from "../../components/UserHomePage/ProjectsPage/NewProject";
 
 export default function ProjectsPage(): JSX.Element {
   const { user } = useAuth();
@@ -20,7 +21,9 @@ export default function ProjectsPage(): JSX.Element {
           Projects
         </h1>
 
-        <div className="mt-10 max-w-[520px]"></div>
+        <div className="mt-10">
+          <NewProject />
+        </div>
       </div>
     </>
   );
