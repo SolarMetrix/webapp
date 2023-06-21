@@ -16,7 +16,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "../../HelperComponents/Tooltip";
-import { logout } from "../../../services/auth.service";
+import { logout } from "../../../services/user.service";
 import Loader from "../../HelperComponents/Loader";
 
 const navigation = [
@@ -277,7 +277,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                   </Link>
                   <Tooltip text={signoutLoading ? "Signing out" : "Sign out"}>
                     {signoutLoading ? (
-                      <Loader classes="w-5 h-5" />
+                      <Loader size={5} />
                     ) : (
                       <FontAwesomeIcon
                         icon={faRightFromBracket}

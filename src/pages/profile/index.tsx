@@ -1,10 +1,18 @@
+import { useMutation } from "@tanstack/react-query";
+
 import SEO from "../../components/SEO";
 import useAuth from "../../context/AuthContext";
 import getParsedCookies from "../../utils/cookie-parser";
 import PersonalInformation from "../../components/UserHomePage/ProfilePage/PersonalInformation";
+import { deleteAccount } from "../../services/user.service";
 
 export default function ProfilePage(): JSX.Element {
   const { user } = useAuth();
+
+  const { mutate: deleteAccountMutation, isLoading: deleteAccountLoading } =
+    useMutation(deleteAccount, {
+      onSuccess: () => window.location.replace("/"),
+    });
 
   return (
     <>
@@ -18,7 +26,7 @@ export default function ProfilePage(): JSX.Element {
           Profile
         </h1>
 
-        <div className="mt-10 max-w-[500px]">
+        <div className="mt-10 max-w-[520px]">
           <PersonalInformation user={user} />
           <div>
             <h2 className="text-xls inline-block text-gray-600 md:text-2xl">
@@ -27,10 +35,15 @@ export default function ProfilePage(): JSX.Element {
             <div className="mt-3 w-full rounded-md p-3 ring-2 ring-red-300">
               <h3 className="font-semibold text-gray-600">Delete Account</h3>
               <span className="text-sm text-gray-600">
-                Once you delete your account, there is no going back. Please be
-                certain.
+                Once you delete your account, there is no going back. <br /> The
+                deletion process will immediately start when you click the
+                button below.
               </span>
-              <button className="mt-4 rounded-md border border-gray-300 bg-gray-200/60 px-3 py-2 font-semibold text-red-600 transition hover:bg-red-700 hover:text-white">
+              <button
+                className="mt-4 block rounded-md border border-gray-300 bg-gray-200/60 px-3 py-2 font-semibold text-red-600 transition hover:bg-red-700 hover:text-white"
+                onClick={() => deleteAccountMutation()}
+                disabled={deleteAccountLoading}
+              >
                 Delete forever
               </button>
             </div>

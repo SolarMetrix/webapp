@@ -1,7 +1,7 @@
 import { createContext, useReducer, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import { fetchAuthUser } from "../../services/auth.service";
+import { fetchAuthUser } from "../../services/user.service";
 import { FETCH_AUTH_USER_KEY } from "../../utils/queryKeys";
 import Reducer, { initialState } from "./reducer";
 

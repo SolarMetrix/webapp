@@ -2,16 +2,24 @@ import React from "react";
 import classnames from "../../utils/classnames";
 
 export default function Loader({
-  classes = "mr-2 h-4 w-4",
+  size = 4,
+  color = "text-smMain-700",
+  classes = "h-4 w-4",
 }: {
+  size?: 4 | 5;
+  color?: string;
   classes?: string;
 }) {
+  const sizeClass = size === 4 ? "h-4 w-4" : "h-5 w-5";
+
   return (
     <div role="status">
       <svg
         aria-hidden="true"
         className={classnames(
-          "animate-spin fill-white text-smMain-500",
+          "mr-2 animate-spin fill-white text-smMain-700",
+          sizeClass,
+          color,
           classes
         )}
         viewBox="0 0 100 101"

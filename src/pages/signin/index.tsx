@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import SEO from "../../components/SEO";
 import getParsedCookies from "../../utils/cookie-parser";
 import { useMutation } from "@tanstack/react-query";
-import { login } from "../../services/auth.service";
+import { login } from "../../services/user.service";
 import Loader from "../../components/HelperComponents/Loader";
 
 type Inputs = {
@@ -14,7 +14,7 @@ type Inputs = {
   password: string;
 };
 
-export default function JoinPage() {
+export default function SigninPage() {
   const [error, setError] = useState<string>("");
 
   const {
@@ -106,7 +106,7 @@ export default function JoinPage() {
                   type="submit"
                   className="text-md flex w-full items-center justify-center rounded-md bg-smMain-500 px-3 py-2.5 font-semibold leading-6 text-white shadow-sm transition hover:bg-smMain-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-smMain-600"
                 >
-                  {loginLoading && <Loader />}
+                  {loginLoading && <Loader size={5} />}
                   <span>Sign in</span>
                 </button>
               </div>
