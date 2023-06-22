@@ -1,3 +1,8 @@
+export interface IModal {
+  isOpen: boolean;
+  close: () => void;
+}
+
 export interface IUser {
   readonly uuid: string;
   firstname: string;
@@ -5,7 +10,10 @@ export interface IUser {
   email: string;
 }
 
-export interface IModal {
-  isOpen: boolean;
-  close: () => void;
+export interface IProject {
+  readonly uuid: string;
+  title: string;
+  description: string;
+  readonly: boolean;
+  createdAt: Date | string;
 }

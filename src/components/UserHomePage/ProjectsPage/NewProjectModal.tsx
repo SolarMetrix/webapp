@@ -8,32 +8,33 @@ import { createProject } from "../../../services/project.service";
 import Modal from "../../HelperComponents/Modals";
 import HttpButton from "../../HelperComponents/HttpButton";
 import classnames from "../../../utils/classnames";
+import { queryClient } from "../../../helpers/queryClient";
+import { FETCH_PROJECTS_KEY } from "../../../utils/queryKeys";
 
-export default function NewCollectionModal({ isOpen, close }: IModal) {
-  const [collectionTitle, setCollectionTitle] = useState<string>("");
-  const [collectionDescription, setCollectionDescription] =
-    useState<string>("");
+export default function NewProjectModal({ isOpen, close }: IModal) {
+  const [projectTitle, setProjectTitle] = useState<string>("");
+  const [projectDescription, setProjectDescription] = useState<string>("");
 
   const { mutate: createProjectMutation, isLoading: createProjectLoading } =
     useMutation(createProject, {
       onSuccess: () => {
         emptyAndClose();
-        // queryClient.invalidateQueries({
-        //   queryKey: [FETCH_USER_COLLECTIONS_KEY],
-        // });
+        queryClient.invalidateQueries({
+          queryKey: [FETCH_PROJECTS_KEY],
+        });
       },
     });
 
-  const createNewCollection = () => {
+  const createNewProject = () => {
     if (
-      collectionTitle.trim().length >= 4 &&
-      collectionTitle.trim().length <= 100 &&
-      collectionDescription.trim().length <= 250
+      projectTitle.trim().length >= 4 &&
+      projectTitle.trim().length <= 100 &&
+      projectDescription.trim().length <= 250
     ) {
       try {
         return createProjectMutation({
-          title: collectionTitle,
-          description: collectionDescription,
+          title: projectTitle,
+          description: projectDescription,
         });
       } catch (error) {
         console.log(error);
@@ -42,8 +43,8 @@ export default function NewCollectionModal({ isOpen, close }: IModal) {
   };
 
   function emptyAndClose() {
-    setCollectionTitle("");
-    setCollectionDescription("");
+    setProjectTitle("");
+    setProjectDescription("");
     close();
   }
 
@@ -60,8 +61,8 @@ export default function NewCollectionModal({ isOpen, close }: IModal) {
           type="text"
           name="title"
           className="block w-full rounded-md border-none px-3 py-3 text-lg text-gray-600 shadow-md ring-1 ring-gray-100 focus:ring-0"
-          value={collectionTitle}
-          onChange={(event) => setCollectionTitle(event.target.value)}
+          value={projectTitle}
+          onChange={(event) => setProjectTitle(event.target.value)}
         />
       </div>
 
@@ -76,8 +77,8 @@ export default function NewCollectionModal({ isOpen, close }: IModal) {
           type="text"
           name="goalTitle"
           className="block w-full rounded-md border-none px-3 py-3 text-lg text-gray-600 shadow-md ring-1 ring-gray-100 focus:ring-0"
-          value={collectionDescription}
-          onChange={(event) => setCollectionDescription(event.target.value)}
+          value={projectDescription}
+          onChange={(event) => setProjectDescription(event.target.value)}
         />
       </div>
 
@@ -87,12 +88,12 @@ export default function NewCollectionModal({ isOpen, close }: IModal) {
         customClasses={classnames(
           "w-full py-4 bg-smMain-400 hover:bg-smMain-500 transition"
         )}
-        fnc={() => createNewCollection()}
+        fnc={() => createNewProject()}
         isLoading={createProjectLoading}
         disabled={
-          collectionTitle.trim().length < 4 ||
-          collectionTitle.trim().length > 100 ||
-          collectionDescription.trim().length > 250 ||
+          projectTitle.trim().length < 4 ||
+          projectTitle.trim().length > 100 ||
+          projectDescription.trim().length > 250 ||
           createProjectLoading
         }
       />

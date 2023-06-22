@@ -1,4 +1,4 @@
-export default function CollectionSkeleton(): JSX.Element {
+export default function ProjectSkeleton(): JSX.Element {
   return (
     <div className="relative pl-5 md:pl-0">
       <div className="mt-20 flex h-full animate-pulse">
