@@ -3,15 +3,15 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { Dialog, Transition } from "@headlessui/react";
 import {
-  Bars3Icon,
-  ChartPieIcon,
-  FolderIcon,
-  HomeIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+  faChartPie,
+  faFolderClosed,
+  faHouse,
+  faRightFromBracket,
+  faSolarPanel,
+} from "@fortawesome/free-solid-svg-icons";
+import { Dialog, Transition } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import useAuth from "../../../context/AuthContext";
 import classnames from "../../../utils/classnames";
@@ -21,9 +21,34 @@ import { logout } from "../../../services/user.service";
 import Loader from "../../HelperComponents/Loader";
 
 const navigation = [
-  { name: "Dashboard", href: "/", icon: HomeIcon, current: true },
-  { name: "Projects", href: "/projects", icon: FolderIcon, current: false },
-  { name: "Reports", href: "/reports", icon: ChartPieIcon, current: false },
+  {
+    name: "Dashboard",
+    href: "/",
+    icon: faHouse,
+    isFontAwesomeIcon: false,
+    current: true,
+  },
+  {
+    name: "Projects",
+    href: "/projects",
+    icon: faFolderClosed,
+    isFontAwesomeIcon: true,
+    current: false,
+  },
+  {
+    name: "Products",
+    href: "/products",
+    icon: faSolarPanel,
+    isFontAwesomeIcon: false,
+    current: false,
+  },
+  {
+    name: "Reports",
+    href: "/reports",
+    icon: faChartPie,
+    isFontAwesomeIcon: false,
+    current: false,
+  },
 ];
 const teams = [
   { id: 1, name: "Heroicons", href: "#", initial: "H", current: false },
@@ -130,7 +155,8 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                                     "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                                   )}
                                 >
-                                  <item.icon
+                                  <FontAwesomeIcon
+                                    icon={item.icon}
                                     className={classnames(
                                       router.pathname === item.href
                                         ? "text-indigo-600"
@@ -213,12 +239,13 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                             "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                           )}
                         >
-                          <item.icon
+                          <FontAwesomeIcon
+                            icon={item.icon}
                             className={classnames(
                               router.pathname === item.href
                                 ? "text-gray-600"
                                 : "text-gray-400 group-hover:text-gray-600",
-                              "h-6 w-6 shrink-0"
+                              "h-5 w-5 shrink-0"
                             )}
                             aria-hidden="true"
                           />

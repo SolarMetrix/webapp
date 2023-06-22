@@ -5,6 +5,7 @@ import { PlusIcon } from "@heroicons/react/20/solid";
 import {
   faAngleRight,
   faFileCirclePlus,
+  faSolarPanel,
 } from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import dynamic from "next/dynamic";
@@ -90,27 +91,28 @@ export default function ProjectPage() {
             )}
           </div>
         </div>
-        <div className="text-center mt-[200px]">
-            <Image src="/img/solar-panel.svg" width={100} height={100} />
-            <h3 className="mt-2 text-sm font-semibold text-gray-700">
-              No products
-            </h3>
-            <p className="mt-1 text-sm text-gray-500">
-              Get started by adding a new product.
-            </p>
-            <div className="mt-6">
-              <button
-                type="button"
-                className="inline-flex items-center rounded-md bg-smMain-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-smMain-600 transition"
-              >
-                <PlusIcon
-                  className="-ml-0.5 mr-1.5 h-5 w-5"
-                  aria-hidden="true"
-                />
-                New Product
-              </button>
-            </div>
+        <div className="mt-[200px] text-center">
+          {/* <Image src="/img/solar-panel.svg" width={100} height={100} /> */}
+          <FontAwesomeIcon
+            icon={faSolarPanel}
+            className="h-28 w-28 text-gray-600"
+          />
+          <h3 className="mt-2 text-sm font-semibold text-gray-700">
+            No products
+          </h3>
+          <p className="mt-1 text-sm text-gray-500">
+            Get started by adding a new product.
+          </p>
+          <div className="mt-6">
+            <button
+              type="button"
+              className="inline-flex items-center rounded-md bg-smMain-500 px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-smMain-600"
+            >
+              <PlusIcon className="-ml-0.5 mr-1.5 h-5 w-5" aria-hidden="true" />
+              New Product
+            </button>
           </div>
+        </div>
 
         {/* <NotesList notes={notes} sortByStarred={false} showCta={true} /> */}
       </div>
