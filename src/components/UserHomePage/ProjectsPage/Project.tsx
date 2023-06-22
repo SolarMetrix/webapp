@@ -4,10 +4,12 @@ import listenForOutsideClicks from "../../../helpers/listen-for-outside-clicks";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import capitalize from "../../../utils/capitalize";
-import { faFolder } from "@fortawesome/free-solid-svg-icons";
+import { faFolder, faLock } from "@fortawesome/free-solid-svg-icons";
 import formatDate from "../../../helpers/format-date";
 import dayjs from "dayjs";
 import ProjectActionsMenu from "./ProjectActionsMenu";
+import Loader from "../../HelperComponents/Loader";
+import Tooltip from "../../HelperComponents/Tooltip";
 
 export default function Project({ project }: { project: IProject }) {
   const [projectActionsMenuOpen, setProjectActionsMenuOpen] =
@@ -57,11 +59,20 @@ export default function Project({ project }: { project: IProject }) {
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <span className=" text-xs text-gray-400">
+            <span className="text-xs text-gray-400">
+              Created on{" "}
               {capitalize(
                 formatDate(dayjs(project.createdAt).format("YYYY-MM-DD"), false)
               )}
             </span>
+            {project.readonly ? (
+              <FontAwesomeIcon
+                icon={faLock}
+                className="h-4 w-4 text-gray-500"
+              />
+            ) : (
+              <Loader color="text-gray-500" />
+            )}
           </div>
         </a>
       </Link>

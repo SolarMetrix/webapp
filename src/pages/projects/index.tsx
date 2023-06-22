@@ -1,21 +1,18 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
-
-import SEO from "../../components/SEO";
-import useAuth from "../../context/AuthContext";
-import getParsedCookies from "../../utils/cookie-parser";
-import Loader from "../../components/HelperComponents/Loader";
-import { FETCH_PROJECTS_KEY } from "../../utils/queryKeys";
-import { getProjects } from "../../services/project.service";
 import { useState } from "react";
 import { useSpring, animated } from "react-spring";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderPlus } from "@fortawesome/free-solid-svg-icons";
+import { useMutation, useQuery } from "@tanstack/react-query";
+
+import SEO from "../../components/SEO";
+import getParsedCookies from "../../utils/cookie-parser";
+import { FETCH_PROJECTS_KEY } from "../../utils/queryKeys";
+import { getProjects } from "../../services/project.service";
 import NewProjectModal from "../../components/UserHomePage/ProjectsPage/NewProjectModal";
 import ProjectSkeleton from "../../components/HelperComponents/Skeleton/ProjectSkeleton";
 import Project from "../../components/UserHomePage/ProjectsPage/Project";
 
 export default function ProjectsPage(): JSX.Element {
-  const { user } = useAuth();
   const [newProjectModalOpen, setNewProjectModalOpen] =
     useState<boolean>(false);
 

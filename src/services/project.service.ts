@@ -34,7 +34,7 @@ export const createProject = async ({
   }
 };
 
-export const removeProject = ({ uuid }: { uuid: string }) => {
+export const deleteProject = ({ uuid }: { uuid: string }) => {
   try {
     return axios.delete(
       `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/projects/${uuid}`,

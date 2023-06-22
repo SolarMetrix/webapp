@@ -1,12 +1,11 @@
 import { Fragment, useState } from "react";
-import Router from "next/router";
 import { Menu, Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEllipsis,
-  faFileCirclePlus,
-  faFolderMinus,
+  faFileLines,
   faPen,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 
 import UpdateProjectModal from "./UpdateProjectModal";
@@ -46,6 +45,29 @@ export default function ProjectActionsMenu({
         >
           <Menu.Items className="absolute right-0 top-6 min-w-[200px] origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1">
+              {!project.readonly && (
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      className={`${
+                        active && "bg-gray-100"
+                      } group flex w-full items-center rounded-md px-2 py-2`}
+                      onClick={() => setUpdateProjectModalOpen(true)}
+                    >
+                      <div className="flex w-full items-center">
+                        <FontAwesomeIcon
+                          icon={faFileLines}
+                          className={`mr-2 h-4 w-4 text-gray-500 transition`}
+                        />
+                        <span className="text-sm text-gray-600">
+                          Gerenate report
+                        </span>
+                      </div>
+                    </button>
+                  )}
+                </Menu.Item>
+              )}
+
               <Menu.Item>
                 {({ active }) => (
                   <button
@@ -74,10 +96,10 @@ export default function ProjectActionsMenu({
                   >
                     <div className="flex w-full items-center">
                       <FontAwesomeIcon
-                        icon={faFolderMinus}
+                        icon={faTrash}
                         className={`mr-2 h-4 w-4 text-gray-500 transition`}
                       />
-                      <span className="text-sm text-gray-600">Remove</span>
+                      <span className="text-sm text-gray-600">Delete</span>
                     </div>
                   </button>
                 )}

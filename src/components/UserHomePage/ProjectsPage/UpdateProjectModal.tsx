@@ -47,7 +47,9 @@ export default function UpdateProjectModal({ isOpen, close, project }: Props) {
       <div className="mb-8">
         <div className="mb-2">
           <span className="font-bold text-gray-600">Title*</span>
-          <p className="text-[0.77rem] text-gray-500">blabl</p>
+          <p className="text-[0.77rem] text-gray-500">
+            Project name or title to distinguish it from other projects
+          </p>
         </div>
         <input
           type="text"
@@ -61,7 +63,9 @@ export default function UpdateProjectModal({ isOpen, close, project }: Props) {
       <div className="mb-10">
         <div className="mb-2">
           <span className="font-bold text-gray-600">Description</span>
-          <p className="text-[0.77rem] text-gray-500">blib</p>
+          <p className="text-[0.77rem] text-gray-500">
+            Optional project information
+          </p>
         </div>
         <input
           type="text"
@@ -76,7 +80,7 @@ export default function UpdateProjectModal({ isOpen, close, project }: Props) {
         text="Update project"
         faIcon={faPen}
         iconSize={4}
-        customClasses="w-full py-4 bg-ebGreen-500"
+        customClasses="w-full py-4 bg-smMain-500"
         fnc={() => update()}
         isLoading={updateProjectLoading}
         disabled={projectTitle.trim().length < 4 || updateProjectLoading}

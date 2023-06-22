@@ -8,7 +8,7 @@ import { FETCH_PROJECTS_KEY } from "../../../utils/queryKeys";
 import { useMutation } from "@tanstack/react-query";
 import { IModal, IProject } from "../../../../types";
 import { queryClient } from "../../../helpers/queryClient";
-import { removeProject } from "../../../services/project.service";
+import { deleteProject } from "../../../services/project.service";
 import Modal from "../../HelperComponents/Modals";
 import HttpButton from "../../HelperComponents/HttpButton";
 
@@ -17,8 +17,8 @@ type Props = IModal & {
 };
 
 export default function DeleteProjectModal({ isOpen, close, project }: Props) {
-  const { mutate: removeProjectMutation, isLoading: removeProjectLoading } =
-    useMutation(removeProject, {
+  const { mutate: deleteProjectMutation, isLoading: deleteProjectLoading } =
+    useMutation(deleteProject, {
       onSuccess: () => {
         close();
         queryClient.invalidateQueries({
@@ -52,17 +52,22 @@ export default function DeleteProjectModal({ isOpen, close, project }: Props) {
           >
             Delete project
           </Dialog.Title>
-          <div className="mt-2">You are about to delete the project</div>
+          <div className="mt-2">
+            <span className="text-sm text-gray-400">
+              Once deleted, you will not be able to recover the project and all
+              its associated activities.
+            </span>
+          </div>
         </div>
       </div>
       <div className="mt-5 flex flex-row-reverse">
         <HttpButton
           text="Delete"
-          fnc={() => removeProjectMutation({ uuid: project.uuid })}
+          fnc={() => deleteProjectMutation({ uuid: project.uuid })}
           customClasses="ml-4 w-auto bg-red-500 hover:bg-red-600 transition"
           iconSize={4}
-          isLoading={removeProjectLoading}
-          disabled={removeProjectLoading}
+          isLoading={deleteProjectLoading}
+          disabled={deleteProjectLoading}
         />
 
         <button
