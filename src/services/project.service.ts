@@ -1,6 +1,20 @@
 import axios from "axios";
 import { IProject } from "../../types";
 
+export const getProject = async (projectId: string): Promise<IProject> => {
+  try {
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/projects/${projectId}`,
+      { withCredentials: true }
+    );
+
+    return data;
+  } catch (error: any) {
+    console.log(error?.response.data);
+    return Promise.reject(error?.response.data);
+  }
+};
+
 export const getProjects = async (): Promise<IProject[]> => {
   try {
     const { data } = await axios.get(

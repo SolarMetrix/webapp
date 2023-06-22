@@ -42,7 +42,7 @@ export default function Project({ project }: { project: IProject }) {
         <div className={`absolute inset-0 z-10 bg-white/60`}></div>
       )}
 
-      <Link href={`/notes/c/${project.uuid}`} prefetch={false}>
+      <Link href={`/projects/${project.uuid}`} prefetch={false}>
         <a className="relative flex h-full flex-col justify-between">
           <div className="grow">
             <FontAwesomeIcon

@@ -125,7 +125,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                                 <a
                                   className={classnames(
                                     router.pathname === item.href
-                                      ? "bg-gray-50 text-indigo-600"
+                                      ? "bg-gray-100 text-gray-600"
                                       : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
                                     "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                                   )}
@@ -157,7 +157,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                                   className={classnames(
                                     team.current
                                       ? "bg-gray-50 text-indigo-600"
-                                      : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
+                                      : "text-gray-400 hover:bg-gray-50 hover:text-gray-600",
                                     "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                                   )}
                                 >
@@ -209,7 +209,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                           className={classnames(
                             router.pathname === item.href
                               ? "bg-gray-100 text-gray-600"
-                              : "text-gray-500 hover:bg-gray-50 hover:text-gray-600",
+                              : "text-gray-400 hover:bg-gray-50 hover:text-gray-600",
                             "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                           )}
                         >
@@ -239,8 +239,8 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                           href={team.href}
                           className={classnames(
                             team.current
-                              ? "bg-gray-50 text-indigo-600"
-                              : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
+                              ? "bg-gray-100 text-gray-600"
+                              : "text-gray-400 hover:bg-gray-50 hover:text-gray-600",
                             "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                           )}
                         >
