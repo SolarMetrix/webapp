@@ -7,6 +7,7 @@ import { IModal } from "../../../../types";
 import { createProject } from "../../../services/project.service";
 import Modal from "../../HelperComponents/Modals";
 import HttpButton from "../../HelperComponents/HttpButton";
+import classnames from "../../../utils/classnames";
 
 export default function NewCollectionModal({ isOpen, close }: IModal) {
   const [collectionTitle, setCollectionTitle] = useState<string>("");
@@ -51,7 +52,9 @@ export default function NewCollectionModal({ isOpen, close }: IModal) {
       <div className="mb-8">
         <div className="mb-2">
           <span className="font-bold text-gray-600">Title*</span>
-          <p className="text-[0.77rem] text-gray-500">asclasca ascascas</p>
+          <p className="text-[0.77rem] text-gray-500">
+            Project name or title to distinguish it from other projects
+          </p>
         </div>
         <input
           type="text"
@@ -65,7 +68,9 @@ export default function NewCollectionModal({ isOpen, close }: IModal) {
       <div className="mb-10">
         <div className="mb-2">
           <span className="font-bold text-gray-600">Description</span>
-          <p className="text-[0.77rem] text-gray-500">asassasaascaacs</p>
+          <p className="text-[0.77rem] text-gray-500">
+            Optional project information
+          </p>
         </div>
         <input
           type="text"
@@ -79,14 +84,16 @@ export default function NewCollectionModal({ isOpen, close }: IModal) {
       <HttpButton
         text="Create project"
         faIcon={faFolderPlus}
-        customClasses="w-full py-4 bg-smMain-400 hover:bg-smMain-500 transition"
+        customClasses={classnames(
+          "w-full py-4 bg-smMain-400 hover:bg-smMain-500 transition"
+        )}
         fnc={() => createNewCollection()}
-        isLoading={false}
+        isLoading={createProjectLoading}
         disabled={
           collectionTitle.trim().length < 4 ||
           collectionTitle.trim().length > 100 ||
-          collectionDescription.trim().length > 250
-          // createCollectionLoading
+          collectionDescription.trim().length > 250 ||
+          createProjectLoading
         }
       />
     </Modal>

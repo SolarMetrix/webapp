@@ -56,7 +56,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog
             as="div"
-            className="relative z-50 lg:hidden"
+            className="relative z-30 lg:hidden"
             onClose={setSidebarOpen}
           >
             <Transition.Child
@@ -293,7 +293,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
           </div>
         </div>
 
-        <div className="sticky top-0 z-40 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden">
+        <div className="sticky top-0 z-20 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden">
           <button
             type="button"
             className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
