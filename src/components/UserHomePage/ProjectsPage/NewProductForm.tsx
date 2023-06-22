@@ -27,12 +27,33 @@ export default function NewProductForm() {
           </p>
 
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div className="sm:col-span-6">
+              <label
+                htmlFor="country"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Product type
+              </label>
+              <div className="mt-2">
+                <select
+                  id="country"
+                  name="country"
+                  autoComplete="country-name"
+                  className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
+                >
+                  <option>Firstsolar</option>
+                  <option>Jinkosolar</option>
+                  <option>Sunpower</option>
+                </select>
+              </div>
+            </div>
+
             <div className="sm:col-span-3">
               <label
                 htmlFor="first-name"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                First name
+                Power peak
               </label>
               <div className="mt-2">
                 <input
@@ -47,28 +68,50 @@ export default function NewProductForm() {
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="last-name"
+                htmlFor="street-address"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Last name
+                Area (m2)
               </label>
               <div className="mt-2">
                 <input
                   type="text"
-                  name="last-name"
-                  id="last-name"
-                  autoComplete="family-name"
+                  name="street-address"
+                  id="street-address"
+                  autoComplete="street-address"
                   className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
                 />
               </div>
             </div>
 
-            <div className="sm:col-span-4">
+            <div className="sm:col-span-3">
+              <label
+                htmlFor="country"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Orientation
+              </label>
+              <div className="mt-2">
+                <select
+                  id="country"
+                  name="country"
+                  autoComplete="country-name"
+                  className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
+                >
+                  <option>North</option>
+                  <option>East</option>
+                  <option>South</option>
+                  <option>West</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="sm:col-span-3">
               <label
                 htmlFor="email"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Email address
+                Inclination/Tilt
               </label>
               <div className="mt-2">
                 <input
@@ -83,49 +126,10 @@ export default function NewProductForm() {
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="country"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Country
-              </label>
-              <div className="mt-2">
-                <select
-                  id="country"
-                  name="country"
-                  autoComplete="country-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-smMain-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                >
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="col-span-full">
-              <label
-                htmlFor="street-address"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Street address
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="street-address"
-                  id="street-address"
-                  autoComplete="street-address"
-                  className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-2 sm:col-start-1">
-              <label
                 htmlFor="city"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                City
+                Longitude
               </label>
               <div className="mt-2">
                 <input
@@ -138,12 +142,12 @@ export default function NewProductForm() {
               </div>
             </div>
 
-            <div className="sm:col-span-2">
+            <div className="sm:col-span-3">
               <label
                 htmlFor="region"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                State / Province
+                Latitude
               </label>
               <div className="mt-2">
                 <input
@@ -151,24 +155,6 @@ export default function NewProductForm() {
                   name="region"
                   id="region"
                   autoComplete="address-level1"
-                  className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-2">
-              <label
-                htmlFor="postal-code"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                ZIP / Postal code
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="postal-code"
-                  id="postal-code"
-                  autoComplete="postal-code"
                   className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
                 />
               </div>
@@ -186,9 +172,9 @@ export default function NewProductForm() {
         </button>
         <button
           type="submit"
-          className="rounded-md bg-smMain-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-smMain-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-smMain-600"
+          className="rounded-md bg-smMain-500 px-6 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-smMain-600 "
         >
-          Save
+          Add product to project
         </button>
       </div>
     </form>
