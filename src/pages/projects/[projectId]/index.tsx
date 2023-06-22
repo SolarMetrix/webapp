@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   faAngleRight,
   faFileCirclePlus,
@@ -19,7 +20,7 @@ const DotsLoader = dynamic(
 import useAuth from "../../../context/AuthContext";
 import useUI from "../../../context/UIContext";
 import {
-    FETCH_PRODUCTS_KEY,
+  FETCH_PRODUCTS_KEY,
   FETCH_PROJECT_KEY,
 } from "../../../utils/queryKeys";
 import getParsedCookies from "../../../utils/cookie-parser";
@@ -87,6 +88,7 @@ export default function ProjectPage() {
               </span>
             )}
           </div>
+
           {/* <NewItemBtn
             text={i18n[language]["notes.page.newNote"]}
             onclickFn={() => {

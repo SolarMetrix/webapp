@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 import { useSpring, animated } from "react-spring";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderPlus } from "@fortawesome/free-solid-svg-icons";
@@ -45,27 +46,55 @@ export default function ProjectsPage(): JSX.Element {
           Projects
         </h1>
 
-        <div>
-          <animated.div style={springAnimation} className="projects-grid">
-            {projects?.map((project, idx) => (
-              <Project key={idx} project={project} />
-            ))}
-            <div
-              className="relative flex min-h-[220px] cursor-pointer flex-col justify-start rounded-md border-2 border-dashed bg-transparent px-5 py-7 shadow-md transition hover:shadow-lg"
+        {projects?.length === 0 && (
+          <div className="flex flex-col text-center">
+            <Image
+              src="/img/storyset-2.svg"
+              alt="Storyset 1"
+              width={1000}
+              height={542}
+            />
+            <a
+              href="https://storyset.com/worker"
+              rel="noreferrer"
+              target="_blank"
+              className="mx-auto w-auto -translate-y-8 text-gray-200/50"
+            >
+              Worker illustrations by Storyset
+            </a>
+            <button
+              className="mx-auto w-[200px] rounded-md bg-smMain-500 py-3 font-semibold text-white shadow-md transition hover:bg-smMain-600"
               onClick={() => setNewProjectModalOpen(true)}
             >
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <FontAwesomeIcon
-                  icon={faFolderPlus}
-                  className="h-12 w-12 text-gray-600 transition"
-                />
-                <span className="mt-2 text-sm font-semibold text-gray-600">
-                  Add new project
-                </span>
+              Add new project
+            </button>
+          </div>
+        )}
+
+        {projects?.length! > 0 && (
+          <div>
+            <animated.div style={springAnimation} className="projects-grid">
+              {projects?.map((project, idx) => (
+                <Project key={idx} project={project} />
+              ))}
+
+              <div
+                className="relative flex min-h-[220px] cursor-pointer flex-col justify-start rounded-md border-2 border-dashed bg-transparent px-5 py-7 shadow-md transition hover:shadow-lg"
+                onClick={() => setNewProjectModalOpen(true)}
+              >
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <FontAwesomeIcon
+                    icon={faFolderPlus}
+                    className="h-12 w-12 text-gray-600 transition"
+                  />
+                  <span className="mt-2 text-sm font-semibold text-gray-600">
+                    Add new project
+                  </span>
+                </div>
               </div>
-            </div>
-          </animated.div>
-        </div>
+            </animated.div>
+          </div>
+        )}
       </div>
       <NewProjectModal
         isOpen={newProjectModalOpen}

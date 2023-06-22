@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 const navigation = [
   { name: "About", href: "#about" },
   { name: "Features", href: "#features" },
-  { name: "FAQ", href: "#faq" },
 ];
 
 export default function Header() {

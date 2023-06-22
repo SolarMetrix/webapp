@@ -1,7 +1,6 @@
 import Header from "./Header";
 import Hero from "./Hero";
 import Footer from "./Footer";
-import FAQ from "./FAQ";
 import About from "./About";
 import Features from "./Features";
 import LogoCloud from "./LogoCloud";
@@ -15,7 +14,6 @@ export default function GuestHomePage() {
         <LogoCloud />
         <About />
         <Features />
-        <FAQ />
       </main>
       <Footer />
     </>
