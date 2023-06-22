@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { PlusIcon } from "@heroicons/react/20/solid";
 import {
   faAngleRight,
   faFileCirclePlus,
@@ -88,24 +89,28 @@ export default function ProjectPage() {
               </span>
             )}
           </div>
-
-          {/* <NewItemBtn
-            text={i18n[language]["notes.page.newNote"]}
-            onclickFn={() => {
-              if (canWriteNote(user as IUser)) {
-                Router.push(`/notes/new?collection=${collection.uuid}`);
-              } else {
-                if (user?.isSubscribed) {
-                  return setSubUserNoNotesModal(true);
-                } else {
-                  return setSubRequiredModalOpen(true);
-                }
-              }
-            }}
-            icon={faFileCirclePlus}
-            iconSize={6}
-          /> */}
         </div>
+        <div className="text-center mt-[200px]">
+            <Image src="/img/solar-panel.svg" width={100} height={100} />
+            <h3 className="mt-2 text-sm font-semibold text-gray-700">
+              No products
+            </h3>
+            <p className="mt-1 text-sm text-gray-500">
+              Get started by adding a new product.
+            </p>
+            <div className="mt-6">
+              <button
+                type="button"
+                className="inline-flex items-center rounded-md bg-smMain-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-smMain-600 transition"
+              >
+                <PlusIcon
+                  className="-ml-0.5 mr-1.5 h-5 w-5"
+                  aria-hidden="true"
+                />
+                New Product
+              </button>
+            </div>
+          </div>
 
         {/* <NotesList notes={notes} sortByStarred={false} showCta={true} /> */}
       </div>
