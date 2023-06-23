@@ -1,20 +1,37 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import { useState } from "react";
+
+type ProductT = "firstsolar" | "jinkosolar" | "sunpower";
+type OrientationT = "north" | "east" | "south" | "west";
 
 export default function NewProductForm() {
+  const [product, setProduct] = useState<ProductT>("firstsolar");
+  const [powerPeak, setPowerPeak] = useState<number>(480);
+  const [area, setArea] = useState<number>(0);
+  const [orientation, setOrientation] = useState<OrientationT>("north");
+  const [inclination, setInclination] = useState<number>(0);
+  const [longitude, setLongitude] = useState<number>(0);
+  const [latitude, setLatitude] = useState<number>(0);
+
+  const handleProductChange = (event: any) => {
+    const inputValue = event.target.value;
+    setProduct(inputValue);
+
+    switch (inputValue) {
+      case "firstsolar":
+        setPowerPeak(+process.env.NEXT_PUBLIC_FIRSTSOLAR_POWER!);
+        break;
+      case "jinkosolar":
+        setPowerPeak(+process.env.NEXT_PUBLIC_JINKOSOLAR_POWER!);
+        break;
+      case "sunpower":
+        setPowerPeak(+process.env.NEXT_PUBLIC_SUNPOWER_POWER!);
+        break;
+      default:
+        setPowerPeak(+process.env.NEXT_PUBLIC_FIRSTSOLAR_POWER!);
+        break;
+    }
+  };
+
   return (
     <form>
       <div className="space-y-12">
@@ -32,53 +49,56 @@ export default function NewProductForm() {
                 htmlFor="country"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Product type
+                PV system
               </label>
               <div className="mt-2">
                 <select
-                  id="country"
-                  name="country"
-                  autoComplete="country-name"
+                  id="product"
+                  name="product"
+                  value={product}
+                  onChange={handleProductChange}
                   className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
                 >
-                  <option>Firstsolar</option>
-                  <option>Jinkosolar</option>
-                  <option>Sunpower</option>
+                  <option value="firstsolar">Firstsolar (Series 6)</option>
+                  <option value="jinkosolar">
+                    Jinkosolar (Tiger Pro series, 72 HC Bifacial)
+                  </option>
+                  <option value="sunpower">
+                    Sunpower (M SERIES, SPR-M440- H-AC)
+                  </option>
                 </select>
               </div>
             </div>
 
             <div className="sm:col-span-3">
-              <label
-                htmlFor="first-name"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label className="block text-sm font-medium leading-6 text-gray-900">
                 Power peak
               </label>
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
+                  value={powerPeak}
+                  disabled={true}
+                  className="sm:text-md block w-full cursor-not-allowed rounded-md border-0 bg-gray-100 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
                 />
               </div>
             </div>
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="street-address"
+                htmlFor="area"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Area (m2)
+                Area (m<sup>2</sup>)
               </label>
               <div className="mt-2">
                 <input
-                  type="text"
-                  name="street-address"
-                  id="street-address"
-                  autoComplete="street-address"
+                  type="number"
+                  name="area"
+                  min="0"
+                  id="area"
+                  value={area}
+                  onChange={(e) => setArea(+e.target.value)}
                   className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
                 />
               </div>
@@ -86,39 +106,44 @@ export default function NewProductForm() {
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="country"
+                htmlFor="orientation"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Orientation
               </label>
               <div className="mt-2">
                 <select
-                  id="country"
-                  name="country"
-                  autoComplete="country-name"
+                  id="orientation"
+                  name="orientation"
+                  value={orientation}
+                  onChange={(e) =>
+                    setOrientation(e.target.value as OrientationT)
+                  }
                   className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
                 >
-                  <option>North</option>
-                  <option>East</option>
-                  <option>South</option>
-                  <option>West</option>
+                  <option value="north">North</option>
+                  <option value="east">East</option>
+                  <option value="south">South</option>
+                  <option value="west">West</option>
                 </select>
               </div>
             </div>
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="email"
+                htmlFor="inclination"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Inclination/Tilt
+                Inclination (degrees)
               </label>
               <div className="mt-2">
                 <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+                  id="inclination"
+                  name="inclination"
+                  type="number"
+                  min="0"
+                  value={inclination}
+                  onChange={(e) => setInclination(+e.target.value)}
                   className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
                 />
               </div>
@@ -126,17 +151,18 @@ export default function NewProductForm() {
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="city"
+                htmlFor="longitude"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Longitude
               </label>
               <div className="mt-2">
                 <input
-                  type="text"
-                  name="city"
-                  id="city"
-                  autoComplete="address-level2"
+                  name="longitude"
+                  id="longitude"
+                  type="number"
+                  value={longitude}
+                  onChange={(e) => setLongitude(+e.target.value)}
                   className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
                 />
               </div>
@@ -144,17 +170,18 @@ export default function NewProductForm() {
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="region"
+                htmlFor="latitude"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Latitude
               </label>
               <div className="mt-2">
                 <input
-                  type="text"
-                  name="region"
-                  id="region"
-                  autoComplete="address-level1"
+                  name="latitude"
+                  id="latitude"
+                  type="number"
+                  value={latitude}
+                  onChange={(e) => setLatitude(+e.target.value)}
                   className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
                 />
               </div>
