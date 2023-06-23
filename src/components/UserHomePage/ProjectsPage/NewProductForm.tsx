@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { addProduct } from "../../../services/product.service";
+import Loader from "../../HelperComponents/Loader";
+import { OrientationT, ProductT } from "../../../../types";
 
-type ProductT = "firstsolar" | "jinkosolar" | "sunpower";
-type OrientationT = "north" | "east" | "south" | "west";
-
-export default function NewProductForm() {
+export default function NewProductForm({ projectId }: { projectId: string }) {
   const [product, setProduct] = useState<ProductT>("firstsolar");
   const [powerPeak, setPowerPeak] = useState<number>(480);
   const [area, setArea] = useState<number>(0);
@@ -11,6 +12,20 @@ export default function NewProductForm() {
   const [inclination, setInclination] = useState<number>(0);
   const [longitude, setLongitude] = useState<number>(0);
   const [latitude, setLatitude] = useState<number>(0);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+        },
+        (error) => {
+          console.error("Error getting geolocation:", error);
+        }
+      );
+    }
+  }, []);
 
   const handleProductChange = (event: any) => {
     const inputValue = event.target.value;
@@ -32,8 +47,28 @@ export default function NewProductForm() {
     }
   };
 
+  const { mutate: addProductMutation, isLoading: addProductLoading } =
+    useMutation(addProduct, {
+      onSuccess: () => window.location.replace("/"),
+      // onError: (err: any) => setError(err.response.data.message),
+    });
+
   return (
-    <form>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        addProductMutation({
+          projectId,
+          type: product,
+          power_peak: powerPeak,
+          area,
+          orientation,
+          inclination,
+          longitude,
+          latitude,
+        });
+      }}
+    >
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold leading-7 text-gray-900">
@@ -199,9 +234,11 @@ export default function NewProductForm() {
         </button>
         <button
           type="submit"
-          className="rounded-md bg-smMain-500 px-6 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-smMain-600 "
+          className="flex items-center rounded-md bg-smMain-500 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-smMain-600"
+          disabled={addProductLoading}
         >
-          Add product to project
+          {addProductLoading && <Loader size={5} />}
+          <span>Add product to project</span>
         </button>
       </div>
     </form>

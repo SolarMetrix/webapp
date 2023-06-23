@@ -29,7 +29,7 @@ export default function UpdateProjectModal({ isOpen, close, project }: Props) {
     });
 
   const update = async () => {
-    if (projectTitle.trim().length > 3) {
+    if (projectTitle?.trim().length > 3) {
       try {
         return updateProjectMutation({
           projectId: project.uuid,
@@ -83,7 +83,7 @@ export default function UpdateProjectModal({ isOpen, close, project }: Props) {
         customClasses="w-full py-4 bg-smMain-500"
         fnc={() => update()}
         isLoading={updateProjectLoading}
-        disabled={projectTitle.trim().length < 4 || updateProjectLoading}
+        disabled={projectTitle?.trim().length < 4 || updateProjectLoading}
       />
     </Modal>
   );

@@ -114,6 +114,7 @@ export default function SignupPage() {
                 <button
                   type="submit"
                   className="text-md flex w-full items-center justify-center rounded-md bg-smMain-500 px-3 py-2.5 font-semibold leading-6 text-white shadow-sm transition hover:bg-smMain-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-smMain-600"
+                  disabled={registrationLoading}
                 >
                   {registrationLoading && <Loader size={5} />}
                   <span>Sign up</span>

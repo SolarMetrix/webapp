@@ -27,8 +27,8 @@ export default function NewProjectModal({ isOpen, close }: IModal) {
 
   const createNewProject = () => {
     if (
-      projectTitle.trim().length >= 4 &&
-      projectTitle.trim().length <= 100 &&
+      projectTitle?.trim().length >= 4 &&
+      projectTitle?.trim().length <= 100 &&
       projectDescription.trim().length <= 250
     ) {
       try {
@@ -91,8 +91,8 @@ export default function NewProjectModal({ isOpen, close }: IModal) {
         fnc={() => createNewProject()}
         isLoading={createProjectLoading}
         disabled={
-          projectTitle.trim().length < 4 ||
-          projectTitle.trim().length > 100 ||
+          projectTitle?.trim().length < 4 ||
+          projectTitle?.trim().length > 100 ||
           projectDescription.trim().length > 250 ||
           createProjectLoading
         }

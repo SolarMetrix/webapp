@@ -69,7 +69,7 @@ export default function AddProductPage() {
           </div>
         </div>
         <div className="w-[500px]">
-          <NewProductForm />
+          <NewProductForm projectId={projectId as string} />
         </div>
       </div>
     </>

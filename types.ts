@@ -17,3 +17,6 @@ export interface IProject {
   readonly: boolean;
   createdAt: Date | string;
 }
+
+export type ProductT = "firstsolar" | "jinkosolar" | "sunpower";
+export type OrientationT = "north" | "east" | "south" | "west";
