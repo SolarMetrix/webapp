@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useSpring, animated } from "react-spring";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderPlus } from "@fortawesome/free-solid-svg-icons";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import SEO from "../../components/SEO";
 import getParsedCookies from "../../utils/cookie-parser";

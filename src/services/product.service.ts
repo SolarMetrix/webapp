@@ -1,9 +1,9 @@
 import axios from "axios";
-import { IProject, OrientationT, ProductT } from "../../types";
+import { IProduct, IProject, OrientationT, ProductT } from "../../types";
 
 export const getProjectProducts = async (
   projectId: string
-): Promise<IProject[]> => {
+): Promise<IProduct[]> => {
   try {
     const { data } = await axios.get(
       `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/products?projectId=${projectId}`,

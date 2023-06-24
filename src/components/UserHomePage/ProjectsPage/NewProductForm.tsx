@@ -17,6 +17,7 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
   const [inclination, setInclination] = useState<number>(0);
   const [longitude, setLongitude] = useState<number>(0);
   const [latitude, setLatitude] = useState<number>(0);
+  const [error, setError] = useState<string>("");
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -60,13 +61,17 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
         });
         router.push(`/projects/${projectId}`);
       },
-      // onError: (err: any) => setError(err.response.data.message),
     });
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
+
+        if (area === 0) {
+          return setError("Area must be greater than 0");
+        }
+
         addProductMutation({
           projectId,
           type: product,
@@ -143,10 +148,14 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
                   min="0"
                   id="area"
                   value={area}
-                  onChange={(e) => setArea(+e.target.value)}
+                  onChange={(e) => {
+                    setArea(+e.target.value);
+                    setError("");
+                  }}
                   className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
                 />
               </div>
+              {error && <p className="mt-1 text-sm text-red-400">{error}</p>}
             </div>
 
             <div className="sm:col-span-3">

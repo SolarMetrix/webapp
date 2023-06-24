@@ -1,45 +1,37 @@
-import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { useSpring, animated } from "react-spring";
 import { PlusIcon } from "@heroicons/react/20/solid";
-import {
-  faAngleRight,
-  faFileCirclePlus,
-  faSolarPanel,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight, faSolarPanel } from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import dynamic from "next/dynamic";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 import SEO from "../../../components/SEO";
-const NewItemBtn = dynamic(
-  () => import("../../../components/HelperComponents/NewItemBtn")
-);
 const DotsLoader = dynamic(
   () => import("../../../components/HelperComponents/DotsLoader")
 );
 
 import useAuth from "../../../context/AuthContext";
-import useUI from "../../../context/UIContext";
 import {
   FETCH_PRODUCTS_KEY,
   FETCH_PROJECT_KEY,
 } from "../../../utils/queryKeys";
 import getParsedCookies from "../../../utils/cookie-parser";
-import { IUser } from "../../../../types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getProjectProducts } from "../../../services/product.service";
 import { getProject } from "../../../services/project.service";
 import NotFoundPage from "../../404";
+import Product from "../../../components/UserHomePage/ProjectsPage/Product";
 
 export default function ProjectPage() {
   const router = useRouter();
   const { isLoggedIn } = useAuth();
-  const [subRequiredModalOpen, setSubRequiredModalOpen] =
-    useState<boolean>(false);
-  const [subUserNoNotesModal, setSubUserNoNotesModal] =
-    useState<boolean>(false);
   const { projectId } = router.query;
+
+  const springAnimation = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+  });
 
   const { data: project, status: projectStatus } = useQuery(
     [FETCH_PROJECT_KEY, projectId],
@@ -70,7 +62,7 @@ export default function ProjectPage() {
     <>
       <SEO title={project?.title} />
       <div className="mb-32 px-5 md:px-0">
-        <div className="flex flex-col justify-between md:flex-row md:items-center">
+        <div className="mb-14 flex flex-col justify-between md:flex-row md:items-center">
           <div className="mb-3 md:mb-0 md:w-2/3">
             <h1 className="flex text-2xl font-bold text-gray-600 md:text-3xl">
               <Link href="/projects" prefetch={false}>
@@ -91,30 +83,55 @@ export default function ProjectPage() {
             )}
           </div>
         </div>
-        <div className="mt-[200px] text-center">
-          {/* <Image src="/img/solar-panel.svg" width={100} height={100} /> */}
-          <FontAwesomeIcon
-            icon={faSolarPanel}
-            className="h-28 w-28 text-gray-600"
-          />
-          <h3 className="mt-2 text-sm font-semibold text-gray-700">
-            No products
-          </h3>
-          <p className="mt-1 text-sm text-gray-500">
-            Get started by adding a new product.
-          </p>
-          <div className="mt-6">
-            <Link href={`/projects/${projectId}/add-product`}>
-              <a className="inline-flex items-center rounded-md bg-smMain-500 px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-smMain-600">
-                <PlusIcon
-                  className="-ml-0.5 mr-1.5 h-5 w-5"
-                  aria-hidden="true"
+
+        {products?.length > 0 && (
+          <animated.div style={springAnimation} className="products-grid">
+            {products?.map((product, idx) => (
+              <Product key={idx} product={product} />
+            ))}
+
+            <div
+              className="relative flex min-h-[220px] cursor-pointer flex-col justify-start rounded-md border-2 border-dashed bg-transparent px-5 py-7 shadow-md transition hover:shadow-lg"
+              // onClick={() => setNewProjectModalOpen(true)}
+            >
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <FontAwesomeIcon
+                  icon={faSolarPanel}
+                  className="h-12 w-12 text-gray-600 transition"
                 />
-                New Product
-              </a>
-            </Link>
+                <span className="mt-2 text-sm font-semibold text-gray-600">
+                  Add new product
+                </span>
+              </div>
+            </div>
+          </animated.div>
+        )}
+
+        {products?.length === 0 && (
+          <div className="mt-[200px] text-center">
+            <FontAwesomeIcon
+              icon={faSolarPanel}
+              className="h-28 w-28 text-gray-600"
+            />
+            <h3 className="mt-2 text-sm font-semibold text-gray-700">
+              No products
+            </h3>
+            <p className="mt-1 text-sm text-gray-500">
+              Get started by adding a new product.
+            </p>
+            <div className="mt-6">
+              <Link href={`/projects/${projectId}/add-product`}>
+                <a className="inline-flex items-center rounded-md bg-smMain-500 px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-smMain-600">
+                  <PlusIcon
+                    className="-ml-0.5 mr-1.5 h-5 w-5"
+                    aria-hidden="true"
+                  />
+                  New Product
+                </a>
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* <NotesList notes={notes} sortByStarred={false} showCta={true} /> */}
       </div>

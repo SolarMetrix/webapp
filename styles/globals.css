@@ -143,11 +143,19 @@ body {
 }
 
 @media screen and (max-width: 350px) {
-    .notes-grid {
+    .projects-grid {
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     }
+}
 
-    .projects-grid {
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 3pc;
+}
+
+@media screen and (max-width: 350px) {
+    .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     }
 }
