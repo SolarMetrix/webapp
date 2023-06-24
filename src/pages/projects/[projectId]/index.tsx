@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { useSpring, animated } from "react-spring";
-import { PlusIcon } from "@heroicons/react/20/solid";
-import { faAngleRight, faSolarPanel } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleRight,
+  faPlus,
+  faSolarPanel,
+} from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -11,7 +14,6 @@ const DotsLoader = dynamic(
   () => import("../../../components/HelperComponents/DotsLoader")
 );
 
-import useAuth from "../../../context/AuthContext";
 import {
   FETCH_PRODUCTS_KEY,
   FETCH_PROJECT_KEY,
@@ -25,7 +27,6 @@ import ProductsTable from "../../../components/UserHomePage/ProjectsPage/Product
 
 export default function ProjectPage() {
   const router = useRouter();
-  const { isLoggedIn } = useAuth();
   const { projectId } = router.query;
 
   const springAnimation = useSpring({
@@ -46,8 +47,6 @@ export default function ProjectPage() {
     () => getProjectProducts(projectId as string),
     {
       staleTime: 1000 * 60 * 60,
-      enabled: isLoggedIn,
-      retry: 1,
     }
   );
 
@@ -86,11 +85,14 @@ export default function ProjectPage() {
 
         {products?.length > 0 && (
           <animated.div style={springAnimation}>
-            <ProductsTable products={products} />
+            <ProductsTable
+              projectId={projectId as string}
+              products={products}
+            />
           </animated.div>
         )}
 
-        {/* {products?.length === 0 && ( */}
+        {products?.length === 0 && (
           <div className="mt-[200px] text-center">
             <FontAwesomeIcon
               icon={faSolarPanel}
@@ -104,17 +106,17 @@ export default function ProjectPage() {
             </p>
             <div className="mt-6">
               <Link href={`/projects/${projectId}/add-product`}>
-                <a className="inline-flex items-center rounded-md bg-smMain-500 px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-smMain-600">
-                  <PlusIcon
-                    className="-ml-0.5 mr-1.5 h-5 w-5"
-                    aria-hidden="true"
+                <a className="inline-flex items-center rounded-md bg-smMain-500 p-3 text-center font-semibold text-white shadow-md transition hover:bg-smMain-600">
+                  <FontAwesomeIcon
+                    icon={faPlus}
+                    className="mr-1 h-5 w-5 text-white"
                   />
-                  New Product
+                  Add new product
                 </a>
               </Link>
             </div>
           </div>
-        {/* )} */}
+        )}
       </div>
     </>
   );
