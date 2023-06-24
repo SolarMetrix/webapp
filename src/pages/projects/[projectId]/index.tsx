@@ -21,7 +21,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getProjectProducts } from "../../../services/product.service";
 import { getProject } from "../../../services/project.service";
 import NotFoundPage from "../../404";
-import Product from "../../../components/UserHomePage/ProjectsPage/Product";
+import ProductsTable from "../../../components/UserHomePage/ProjectsPage/ProductsTable";
 
 export default function ProjectPage() {
   const router = useRouter();
@@ -85,29 +85,12 @@ export default function ProjectPage() {
         </div>
 
         {products?.length > 0 && (
-          <animated.div style={springAnimation} className="products-grid">
-            {products?.map((product, idx) => (
-              <Product key={idx} product={product} />
-            ))}
-
-            <div
-              className="relative flex min-h-[220px] cursor-pointer flex-col justify-start rounded-md border-2 border-dashed bg-transparent px-5 py-7 shadow-md transition hover:shadow-lg"
-              // onClick={() => setNewProjectModalOpen(true)}
-            >
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <FontAwesomeIcon
-                  icon={faSolarPanel}
-                  className="h-12 w-12 text-gray-600 transition"
-                />
-                <span className="mt-2 text-sm font-semibold text-gray-600">
-                  Add new product
-                </span>
-              </div>
-            </div>
+          <animated.div style={springAnimation}>
+            <ProductsTable products={products} />
           </animated.div>
         )}
 
-        {products?.length === 0 && (
+        {/* {products?.length === 0 && ( */}
           <div className="mt-[200px] text-center">
             <FontAwesomeIcon
               icon={faSolarPanel}
@@ -131,9 +114,7 @@ export default function ProjectPage() {
               </Link>
             </div>
           </div>
-        )}
-
-        {/* <NotesList notes={notes} sortByStarred={false} showCta={true} /> */}
+        {/* )} */}
       </div>
     </>
   );

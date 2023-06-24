@@ -150,8 +150,8 @@ body {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 3pc;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 2pc;
 }
 
 @media screen and (max-width: 350px) {

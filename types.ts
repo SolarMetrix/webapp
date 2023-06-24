@@ -27,7 +27,7 @@ export interface IProduct {
   area: number;
   longitude: number;
   latitude: number;
-  createdAt: Date | string;
+  createdAt: string;
 }
 
 export type ProductT = "firstsolar" | "jinkosolar" | "sunpower";

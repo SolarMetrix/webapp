@@ -59,7 +59,6 @@ const teams = [
 export default function SidebarWithLayout({ children }: { children: any }) {
   const { user } = useAuth();
   const router = useRouter();
-  console.log(router.pathname);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [signoutLoading, setSignoutLoading] = useState(false);
 

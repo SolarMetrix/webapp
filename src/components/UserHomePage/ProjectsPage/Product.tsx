@@ -6,7 +6,14 @@ import dayjs from "dayjs";
 import listenForOutsideClicks from "../../../helpers/listen-for-outside-clicks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import capitalize from "../../../utils/capitalize";
-import { faFolder } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRightLong,
+  faBoltLightning,
+  faCompass,
+  faFolder,
+  faGlobe,
+  faSquare,
+} from "@fortawesome/free-solid-svg-icons";
 import formatDate from "../../../helpers/format-date";
 import { IProduct } from "../../../../types";
 import classnames from "../../../utils/classnames";
@@ -78,15 +85,69 @@ export default function Product({ product }: { product: IProduct }) {
                 objectFit="contain"
               />
             </div>
-            <div className="mb-3 mt-3 flex flex-col"></div>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-400">
-              Created on{" "}
-              {capitalize(
-                formatDate(dayjs(product.createdAt).format("YYYY-MM-DD"), false)
-              )}
-            </span>
+            <div>
+              <div className=" mt-5 flex flex-col gap-y-1">
+                <div className="flex items-center">
+                  <FontAwesomeIcon
+                    icon={faBoltLightning}
+                    className="mr-1 text-gray-600"
+                  />
+                  <span className="text-gray-600">
+                    {product.powerPeak} watts
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  <FontAwesomeIcon
+                    icon={faSquare}
+                    className="rotate-30 mr-1 text-gray-600"
+                  />
+                  <span className="text-gray-600">
+                    {product.area}m<sup>2</sup>
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  <FontAwesomeIcon
+                    icon={faCompass}
+                    className="mr-1 text-gray-600"
+                  />
+                  <span className="text-gray-600">
+                    {capitalize(product.orientation)}
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  <FontAwesomeIcon
+                    icon={faArrowRightLong}
+                    className="mr-1 -rotate-45 text-gray-600"
+                  />
+                  <span className="text-gray-600">
+                    {product.inclination}
+                    <sup>°</sup>
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  <FontAwesomeIcon
+                    icon={faGlobe}
+                    className="mr-1 text-gray-600"
+                  />
+                  <span className="text-gray-600">
+                    {product.latitude}
+                    <sup>°</sup>, {product.longitude}
+                    <sup>°</sup>
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center justify-end">
+                <span className="text-xs text-gray-400">
+                  Created on{" "}
+                  {capitalize(
+                    formatDate(
+                      dayjs(product.createdAt).format("YYYY-MM-DD"),
+                      false
+                    )
+                  )}
+                </span>
+              </div>
+            </div>
           </div>
         </a>
       </Link>
