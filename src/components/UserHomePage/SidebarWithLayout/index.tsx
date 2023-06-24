@@ -22,7 +22,7 @@ import Loader from "../../HelperComponents/Loader";
 
 const navigation = [
   {
-    name: "Dashboard",
+    name: "Home",
     href: "/",
     icon: faHouse,
     isFontAwesomeIcon: false,
@@ -329,7 +329,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
           <div className="flex-1 text-sm font-semibold leading-6 text-gray-900">
-            Dashboard
+            Home
           </div>
           <Link href="/profile">
             <a className="flex items-center gap-x-2 text-sm font-semibold leading-6 text-gray-900">

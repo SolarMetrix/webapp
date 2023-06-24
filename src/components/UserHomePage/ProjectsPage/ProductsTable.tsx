@@ -4,8 +4,13 @@ import { IProduct } from "../../../../types";
 import capitalize from "../../../utils/capitalize";
 import formatDate from "../../../helpers/format-date";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import Tooltip from "../../HelperComponents/Tooltip";
+import { useMutation } from "@tanstack/react-query";
+import { deleteProduct } from "../../../services/product.service";
+import { queryClient } from "../../../helpers/queryClient";
+import { FETCH_PRODUCTS_KEY, FETCH_PROJECT_KEY } from "../../../utils/queryKeys";
 
 export default function ProductsTable({
   projectId,
@@ -14,6 +19,18 @@ export default function ProductsTable({
   projectId: string;
   products: IProduct[];
 }) {
+  const { mutate: deleteProductMutation, isLoading: deleteProductLoading } =
+  useMutation(deleteProduct, {
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [FETCH_PROJECT_KEY, projectId],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [FETCH_PRODUCTS_KEY, projectId],
+      });
+    },
+  });
+  
   return (
     <div className="inline-block w-full min-w-full overflow-x-scroll align-middle">
       <table className="min-w-full">
@@ -53,7 +70,7 @@ export default function ProductsTable({
               scope="col"
               className="py-3.5 text-left text-sm font-semibold text-gray-600"
             >
-              Latitude/Longitude
+              Coordinates
             </th>
             <th
               scope="col"
@@ -61,6 +78,10 @@ export default function ProductsTable({
             >
               Added on
             </th>
+            <th
+              scope="col"
+              className="py-3.5 text-left text-sm font-semibold text-gray-600"
+            ></th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-100">
@@ -83,9 +104,9 @@ export default function ProductsTable({
                 <sup>°</sup>
               </td>
               <td className="text-md whitespace-nowrap py-6 text-gray-500">
-                {product.latitude}
-                <sup>°</sup>, {product.longitude}
-                <sup>°</sup>
+                {Math.abs(product.latitude)}
+                <sup>°</sup> {product.latitude > 0 ? "N" : "S"}, {Math.abs(product.longitude)}
+                <sup>°</sup> {product.longitude > 0 ? "E" : "W"}
               </td>
               <td className="text-md whitespace-nowrap py-6 text-gray-500">
                 {capitalize(
@@ -94,6 +115,15 @@ export default function ProductsTable({
                     true
                   )
                 )}
+              </td>
+              <td className="text-md whitespace-nowrap py-6 text-gray-500">
+                <Tooltip text="Delete product">
+                  <FontAwesomeIcon
+                    icon={faTrash}
+                    className="h-4 w-4 cursor-pointer text-gray-500 transition hover:text-gray-600"
+                    onClick={() => deleteProductMutation({uuid: product.uuid})}
+                  />
+                </Tooltip>
               </td>
             </tr>
           ))}

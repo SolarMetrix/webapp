@@ -79,8 +79,8 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
           area,
           orientation,
           inclination,
-          longitude,
           latitude,
+          longitude,
         });
       }}
     >
@@ -205,25 +205,6 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="longitude"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Longitude
-              </label>
-              <div className="mt-2">
-                <input
-                  name="longitude"
-                  id="longitude"
-                  type="number"
-                  value={longitude}
-                  onChange={(e) => setLongitude(+e.target.value)}
-                  className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-3">
-              <label
                 htmlFor="latitude"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
@@ -236,6 +217,25 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
                   type="number"
                   value={latitude}
                   onChange={(e) => setLatitude(+e.target.value)}
+                  className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div className="sm:col-span-3">
+              <label
+                htmlFor="longitude"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Longitude
+              </label>
+              <div className="mt-2">
+                <input
+                  name="longitude"
+                  id="longitude"
+                  type="number"
+                  value={longitude}
+                  onChange={(e) => setLongitude(+e.target.value)}
                   className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
                 />
               </div>

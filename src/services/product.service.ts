@@ -17,6 +17,20 @@ export const getProjectProducts = async (
   }
 };
 
+export const getProducts = async (): Promise<IProduct[]> => {
+  try {
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/products`,
+      { withCredentials: true }
+    );
+
+    return data;
+  } catch (error: any) {
+    console.log(error?.response.data);
+    return Promise.reject(error?.response.data);
+  }
+};
+
 export const addProduct = async ({
   projectId,
   type,
@@ -24,8 +38,8 @@ export const addProduct = async ({
   area,
   orientation,
   inclination,
-  longitude,
   latitude,
+  longitude,
 }: {
   projectId: string;
   type: ProductT;
@@ -33,8 +47,8 @@ export const addProduct = async ({
   area: number;
   orientation: OrientationT;
   inclination: number;
-  longitude: number;
   latitude: number;
+  longitude: number;
 }): Promise<IProject[]> => {
   try {
     const { data } = await axios.post(
@@ -46,13 +60,27 @@ export const addProduct = async ({
         area,
         orientation,
         inclination,
-        longitude,
         latitude,
+        longitude,
       },
       { withCredentials: true }
     );
 
     return data;
+  } catch (error: any) {
+    console.log(error?.response.data);
+    return Promise.reject(error?.response.data);
+  }
+};
+
+export const deleteProduct = ({ uuid }: { uuid: string }) => {
+  try {
+    return axios.delete(
+      `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/products/${uuid}`,
+      {
+        withCredentials: true,
+      }
+    );
   } catch (error: any) {
     console.log(error?.response.data);
     return Promise.reject(error?.response.data);
