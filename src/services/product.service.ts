@@ -1,10 +1,12 @@
 import axios from "axios";
 import { IProject, OrientationT, ProductT } from "../../types";
 
-export const getProducts = async (projectId: string): Promise<IProject[]> => {
+export const getProjectProducts = async (
+  projectId: string
+): Promise<IProject[]> => {
   try {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/projects/${projectId}/products`,
+      `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/products?projectId=${projectId}`,
       { withCredentials: true }
     );
 
@@ -18,7 +20,7 @@ export const getProducts = async (projectId: string): Promise<IProject[]> => {
 export const addProduct = async ({
   projectId,
   type,
-  power_peak,
+  powerPeak,
   area,
   orientation,
   inclination,
@@ -27,7 +29,7 @@ export const addProduct = async ({
 }: {
   projectId: string;
   type: ProductT;
-  power_peak: number;
+  powerPeak: number;
   area: number;
   orientation: OrientationT;
   inclination: number;
@@ -36,10 +38,11 @@ export const addProduct = async ({
 }): Promise<IProject[]> => {
   try {
     const { data } = await axios.post(
-      `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/projects/${projectId}/products`,
+      `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/products`,
       {
+        project_id: projectId,
         type,
-        power_peak,
+        power_peak: powerPeak,
         area,
         orientation,
         inclination,

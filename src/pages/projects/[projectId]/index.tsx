@@ -28,7 +28,7 @@ import {
 import getParsedCookies from "../../../utils/cookie-parser";
 import { IUser } from "../../../../types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getProducts } from "../../../services/product.service";
+import { getProjectProducts } from "../../../services/product.service";
 import { getProject } from "../../../services/project.service";
 import NotFoundPage from "../../404";
 
@@ -51,7 +51,7 @@ export default function ProjectPage() {
 
   const { data: products, status: productsStatus } = useQuery(
     [FETCH_PRODUCTS_KEY, projectId],
-    () => getProducts(projectId as string),
+    () => getProjectProducts(projectId as string),
     {
       staleTime: 1000 * 60 * 60,
       enabled: isLoggedIn,

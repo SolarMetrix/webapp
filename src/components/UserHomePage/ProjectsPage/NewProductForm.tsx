@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { useMutation } from "@tanstack/react-query";
+
 import { addProduct } from "../../../services/product.service";
 import Loader from "../../HelperComponents/Loader";
 import { OrientationT, ProductT } from "../../../../types";
+import { queryClient } from "../../../helpers/queryClient";
+import { FETCH_PRODUCTS_KEY } from "../../../utils/queryKeys";
 
 export default function NewProductForm({ projectId }: { projectId: string }) {
+  const router = useRouter();
   const [product, setProduct] = useState<ProductT>("firstsolar");
   const [powerPeak, setPowerPeak] = useState<number>(480);
   const [area, setArea] = useState<number>(0);
@@ -49,7 +54,12 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
 
   const { mutate: addProductMutation, isLoading: addProductLoading } =
     useMutation(addProduct, {
-      onSuccess: () => window.location.replace("/"),
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: [FETCH_PRODUCTS_KEY, projectId],
+        });
+        router.push(`/projects/${projectId}`);
+      },
       // onError: (err: any) => setError(err.response.data.message),
     });
 
@@ -60,7 +70,7 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
         addProductMutation({
           projectId,
           type: product,
-          power_peak: powerPeak,
+          powerPeak,
           area,
           orientation,
           inclination,
