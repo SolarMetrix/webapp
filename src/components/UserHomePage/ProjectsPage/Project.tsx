@@ -53,6 +53,9 @@ export default function Project({ project }: { project: IProject }) {
               <span className="font-semibold text-gray-600">
                 {project.title}
               </span>
+              <span className="overflow-hidden overflow-ellipsis whitespace-nowrap text-sm text-gray-500">
+                {project.productsNumber} products
+              </span>
               <span className="overflow-hidden overflow-ellipsis whitespace-nowrap text-sm text-gray-400">
                 {project.description}
               </span>

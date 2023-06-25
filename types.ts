@@ -14,6 +14,7 @@ export interface IProject {
   readonly uuid: string;
   title: string;
   description: string;
+  productsNumber: number;
   readonly: boolean;
   createdAt: Date | string;
 }
@@ -28,6 +29,10 @@ export interface IProduct {
   longitude: number;
   latitude: number;
   createdAt: string;
+  project: {
+    uuid: string;
+    title: string;
+  };
 }
 
 export type ProductT = "firstsolar" | "jinkosolar" | "sunpower";

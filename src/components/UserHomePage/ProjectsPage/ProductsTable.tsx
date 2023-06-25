@@ -10,7 +10,10 @@ import Tooltip from "../../HelperComponents/Tooltip";
 import { useMutation } from "@tanstack/react-query";
 import { deleteProduct } from "../../../services/product.service";
 import { queryClient } from "../../../helpers/queryClient";
-import { FETCH_PRODUCTS_KEY, FETCH_PROJECT_KEY } from "../../../utils/queryKeys";
+import {
+  FETCH_PRODUCTS_KEY,
+  FETCH_PROJECT_KEY,
+} from "../../../utils/queryKeys";
 
 export default function ProductsTable({
   projectId,
@@ -20,17 +23,17 @@ export default function ProductsTable({
   products: IProduct[];
 }) {
   const { mutate: deleteProductMutation, isLoading: deleteProductLoading } =
-  useMutation(deleteProduct, {
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [FETCH_PROJECT_KEY, projectId],
-      });
-      queryClient.invalidateQueries({
-        queryKey: [FETCH_PRODUCTS_KEY, projectId],
-      });
-    },
-  });
-  
+    useMutation(deleteProduct, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: [FETCH_PROJECT_KEY, projectId],
+        });
+        queryClient.invalidateQueries({
+          queryKey: [FETCH_PRODUCTS_KEY, projectId],
+        });
+      },
+    });
+
   return (
     <div className="inline-block w-full min-w-full overflow-x-scroll align-middle">
       <table className="min-w-full">
@@ -105,7 +108,8 @@ export default function ProductsTable({
               </td>
               <td className="text-md whitespace-nowrap py-6 text-gray-500">
                 {Math.abs(product.latitude)}
-                <sup>°</sup> {product.latitude > 0 ? "N" : "S"}, {Math.abs(product.longitude)}
+                <sup>°</sup> {product.latitude > 0 ? "N" : "S"},{" "}
+                {Math.abs(product.longitude)}
                 <sup>°</sup> {product.longitude > 0 ? "E" : "W"}
               </td>
               <td className="text-md whitespace-nowrap py-6 text-gray-500">
@@ -121,7 +125,9 @@ export default function ProductsTable({
                   <FontAwesomeIcon
                     icon={faTrash}
                     className="h-4 w-4 cursor-pointer text-gray-500 transition hover:text-gray-600"
-                    onClick={() => deleteProductMutation({uuid: product.uuid})}
+                    onClick={() =>
+                      deleteProductMutation({ uuid: product.uuid })
+                    }
                   />
                 </Tooltip>
               </td>

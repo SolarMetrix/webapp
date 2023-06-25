@@ -6,7 +6,10 @@ import { addProduct } from "../../../services/product.service";
 import Loader from "../../HelperComponents/Loader";
 import { OrientationT, ProductT } from "../../../../types";
 import { queryClient } from "../../../helpers/queryClient";
-import { FETCH_PRODUCTS_KEY } from "../../../utils/queryKeys";
+import {
+  FETCH_PRODUCTS_KEY,
+  FETCH_PROJECTS_KEY,
+} from "../../../utils/queryKeys";
 
 export default function NewProductForm({ projectId }: { projectId: string }) {
   const router = useRouter();
@@ -58,6 +61,12 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
       onSuccess: () => {
         queryClient.invalidateQueries({
           queryKey: [FETCH_PRODUCTS_KEY, projectId],
+        });
+        queryClient.invalidateQueries({
+          queryKey: [FETCH_PRODUCTS_KEY],
+        });
+        queryClient.invalidateQueries({
+          queryKey: [FETCH_PROJECTS_KEY],
         });
         router.push(`/projects/${projectId}`);
       },

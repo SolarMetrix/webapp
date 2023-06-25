@@ -4,6 +4,7 @@ import L from "leaflet";
 
 import "leaflet/dist/leaflet.css";
 import { IProduct } from "../../../types";
+import capitalize from "../../utils/capitalize";
 
 // Custom marker icon
 const customIcon = L.icon({
@@ -34,7 +35,10 @@ export default function Leaflet({ products }: { products: IProduct[] }) {
             icon={customIcon}
           >
             <Popup>
-              A marker here! <br /> This is a popup.
+              <b>{product.project.title}</b> <br />
+              {capitalize(product.type)} - {product.area}m<sup>2</sup>
+              <br />
+              {/* <span className="underline">Details</span> */}
             </Popup>
           </Marker>
         ))}
