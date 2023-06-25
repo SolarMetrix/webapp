@@ -9,7 +9,6 @@ import formatDate from "../../../helpers/format-date";
 import dayjs from "dayjs";
 import ProjectActionsMenu from "./ProjectActionsMenu";
 import Loader from "../../HelperComponents/Loader";
-import Tooltip from "../../HelperComponents/Tooltip";
 
 export default function Project({ project }: { project: IProject }) {
   const [projectActionsMenuOpen, setProjectActionsMenuOpen] =

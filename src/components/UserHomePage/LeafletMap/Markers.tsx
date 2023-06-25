@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import { MapContainer, TileLayer, Marker, useMap, Popup } from "react-leaflet";
+import { Marker, useMap, Popup } from "react-leaflet";
 import L, { LatLngBoundsExpression } from "leaflet";
 import { IProduct } from "../../../../types";
 import capitalize from "../../../utils/capitalize";
 
-// Custom marker icon
 const customIcon = L.icon({
   iconUrl: "/img/marker.svg",
   iconSize: [25, 41],
@@ -21,7 +20,7 @@ export default function Markers({ products }: { products: IProduct[] }) {
 
       map.fitBounds(bounds);
     }
-  }, [products]);
+  }, [map, products]);
 
   const calculateBounds = (products: IProduct[]): LatLngBoundsExpression => {
     const bounds = L.latLngBounds([]);
