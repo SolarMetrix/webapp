@@ -31,6 +31,9 @@ export default function ProductsTable({
         queryClient.invalidateQueries({
           queryKey: [FETCH_PRODUCTS_KEY, projectId],
         });
+        queryClient.invalidateQueries({
+          queryKey: [FETCH_PRODUCTS_KEY],
+        });
       },
     });
 

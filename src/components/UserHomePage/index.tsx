@@ -5,7 +5,7 @@ import { getProducts } from "../../services/product.service";
 import { IProduct } from "../../../types";
 import DotsLoader from "../HelperComponents/DotsLoader";
 
-const Leaflet = dynamic(() => import("./Leaflet"), { ssr: false });
+const Leaflet = dynamic(() => import("./LeafletMap"), { ssr: false });
 
 export default function UserHomePage() {
   const { data: products, status: productsStatus } = useQuery(
