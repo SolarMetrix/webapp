@@ -23,7 +23,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getProjectProducts } from "../../../services/product.service";
 import { getProject } from "../../../services/project.service";
 import NotFoundPage from "../../404";
-import ProductsTable from "../../../components/UserHomePage/ProjectsPage/ProductsTable";
+import ProductsTable from "../../../components/UserHomePage/ProjectsPage/ProjectPage/ProductsTable";
 
 export default function ProjectPage() {
   const router = useRouter();

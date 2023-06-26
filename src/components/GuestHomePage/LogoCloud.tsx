@@ -11,7 +11,7 @@ export default function LogoCloud() {
             width={120}
             height={140}
           />
-          <span className="text-lg text-gray-500 font-bold">480 watts</span>
+          <span className="text-lg font-bold text-gray-500">480 watts</span>
           <span className="text-lg text-gray-500">19%</span>
         </div>
         <div className="flex flex-col items-center">
@@ -21,7 +21,7 @@ export default function LogoCloud() {
             width={170}
             height={140}
           />
-          <span className="text-lg text-gray-500 font-bold">440 watts</span>
+          <span className="text-lg font-bold text-gray-500">440 watts</span>
           <span className="text-lg text-gray-500">22.8%</span>
         </div>
         <div className="flex flex-col items-center">
@@ -31,7 +31,7 @@ export default function LogoCloud() {
             width={170}
             height={140}
           />
-          <span className="text-lg text-gray-500 font-bold">535 watts</span>
+          <span className="text-lg font-bold text-gray-500">535 watts</span>
           <span className="text-lg text-gray-500">21.16%</span>
         </div>
       </div>

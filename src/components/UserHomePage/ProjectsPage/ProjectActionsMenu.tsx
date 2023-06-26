@@ -60,7 +60,7 @@ export default function ProjectActionsMenu({
                           className={`mr-2 h-4 w-4 text-gray-500 transition`}
                         />
                         <span className="text-sm text-gray-600">
-                          Gerenate report
+                          Generate report
                         </span>
                       </div>
                     </button>
