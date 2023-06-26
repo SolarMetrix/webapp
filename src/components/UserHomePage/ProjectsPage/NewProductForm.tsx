@@ -155,6 +155,7 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
                   type="number"
                   name="area"
                   min="0"
+                  step="0.01"
                   id="area"
                   value={area}
                   onChange={(e) => {

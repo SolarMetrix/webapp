@@ -23,6 +23,7 @@ export interface IProduct {
   readonly uuid: string;
   type: ProductT;
   powerPeak: number;
+  efficiency: number;
   orientation: OrientationT;
   inclination: number;
   area: number;

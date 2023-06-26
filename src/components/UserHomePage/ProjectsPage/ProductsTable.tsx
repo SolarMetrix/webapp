@@ -58,6 +58,12 @@ export default function ProductsTable({
               scope="col"
               className="py-3.5 text-left text-sm font-semibold text-gray-600"
             >
+              Efficiency
+            </th>
+            <th
+              scope="col"
+              className="py-3.5 text-left text-sm font-semibold text-gray-600"
+            >
               Area
             </th>
             <th
@@ -98,6 +104,9 @@ export default function ProductsTable({
               </td>
               <td className="text-md whitespace-nowrap py-6 text-gray-500">
                 {product.powerPeak} watts
+              </td>
+              <td className="text-md whitespace-nowrap py-6 text-gray-500">
+                {product.efficiency}%
               </td>
               <td className="text-md whitespace-nowrap py-6 text-gray-500">
                 {product.area} m<sup>2</sup>
