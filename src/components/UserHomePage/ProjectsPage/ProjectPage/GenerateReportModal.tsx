@@ -1,15 +1,15 @@
 import { Dialog } from "@headlessui/react";
-import {
-  XMarkIcon,
-  InformationCircleIcon
-} from "@heroicons/react/24/outline";
+import { XMarkIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
 import Modal from "../../../HelperComponents/Modals";
 import HttpButton from "../../../HelperComponents/HttpButton";
 import { IModal } from "../../../../../types";
 import { useMutation } from "@tanstack/react-query";
 import { generateReport } from "../../../../services/project.service";
 import { queryClient } from "../../../../helpers/queryClient";
-import { FETCH_PROJECTS_KEY, FETCH_PROJECT_KEY } from "../../../../utils/queryKeys";
+import {
+  FETCH_PROJECTS_KEY,
+  FETCH_PROJECT_KEY,
+} from "../../../../utils/queryKeys";
 
 type Props = IModal & {
   projectId: string;
@@ -60,8 +60,8 @@ export default function GenerateReportModal({
           </Dialog.Title>
           <div className="mt-2">
             <span className="text-sm text-gray-400">
-              If you generate the report, the project will be set to
-              read-only mode.
+              If you generate the report, the project will be set to read-only
+              mode.
             </span>
           </div>
         </div>

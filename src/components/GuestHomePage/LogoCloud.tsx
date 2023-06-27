@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function LogoCloud() {
   return (
     <div className="mx-auto  px-6 lg:px-8">
-      <div className="mx-auto flex justify-between gap-y-12 lg:max-w-none">
+      <div className="mx-auto flex justify-around gap-y-12 lg:max-w-none">
         <div className="flex flex-col items-center">
           <Image
             src="/img/FirstSolar_logo.svg"
@@ -11,8 +11,8 @@ export default function LogoCloud() {
             width={120}
             height={140}
           />
-          <span className="text-lg font-bold text-gray-500">480 watts</span>
-          <span className="text-lg text-gray-500">19%</span>
+          <span className="text-lg text-gray-500">480 W</span>
+          <span className="text-lg text-gray-500">19% efficiency</span>
         </div>
         <div className="flex flex-col items-center">
           <Image
@@ -21,8 +21,8 @@ export default function LogoCloud() {
             width={170}
             height={140}
           />
-          <span className="text-lg font-bold text-gray-500">440 watts</span>
-          <span className="text-lg text-gray-500">22.8%</span>
+          <span className="text-lg text-gray-500">440 W</span>
+          <span className="text-lg text-gray-500">22.8% efficiency</span>
         </div>
         <div className="flex flex-col items-center">
           <Image
@@ -31,8 +31,8 @@ export default function LogoCloud() {
             width={170}
             height={140}
           />
-          <span className="text-lg font-bold text-gray-500">535 watts</span>
-          <span className="text-lg text-gray-500">21.16%</span>
+          <span className="text-lg text-gray-500">535 W</span>
+          <span className="text-lg text-gray-500">21.16% efficiency</span>
         </div>
       </div>
     </div>

@@ -141,19 +141,19 @@ export default function ProductsTable({
                     )
                   )}
                 </td>
-                {!project.readonly &&
-                <td className="text-md whitespace-nowrap py-6 text-gray-500">
-                  <Tooltip text="Delete product">
-                    <FontAwesomeIcon
-                      icon={faTrash}
-                      className="h-4 w-4 cursor-pointer text-gray-500 transition hover:text-gray-600"
-                      onClick={() =>
-                        deleteProductMutation({ uuid: product.uuid })
-                      }
-                    />
-                  </Tooltip>
-                </td>
-                }
+                {!project.readonly && (
+                  <td className="text-md whitespace-nowrap py-6 text-gray-500">
+                    <Tooltip text="Delete product">
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        className="h-4 w-4 cursor-pointer text-gray-500 transition hover:text-gray-600"
+                        onClick={() =>
+                          deleteProductMutation({ uuid: product.uuid })
+                        }
+                      />
+                    </Tooltip>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>

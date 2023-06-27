@@ -8,7 +8,6 @@ import {
   faFolderClosed,
   faHouse,
   faRightFromBracket,
-  faSolarPanel,
 } from "@fortawesome/free-solid-svg-icons";
 import { Dialog, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -36,13 +35,6 @@ const navigation = [
     current: false,
   },
   {
-    name: "Products",
-    href: "/products",
-    icon: faSolarPanel,
-    isFontAwesomeIcon: false,
-    current: false,
-  },
-  {
     name: "Reports",
     href: "/reports",
     icon: faChartPie,
@@ -50,10 +42,16 @@ const navigation = [
     current: false,
   },
 ];
-const teams = [
-  { id: 1, name: "Heroicons", href: "#", initial: "H", current: false },
-  { id: 2, name: "Tailwind Labs", href: "#", initial: "T", current: false },
-  { id: 3, name: "Workcation", href: "#", initial: "W", current: false },
+const products = [
+  { id: 1, name: "FirstSolar", initial: "F", powerPeak: 480, efficiency: 19 },
+  { id: 2, name: "Sunpower", initial: "S", powerPeak: 440, efficiency: 22.8 },
+  {
+    id: 3,
+    name: "JinkoSolar",
+    initial: "J",
+    powerPeak: 535,
+    efficiency: 21.16,
+  },
 ];
 
 export default function SidebarWithLayout({ children }: { children: any }) {
@@ -172,34 +170,31 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                         </li>
                         <li>
                           <div className="text-xs font-semibold leading-6 text-gray-400">
-                            Projects
+                            Products
                           </div>
                           <ul role="list" className="-mx-2 mt-2 space-y-1">
-                            {teams.map((team) => (
-                              <li key={team.name}>
-                                <a
-                                  href={team.href}
-                                  className={classnames(
-                                    team.current
-                                      ? "bg-gray-50 text-indigo-600"
-                                      : "text-gray-400 hover:bg-gray-50 hover:text-gray-600",
-                                    "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
-                                  )}
-                                >
-                                  <span
-                                    className={classnames(
-                                      team.current
-                                        ? "border-indigo-600 text-indigo-600"
-                                        : "border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600",
-                                      "flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium"
-                                    )}
-                                  >
-                                    {team.initial}
+                            {products.map((product) => (
+                              <li key={product.name}>
+                                <div className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-50 hover:text-gray-600">
+                                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600">
+                                    {product.initial}
                                   </span>
-                                  <span className="truncate">{team.name}</span>
-                                </a>
+                                  <span className="truncate">
+                                    {product.name}
+                                  </span>
+                                </div>
                               </li>
                             ))}
+                            <li>
+                              <div className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-50 hover:text-gray-600">
+                                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600">
+                                  F
+                                </span>
+                                <span className="truncate">
+                                  More coming soon...
+                                </span>
+                              </div>
+                            </li>
                           </ul>
                         </li>
                       </ul>
@@ -256,34 +251,37 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                 </li>
                 <li>
                   <div className="text-xs font-semibold leading-6 text-gray-400">
-                    Projects
+                    Products
                   </div>
                   <ul role="list" className="-mx-2 mt-2 space-y-1">
-                    {teams.map((team) => (
-                      <li key={team.name}>
-                        <a
-                          href={team.href}
-                          className={classnames(
-                            team.current
-                              ? "bg-gray-100 text-gray-600"
-                              : "text-gray-400 hover:bg-gray-50 hover:text-gray-600",
-                            "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
-                          )}
-                        >
-                          <span
-                            className={classnames(
-                              team.current
-                                ? "border-indigo-600 text-indigo-600"
-                                : "border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600",
-                              "flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium"
-                            )}
-                          >
-                            {team.initial}
+                    {products.map((product) => (
+                      <li key={product.name}>
+                        <div className="leading-6m group flex gap-x-3 rounded-md p-2 text-sm font-semibold text-gray-400 hover:bg-gray-50 hover:text-gray-600">
+                          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-gray-600 group-hover:text-gray-600">
+                            {product.initial}
                           </span>
-                          <span className="truncate">{team.name}</span>
-                        </a>
+                          <div className="flex flex-col">
+                            <span className="truncate">{product.name}</span>
+                            <div>
+                              <span className="text-xs font-normal text-gray-400">
+                                {product.powerPeak}W -{" "}
+                              </span>
+                              <span className="text-xs font-normal text-gray-400">
+                                {product.efficiency}% efficiency
+                              </span>
+                            </div>
+                          </div>
+                        </div>
                       </li>
                     ))}
+                    <li>
+                      <div className="leading-6m group flex gap-x-3 rounded-md p-2 text-sm font-semibold text-gray-400 hover:bg-gray-50 hover:text-gray-600">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-gray-600 group-hover:text-gray-600">
+                          F
+                        </span>
+                        <span className="truncate">More coming soon...</span>
+                      </div>
+                    </li>
                   </ul>
                 </li>
                 <li className="-mx-6 mt-auto flex items-center justify-between px-7 py-3">

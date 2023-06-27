@@ -24,7 +24,7 @@ export default function ProjectActionsMenu({
     useState<boolean>(false);
   const [deleteProjectModalOpen, setDeleteProjectModalOpen] =
     useState<boolean>(false);
-    const [generateReportModalOpen, setGenerateReportModalOpen] =
+  const [generateReportModalOpen, setGenerateReportModalOpen] =
     useState<boolean>(false);
 
   return (
@@ -48,7 +48,7 @@ export default function ProjectActionsMenu({
         >
           <Menu.Items className="absolute right-0 top-6 min-w-[200px] origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1">
-              {!project.readonly && (
+              {!project.readonly && project.productsNumber !== 0 && (
                 <Menu.Item>
                   {({ active }) => (
                     <button

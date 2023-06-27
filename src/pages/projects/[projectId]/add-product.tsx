@@ -32,7 +32,7 @@ export default function AddProductPage() {
     }
   );
 
-  if (projectStatus === "error") {
+  if (projectStatus === "error" || project?.readonly) {
     return <NotFoundPage />;
   }
   if (projectStatus === "loading") {
