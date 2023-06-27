@@ -35,8 +35,8 @@ export default function WeatherApiErrorModal({ isOpen, close }: IModal) {
           </Dialog.Title>
           <div className="mt-2">
             <span className="text-sm text-gray-400">
-              The product was added successfully, but the weather API failed to
-              fetch the weather data their rules and restrictions.
+              The product was added successfully, but the weather API refused to
+              fetch weather data due to the API restrictions.
             </span>
           </div>
         </div>

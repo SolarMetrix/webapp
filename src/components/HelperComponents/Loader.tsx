@@ -4,7 +4,7 @@ import classnames from "../../utils/classnames";
 export default function Loader({
   size = 4,
   color = "text-smMain-700",
-  classes = "h-4 w-4",
+  classes = "mr-2",
 }: {
   size?: 4 | 5;
   color?: string;
@@ -17,7 +17,7 @@ export default function Loader({
       <svg
         aria-hidden="true"
         className={classnames(
-          "mr-2 animate-spin fill-white",
+          "animate-spin fill-white",
           sizeClass,
           color,
           classes
