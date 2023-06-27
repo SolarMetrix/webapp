@@ -31,7 +31,7 @@ export default function ProductsTable({
   const [generateReportModalOpen, setGenerateReportModalOpen] =
     useState<boolean>(false);
 
-  const { mutate: deleteProductMutation, isLoading: deleteProductLoading } =
+  const { mutate: deleteProductMutation } =
     useMutation(deleteProduct, {
       onSuccess: () => {
         queryClient.invalidateQueries({

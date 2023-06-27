@@ -62,9 +62,6 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
   const { mutate: addProductMutation, isLoading: addProductLoading } =
     useMutation(addProduct, {
       onSuccess: (data) => {
-        if (data.message.includes("429")) {
-          setWeatherApiErrorModalOpen(true);
-        }
         queryClient.invalidateQueries({
           queryKey: [FETCH_PRODUCTS_KEY, projectId],
         });
@@ -74,6 +71,12 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
         queryClient.invalidateQueries({
           queryKey: [FETCH_PROJECTS_KEY],
         });
+
+        if (data.message.includes("429")) {
+          setWeatherApiErrorModalOpen(true);
+        } else {
+          router.push(`/projects/${projectId}`)
+        }
       },
     });
 
