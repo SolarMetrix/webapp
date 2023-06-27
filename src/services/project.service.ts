@@ -87,3 +87,16 @@ export const updateProject = async ({
     return Promise.reject(error?.response.data);
   }
 };
+
+export const generateReport = async (projectId: string) => {
+  try {
+    return axios.post(
+      `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/projects/${projectId}/report`,
+      {},
+      { withCredentials: true }
+    );
+  } catch (error: any) {
+    console.log(error?.response.data);
+    return Promise.reject(error?.response.data);
+  }
+};

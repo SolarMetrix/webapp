@@ -6,17 +6,29 @@ import {
 import Modal from "../../../HelperComponents/Modals";
 import HttpButton from "../../../HelperComponents/HttpButton";
 import { IModal } from "../../../../../types";
+import { useMutation } from "@tanstack/react-query";
+import { generateReport } from "../../../../services/project.service";
+import { queryClient } from "../../../../helpers/queryClient";
+import { FETCH_PROJECT_KEY } from "../../../../utils/queryKeys";
 
-export default function GenerateReportModal({ isOpen, close }: IModal) {
-  // const { mutate: deleteProjectMutation, isLoading: deleteProjectLoading } =
-  //   useMutation(deleteProject, {
-  //     onSuccess: () => {
-  //       close();
-  //       queryClient.invalidateQueries({
-  //         queryKey: [FETCH_PROJECTS_KEY],
-  //       });
-  //     },
-  //   });
+type Props = IModal & {
+  projectId: string;
+};
+
+export default function GenerateReportModal({
+  isOpen,
+  close,
+  projectId,
+}: Props) {
+  const { mutate: generateReportMutation, isLoading: generateReportLoading } =
+    useMutation(generateReport, {
+      onSuccess: () => {
+        close();
+        queryClient.invalidateQueries({
+          queryKey: [FETCH_PROJECT_KEY, projectId],
+        });
+      },
+    });
 
   return (
     <Modal open={isOpen} onClose={() => close()}>
@@ -54,7 +66,7 @@ export default function GenerateReportModal({ isOpen, close }: IModal) {
       <div className="mt-5 flex flex-row-reverse">
         <HttpButton
           text="Generate now"
-          fnc={() => {}}
+          fnc={() => generateReportMutation(projectId)}
           customClasses="ml-4 w-auto bg-smMain-400 shadow-md hover:bg-smMain-500 transition"
           iconSize={4}
           isLoading={false}
@@ -66,7 +78,7 @@ export default function GenerateReportModal({ isOpen, close }: IModal) {
           className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-600 shadow-sm hover:text-gray-500 focus:outline-none sm:mt-0 sm:w-auto sm:text-sm"
           onClick={() => close()}
         >
-          Cacnel
+          Cancel
         </button>
       </div>
     </Modal>

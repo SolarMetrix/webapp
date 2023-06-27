@@ -49,7 +49,7 @@ export const addProduct = async ({
   inclination: number;
   latitude: number;
   longitude: number;
-}): Promise<IProject[]> => {
+}): Promise<any> => {
   try {
     const { data } = await axios.post(
       `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/products`,

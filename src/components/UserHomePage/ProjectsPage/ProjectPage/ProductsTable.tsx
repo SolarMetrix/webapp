@@ -182,6 +182,7 @@ export default function ProductsTable({
       <GenerateReportModal
         isOpen={generateReportModalOpen}
         close={() => setGenerateReportModalOpen(false)}
+        projectId={projectId}
       />
     </>
   );
