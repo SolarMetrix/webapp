@@ -1,7 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import {
-  ExclamationTriangleIcon,
   XMarkIcon,
+  InformationCircleIcon
 } from "@heroicons/react/24/outline";
 import Modal from "../../../HelperComponents/Modals";
 import HttpButton from "../../../HelperComponents/HttpButton";
@@ -9,7 +9,7 @@ import { IModal } from "../../../../../types";
 import { useMutation } from "@tanstack/react-query";
 import { generateReport } from "../../../../services/project.service";
 import { queryClient } from "../../../../helpers/queryClient";
-import { FETCH_PROJECT_KEY } from "../../../../utils/queryKeys";
+import { FETCH_PROJECTS_KEY, FETCH_PROJECT_KEY } from "../../../../utils/queryKeys";
 
 type Props = IModal & {
   projectId: string;
@@ -27,6 +27,9 @@ export default function GenerateReportModal({
         queryClient.invalidateQueries({
           queryKey: [FETCH_PROJECT_KEY, projectId],
         });
+        queryClient.invalidateQueries({
+          queryKey: [FETCH_PROJECTS_KEY],
+        });
       },
     });
 
@@ -43,7 +46,7 @@ export default function GenerateReportModal({
       </div>
       <div className="sm:flex sm:items-start">
         <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 sm:mx-0 sm:h-10 sm:w-10">
-          <ExclamationTriangleIcon
+          <InformationCircleIcon
             className="h-6 w-6 text-gray-600"
             aria-hidden="true"
           />
@@ -57,7 +60,7 @@ export default function GenerateReportModal({
           </Dialog.Title>
           <div className="mt-2">
             <span className="text-sm text-gray-400">
-              If you generate the report now, the project will be set to
+              If you generate the report, the project will be set to
               read-only mode.
             </span>
           </div>
@@ -69,8 +72,8 @@ export default function GenerateReportModal({
           fnc={() => generateReportMutation(projectId)}
           customClasses="ml-4 w-auto bg-smMain-400 shadow-md hover:bg-smMain-500 transition"
           iconSize={4}
-          isLoading={false}
-          disabled={false}
+          isLoading={generateReportLoading}
+          disabled={generateReportLoading}
         />
 
         <button

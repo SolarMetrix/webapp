@@ -85,10 +85,7 @@ export default function ProjectPage() {
 
         {products?.length > 0 && (
           <animated.div style={springAnimation}>
-            <ProductsTable
-              projectId={projectId as string}
-              products={products}
-            />
+            <ProductsTable project={project} products={products} />
           </animated.div>
         )}
 

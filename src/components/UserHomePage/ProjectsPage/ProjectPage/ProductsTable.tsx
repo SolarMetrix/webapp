@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-import { IProduct } from "../../../../../types";
+import { IProduct, IProject } from "../../../../../types";
 import capitalize from "../../../../utils/capitalize";
 import formatDate from "../../../../helpers/format-date";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,29 +22,28 @@ import { useState } from "react";
 import GenerateReportModal from "./GenerateReportModal";
 
 export default function ProductsTable({
-  projectId,
+  project,
   products,
 }: {
-  projectId: string;
+  project: IProject;
   products: IProduct[];
 }) {
   const [generateReportModalOpen, setGenerateReportModalOpen] =
     useState<boolean>(false);
 
-  const { mutate: deleteProductMutation } =
-    useMutation(deleteProduct, {
-      onSuccess: () => {
-        queryClient.invalidateQueries({
-          queryKey: [FETCH_PROJECT_KEY, projectId],
-        });
-        queryClient.invalidateQueries({
-          queryKey: [FETCH_PRODUCTS_KEY, projectId],
-        });
-        queryClient.invalidateQueries({
-          queryKey: [FETCH_PRODUCTS_KEY],
-        });
-      },
-    });
+  const { mutate: deleteProductMutation } = useMutation(deleteProduct, {
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [FETCH_PROJECT_KEY, project.uuid],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [FETCH_PRODUCTS_KEY, project.uuid],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [FETCH_PRODUCTS_KEY],
+      });
+    },
+  });
 
   return (
     <>
@@ -142,6 +141,7 @@ export default function ProductsTable({
                     )
                   )}
                 </td>
+                {!project.readonly &&
                 <td className="text-md whitespace-nowrap py-6 text-gray-500">
                   <Tooltip text="Delete product">
                     <FontAwesomeIcon
@@ -153,36 +153,39 @@ export default function ProductsTable({
                     />
                   </Tooltip>
                 </td>
+                }
               </tr>
             ))}
           </tbody>
         </table>
-        <div className="mt-7 flex justify-end gap-5 pb-3">
-          <Link href={`/projects/${projectId}/add-product`}>
-            <a className="inline-flex items-center rounded-md bg-smMain-400 p-3 text-center font-semibold text-white shadow-md transition hover:bg-smMain-500">
+        {!project.readonly && (
+          <div className="mt-7 flex justify-end gap-5 pb-3">
+            <Link href={`/projects/${project.uuid}/add-product`}>
+              <a className="inline-flex items-center rounded-md bg-smMain-400 p-3 text-center font-semibold text-white shadow-md transition hover:bg-smMain-500">
+                <FontAwesomeIcon
+                  icon={faPlus}
+                  className="mr-1 h-5 w-5 text-white"
+                />
+                Add new product
+              </a>
+            </Link>
+            <button
+              className="inline-flex items-center rounded-md bg-smMain-400 p-3 text-center font-semibold text-white shadow-md transition hover:bg-smMain-500"
+              onClick={() => setGenerateReportModalOpen(true)}
+            >
               <FontAwesomeIcon
-                icon={faPlus}
+                icon={faFileLines}
                 className="mr-1 h-5 w-5 text-white"
               />
-              Add new product
-            </a>
-          </Link>
-          <button
-            className="inline-flex items-center rounded-md bg-smMain-400 p-3 text-center font-semibold text-white shadow-md transition hover:bg-smMain-500"
-            onClick={() => setGenerateReportModalOpen(true)}
-          >
-            <FontAwesomeIcon
-              icon={faFileLines}
-              className="mr-1 h-5 w-5 text-white"
-            />
-            Generate report
-          </button>
-        </div>
+              Generate report
+            </button>
+          </div>
+        )}
       </div>
       <GenerateReportModal
         isOpen={generateReportModalOpen}
         close={() => setGenerateReportModalOpen(false)}
-        projectId={projectId}
+        projectId={project.uuid}
       />
     </>
   );

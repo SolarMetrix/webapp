@@ -72,10 +72,10 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
           queryKey: [FETCH_PROJECTS_KEY],
         });
 
-        if (data.message.includes("429")) {
+        if (data?.message && data.message.includes("429")) {
           setWeatherApiErrorModalOpen(true);
         } else {
-          router.push(`/projects/${projectId}`)
+          router.push(`/projects/${projectId}`);
         }
       },
     });

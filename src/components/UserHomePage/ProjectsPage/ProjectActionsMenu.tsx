@@ -11,6 +11,7 @@ import {
 import UpdateProjectModal from "./UpdateProjectModal";
 import DeleteProjectModal from "./DeleteProjectModal";
 import { IProject } from "../../../../types";
+import GenerateReportModal from "./ProjectPage/GenerateReportModal";
 
 export default function ProjectActionsMenu({
   isOpen,
@@ -19,9 +20,11 @@ export default function ProjectActionsMenu({
   isOpen: boolean;
   project: IProject;
 }) {
-  const [UpdateProjectModalOpen, setUpdateProjectModalOpen] =
+  const [updateProjectModalOpen, setUpdateProjectModalOpen] =
     useState<boolean>(false);
-  const [DeleteProjectModalOpen, setDeleteProjectModalOpen] =
+  const [deleteProjectModalOpen, setDeleteProjectModalOpen] =
+    useState<boolean>(false);
+    const [generateReportModalOpen, setGenerateReportModalOpen] =
     useState<boolean>(false);
 
   return (
@@ -52,7 +55,7 @@ export default function ProjectActionsMenu({
                       className={`${
                         active && "bg-gray-100"
                       } group flex w-full items-center rounded-md px-2 py-2`}
-                      onClick={() => setUpdateProjectModalOpen(true)}
+                      onClick={() => setGenerateReportModalOpen(true)}
                     >
                       <div className="flex w-full items-center">
                         <FontAwesomeIcon
@@ -110,15 +113,21 @@ export default function ProjectActionsMenu({
       </Menu>
 
       <UpdateProjectModal
-        isOpen={UpdateProjectModalOpen}
+        isOpen={updateProjectModalOpen}
         close={() => setUpdateProjectModalOpen(false)}
         project={project}
       />
 
       <DeleteProjectModal
-        isOpen={DeleteProjectModalOpen}
+        isOpen={deleteProjectModalOpen}
         close={() => setDeleteProjectModalOpen(false)}
         project={project}
+      />
+
+      <GenerateReportModal
+        isOpen={generateReportModalOpen}
+        close={() => setGenerateReportModalOpen(false)}
+        projectId={project.uuid}
       />
     </>
   );
