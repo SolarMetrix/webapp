@@ -1,25 +1,19 @@
+import Link from "next/link";
 import dayjs from "dayjs";
-
-import { IProduct, IProject } from "../../../../../types";
-import capitalize from "../../../../utils/capitalize";
-import formatDate from "../../../../helpers/format-date";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFileLines,
   faPlus,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
+
+import { IProduct, IProject } from "../../../../../types";
+import capitalize from "../../../../utils/capitalize";
+import formatDate from "../../../../helpers/format-date";
 import Tooltip from "../../../HelperComponents/Tooltip";
-import { useMutation } from "@tanstack/react-query";
-import { deleteProduct } from "../../../../services/product.service";
-import { queryClient } from "../../../../helpers/queryClient";
-import {
-  FETCH_PRODUCTS_KEY,
-  FETCH_PROJECT_KEY,
-} from "../../../../utils/queryKeys";
 import { useState } from "react";
 import GenerateReportModal from "./GenerateReportModal";
+import DeleteProductModal from "../DeleteProductModal";
 
 export default function ProductsTable({
   project,
@@ -30,20 +24,10 @@ export default function ProductsTable({
 }) {
   const [generateReportModalOpen, setGenerateReportModalOpen] =
     useState<boolean>(false);
-
-  const { mutate: deleteProductMutation } = useMutation(deleteProduct, {
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [FETCH_PROJECT_KEY, project.uuid],
-      });
-      queryClient.invalidateQueries({
-        queryKey: [FETCH_PRODUCTS_KEY, project.uuid],
-      });
-      queryClient.invalidateQueries({
-        queryKey: [FETCH_PRODUCTS_KEY],
-      });
-    },
-  });
+  const [removeModal, setRemoveModal] = useState<boolean>(false);
+  const [toDeleteItemProjectId, setToDeleteItemProjectId] =
+    useState<string>("");
+  const [toDeleteProductId, setToDeleteProductId] = useState<string>("");
 
   return (
     <>
@@ -157,9 +141,11 @@ export default function ProductsTable({
                       <FontAwesomeIcon
                         icon={faTrash}
                         className="h-4 w-4 cursor-pointer text-gray-500 transition hover:text-gray-600"
-                        onClick={() =>
-                          deleteProductMutation({ uuid: product.uuid })
-                        }
+                        onClick={() => {
+                          setRemoveModal(true);
+                          setToDeleteItemProjectId(project.uuid);
+                          setToDeleteProductId(product.uuid);
+                        }}
                       />
                     </Tooltip>
                   </td>
@@ -197,6 +183,13 @@ export default function ProductsTable({
           </div>
         )}
       </div>
+      <DeleteProductModal
+        isOpen={removeModal}
+        close={() => setRemoveModal(false)}
+        projectId={toDeleteItemProjectId}
+        productId={toDeleteProductId}
+      />
+
       <GenerateReportModal
         isOpen={generateReportModalOpen}
         close={() => setGenerateReportModalOpen(false)}

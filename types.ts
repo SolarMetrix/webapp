@@ -34,6 +34,7 @@ export interface IProduct {
   project: {
     uuid: string;
     title: string;
+    readonly: boolean;
   };
 }
 
