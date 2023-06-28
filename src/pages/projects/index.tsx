@@ -12,6 +12,7 @@ import { getProjects } from "../../services/project.service";
 import NewProjectModal from "../../components/UserHomePage/ProjectsPage/NewProjectModal";
 import ProjectSkeleton from "../../components/HelperComponents/Skeleton/ProjectSkeleton";
 import Project from "../../components/UserHomePage/ProjectsPage/Project";
+import FilterDropdown from "../../components/UserHomePage/ProjectsPage/ProjectPage/FilterDropdown";
 
 export default function ProjectsPage(): JSX.Element {
   const [newProjectModalOpen, setNewProjectModalOpen] =
@@ -42,9 +43,16 @@ export default function ProjectsPage(): JSX.Element {
         title="Projects"
       />
       <div className="px-3 md:px-0">
-        <h1 className="mb-14 inline-block text-2xl font-bold text-gray-600 md:text-3xl">
-          Projects
-        </h1>
+        <div className="mb-14 flex items-center justify-between">
+          <h1 className="inline-block text-2xl font-bold text-gray-600 md:text-3xl">
+            Projects
+          </h1>
+          {projects?.length! > 0 && (
+            <div className="float-right w-[250px] justify-end">
+              <FilterDropdown />
+            </div>
+          )}
+        </div>
 
         {projects?.length === 0 && (
           <div className="flex flex-col text-center">
@@ -72,28 +80,30 @@ export default function ProjectsPage(): JSX.Element {
         )}
 
         {projects?.length! > 0 && (
-          <div>
-            <animated.div style={springAnimation} className="projects-grid">
-              {projects?.map((project, idx) => (
-                <Project key={idx} project={project} />
-              ))}
+          <>
+            <div>
+              <animated.div style={springAnimation} className="projects-grid">
+                {projects?.map((project, idx) => (
+                  <Project key={idx} project={project} />
+                ))}
 
-              <div
-                className="relative flex min-h-[220px] cursor-pointer flex-col justify-start rounded-md border-2 border-dashed bg-transparent px-5 py-7 shadow-md transition hover:shadow-lg"
-                onClick={() => setNewProjectModalOpen(true)}
-              >
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <FontAwesomeIcon
-                    icon={faFolderPlus}
-                    className="h-12 w-12 text-gray-600 transition"
-                  />
-                  <span className="mt-2 text-sm font-semibold text-gray-600">
-                    Add new project
-                  </span>
+                <div
+                  className="relative flex min-h-[220px] cursor-pointer flex-col justify-start rounded-md border-2 border-dashed bg-transparent px-5 py-7 shadow-md transition hover:shadow-lg"
+                  onClick={() => setNewProjectModalOpen(true)}
+                >
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <FontAwesomeIcon
+                      icon={faFolderPlus}
+                      className="h-12 w-12 text-gray-600 transition"
+                    />
+                    <span className="mt-2 text-sm font-semibold text-gray-600">
+                      Add new project
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </animated.div>
-          </div>
+              </animated.div>
+            </div>
+          </>
         )}
       </div>
       <NewProjectModal

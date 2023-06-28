@@ -7,6 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import { generateReport } from "../../../../services/project.service";
 import { queryClient } from "../../../../helpers/queryClient";
 import {
+  FETCH_PRODUCTS_KEY,
   FETCH_PROJECTS_KEY,
   FETCH_PROJECT_KEY,
 } from "../../../../utils/queryKeys";
@@ -26,6 +27,9 @@ export default function GenerateReportModal({
         close();
         queryClient.invalidateQueries({
           queryKey: [FETCH_PROJECT_KEY, projectId],
+        });
+        queryClient.invalidateQueries({
+          queryKey: [FETCH_PRODUCTS_KEY],
         });
         queryClient.invalidateQueries({
           queryKey: [FETCH_PROJECTS_KEY],
