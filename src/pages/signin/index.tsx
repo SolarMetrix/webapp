@@ -60,7 +60,7 @@ export default function SigninPage() {
           </Link>
         </div>
 
-        <div className="sm:mx-auto sm:w-full sm:max-w-[480px] lg:mt-36">
+        <div className="mt-36 px-4 sm:mx-auto sm:w-full sm:max-w-[480px] sm:px-0">
           <div className="bg-white px-6 pb-12 pt-6 shadow sm:rounded-lg">
             <h2 className="mb-10 text-center text-3xl font-semibold leading-9 tracking-tight text-gray-500">
               Sign in

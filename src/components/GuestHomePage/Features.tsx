@@ -29,7 +29,10 @@ const features = [
 
 export default function Features() {
   return (
-    <div className="mx-6 mt-[200px] max-w-7xl md:mt-[300px]" id="features">
+    <div
+      className="mx-6 mt-[200px] max-w-7xl sm:mx-auto md:mt-[300px]"
+      id="features"
+    >
       <div className="relative isolate px-6 sm:rounded-3xl sm:px-10 xl:px-24">
         <div className="text-center">
           <img
@@ -42,7 +45,7 @@ export default function Features() {
             href="https://storyset.com/outdoors"
             rel="noreferrer"
             target="_blank"
-            className="inline-block -translate-y-4 text-gray-200/60"
+            className="inline-block -translate-y-4 text-xs text-gray-200/60 sm:text-sm"
           >
             Outdoors illustrations by Storyset
           </a>

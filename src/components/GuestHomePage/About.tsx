@@ -14,7 +14,7 @@ export default function About() {
             href="https://storyset.com/outdoors"
             rel="noreferrer"
             target="_blank"
-            className="inline-block -translate-y-20 text-gray-200/60"
+            className="inline-block -translate-y-20 text-xs text-gray-200/60 sm:text-sm"
           >
             Outdoors illustrations by Storyset
           </a>
