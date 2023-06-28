@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Marker, useMap, Popup } from "react-leaflet";
+import { Marker, useMap, Popup, useMapEvents } from "react-leaflet";
 import L, { LatLngBoundsExpression } from "leaflet";
 import { FolderOpenIcon } from "@heroicons/react/24/outline";
 
@@ -7,6 +7,7 @@ import { IProduct } from "../../../../types";
 import capitalize from "../../../utils/capitalize";
 import Link from "next/link";
 import DeleteProductModal from "../ProjectsPage/DeleteProductModal";
+import AddProductInfoModal from "./AddProductInfoModal";
 
 const customIcon = L.icon({
   iconUrl: "/img/marker.svg",
@@ -20,7 +21,21 @@ export default function Markers({ products }: { products: IProduct[] }) {
   const [toDeleteItemProjectId, setToDeleteItemProjectId] =
     useState<string>("");
   const [toDeleteProductId, setToDeleteProductId] = useState<string>("");
+  const [newProductInfoModalOpen, setNewProductInfoModalOpen] =
+    useState<boolean>(false);
+  const [newProductLatitude, setNewProductLatitude] = useState<number>();
+  const [newProductLongitude, setNewProductLongitude] = useState<number>();
+
   const map = useMap();
+
+  useMapEvents({
+    dblclick(e) {
+      const { lat, lng } = e.latlng;
+      setNewProductLatitude(lat);
+      setNewProductLongitude(lng);
+      setNewProductInfoModalOpen(true);
+    },
+  });
 
   useEffect(() => {
     if (products.length > 0) {
@@ -87,6 +102,13 @@ export default function Markers({ products }: { products: IProduct[] }) {
         close={() => setRemoveModal(false)}
         projectId={toDeleteItemProjectId}
         productId={toDeleteProductId}
+      />
+
+      <AddProductInfoModal
+        isOpen={newProductInfoModalOpen}
+        close={() => setNewProductInfoModalOpen(false)}
+        latitude={newProductLatitude as number}
+        longitude={newProductLongitude as number}
       />
     </>
   );

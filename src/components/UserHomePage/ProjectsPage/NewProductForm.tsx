@@ -19,8 +19,12 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
   const [area, setArea] = useState<number>(0);
   const [orientation, setOrientation] = useState<OrientationT>("north");
   const [inclination, setInclination] = useState<number>(0);
-  const [longitude, setLongitude] = useState<number>(0);
-  const [latitude, setLatitude] = useState<number>(0);
+  const [longitude, setLongitude] = useState<number>(
+    router.query.longitude ? +router.query.longitude : 0
+  );
+  const [latitude, setLatitude] = useState<number>(
+    router.query.latitude ? +router.query.latitude : 0
+  );
   const [error, setError] = useState<string>("");
   const [weatherApiErrorModalOpen, setWeatherApiErrorModalOpen] =
     useState<boolean>(false);
