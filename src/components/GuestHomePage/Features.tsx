@@ -1,32 +1,30 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
-  ArrowPathIcon,
-  CloudArrowUpIcon,
-  LockClosedIcon,
+  DocumentChartBarIcon,
+  MapIcon,
+  FolderIcon,
 } from "@heroicons/react/20/solid";
 
 const features = [
   {
-    name: "Push to deploy",
+    name: "Visual map",
     description:
-      "Commodo nec sagittis tortor mauris sed. Turpis tortor quis scelerisque diam id accumsan nullam tempus. Pulvinar etiam lacus volutpat eu. Phasellus praesent ligula sit faucibus.",
-    href: "#",
-    icon: CloudArrowUpIcon,
+      "View your solar panels on a map and get a quick overview of their status",
+    icon: MapIcon,
   },
   {
-    name: "SSL certificates",
+    name: "Projects",
     description:
-      "Pellentesque enim a commodo malesuada turpis eleifend risus. Facilisis donec placerat sapien consequat tempor fermentum nibh.",
-    href: "#",
-    icon: LockClosedIcon,
+      "Group related solar panels into projects for better organization",
+    icon: FolderIcon,
   },
   {
-    name: "Simple queues",
+    name: "30-day reports",
     description:
-      "Pellentesque sit elit congue ante nec amet. Dolor aenean curabitur viverra suspendisse iaculis eget. Nec mollis placerat ultricies euismod ut condimentum.",
-    href: "#",
-    icon: ArrowPathIcon,
+      "Get a quick overview of the performance of your solar panels over the last 30 days",
+    icon: DocumentChartBarIcon,
   },
 ];
 
@@ -36,17 +34,27 @@ export default function Features() {
       className="mx-auto max-w-7xl px-6 sm:mt-56 lg:mb-32 lg:px-8 lg:pt-6"
       id="features"
     >
+      <div className="relative isolate px-6 sm:rounded-3xl sm:px-10 xl:px-24">
+        <div className="text-center">
+          <Image
+            src="/img/storyset-3.svg"
+            alt="Storyset 1"
+            width={2000}
+            height={1042}
+          />
+          <a
+            href="https://storyset.com/outdoors"
+            rel="noreferrer"
+            target="_blank"
+            className="inline-block -translate-y-4 text-gray-200/60"
+          >
+            Outdoors illustrations by Storyset
+          </a>
+        </div>
+      </div>
       <div className="mx-auto max-w-2xl lg:text-center">
-        <h2 className="text-base font-semibold leading-7 text-gray-400">
-          Deploy faster
-        </h2>
-        <p className="mt-2 text-3xl font-bold tracking-tight text-smMain-500 sm:text-4xl">
-          Everything you need to deploy your app
-        </p>
-        <p className="mt-6 text-lg leading-8 text-gray-500">
-          Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
-          Suspendisse eget egestas a elementum pulvinar et feugiat blandit at.
-          In mi viverra elit nunc.
+        <p className="mt-2 text-3xl font-bold tracking-tight text-gray-500 sm:text-4xl">
+          What we offer
         </p>
       </div>
       <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">

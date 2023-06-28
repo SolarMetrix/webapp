@@ -78,6 +78,7 @@ export default function SigninPage() {
                     type="email"
                     required
                     autoComplete="email"
+                    autoFocus={true}
                     className="sm:text-md border-1 block w-full rounded-md border-gray-100 py-2 text-gray-600 shadow transition focus:border-gray-100 focus:shadow-md focus:ring-0 sm:leading-6"
                     {...register("email", { required: true })}
                   />

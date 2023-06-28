@@ -1,16 +1,10 @@
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useRouter } from "next/router";
-
-const navigation = [
-  { name: "About", href: "#about" },
-  { name: "Features", href: "#features" },
-];
 
 export default function Header() {
-  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -23,7 +17,12 @@ export default function Header() {
           <Link href="/">
             <a className="-m-1.5 p-1.5">
               <span className="sr-only">SolarMetrix</span>
-              <img className="h-10 w-auto" src="/img/logo.svg" alt="" />
+              <Image
+                src="/img/logo.svg"
+                alt="SolarMetrix logo"
+                width={200}
+                height={40}
+              />
             </a>
           </Link>
         </div>
@@ -36,17 +35,6 @@ export default function Header() {
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-md font-semibold leading-6 text-gray-600"
-            >
-              {item.name}
-            </a>
-          ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link href="/signin">
@@ -76,20 +64,6 @@ export default function Header() {
           </div>
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
-                {navigation.map((item) => (
-                  <div
-                    key={item.name}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-600 hover:bg-gray-50"
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      router.push(item.href);
-                    }}
-                  >
-                    {item.name}
-                  </div>
-                ))}
-              </div>
               <div className="py-6">
                 <Link href="/signin">
                   <a className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-600 hover:bg-gray-50">
