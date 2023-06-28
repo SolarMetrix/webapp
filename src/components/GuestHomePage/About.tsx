@@ -1,19 +1,14 @@
 import React from "react";
-import Image from "next/image";
 
 export default function About() {
   return (
-    <div
-      className="mx-auto max-w-7xl sm:mt-56 sm:px-6 lg:px-8 lg:pt-6"
-      id="about"
-    >
-      <div className="relative isolate px-6 py-20 sm:rounded-3xl sm:px-10 sm:py-24 lg:py-24 xl:px-24">
+    <div className="mx-auto mt-[200px] max-w-7xl md:mt-[300px]" id="about">
+      <div className="relative isolate px-6 sm:rounded-3xl">
         <div className="text-center">
-          <Image
+          <img
             src="/img/storyset-1.svg"
             alt="Storyset 1"
-            width={2000}
-            height={1042}
+            className="mx-auto h-auto w-[1000px]"
           />
           <a
             href="https://storyset.com/outdoors"
@@ -24,9 +19,9 @@ export default function About() {
             Outdoors illustrations by Storyset
           </a>
         </div>
-        <div className="mx-auto w-[600px] text-center">
+        <div className="mx-auto text-center sm:w-[80%] xl:w-[600px]">
           <h2 className="text-3xl font-bold tracking-tight text-gray-500 sm:text-4xl">
-            Understand how well your solar <br /> panels are performing
+            Understand how well your solar panels are performing
             <br />
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-400">

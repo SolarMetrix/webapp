@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="mt-[250px] bg-white shadow-2xl">
+    <footer className="mt-[150px] bg-white shadow-2xl sm:mt-[250px]">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 text-center sm:py-14 lg:px-8">
         <Link href="/">
           <a className="-m-1.5 p-1.5">
