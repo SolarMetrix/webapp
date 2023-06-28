@@ -78,7 +78,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog
             as="div"
-            className="relative z-30 lg:hidden"
+            className="relative z-[400] lg:hidden"
             onClose={setSidebarOpen}
           >
             <Transition.Child

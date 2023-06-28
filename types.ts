@@ -30,6 +30,7 @@ export interface IProduct {
   longitude: number;
   latitude: number;
   createdAt: string;
+  totalGeneratedElectricity: number;
   project: {
     uuid: string;
     title: string;

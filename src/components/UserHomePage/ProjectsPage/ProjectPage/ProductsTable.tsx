@@ -97,12 +97,22 @@ export default function ProductsTable({
                 scope="col"
                 className="py-3.5 text-left text-sm font-semibold text-gray-600"
               >
-                Added on
+                Date added
               </th>
-              <th
-                scope="col"
-                className="py-3.5 text-left text-sm font-semibold text-gray-600"
-              ></th>
+              {!project.readonly && (
+                <th
+                  scope="col"
+                  className="py-3.5 text-left text-sm font-semibold text-gray-600"
+                ></th>
+              )}
+              {project.readonly && (
+                <th
+                  scope="col"
+                  className="py-3.5 text-left text-sm font-semibold text-gray-600"
+                >
+                  Total output
+                </th>
+              )}
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -152,6 +162,11 @@ export default function ProductsTable({
                         }
                       />
                     </Tooltip>
+                  </td>
+                )}
+                {project.readonly && (
+                  <td className="text-md whitespace-nowrap py-6 text-gray-500">
+                    {(product.totalGeneratedElectricity / 1000).toFixed(2)} kWh
                   </td>
                 )}
               </tr>
