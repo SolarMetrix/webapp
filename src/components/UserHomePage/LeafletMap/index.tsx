@@ -6,7 +6,7 @@ import Markers from "./Markers";
 
 export default function Leaflet({ products }: { products: IProduct[] }) {
   return (
-    <div className="h-[800px] w-full">
+    <div className="h-[869px] w-[105%] -translate-x-10">
       <MapContainer
         style={{ height: "100%" }}
         maxBounds={[
