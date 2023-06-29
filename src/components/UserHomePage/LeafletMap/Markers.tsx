@@ -8,6 +8,9 @@ import capitalize from "../../../utils/capitalize";
 import Link from "next/link";
 import DeleteProductModal from "../ProjectsPage/DeleteProductModal";
 import AddProductInfoModal from "./AddProductInfoModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
+import Loader from "../../HelperComponents/Loader";
 
 const customIcon = L.icon({
   iconUrl: "/img/marker.svg",
@@ -67,9 +70,20 @@ export default function Markers({ products }: { products: IProduct[] }) {
           <Popup className="request-popup">
             <div className="flex flex-col text-gray-500">
               <div className="flex">
-                <FolderOpenIcon className="mr-1 inline-block h-4 w-4" />
-                <div className="flex flex-col">
-                  <span className="font-bold">{product.project.title}</span>
+                {product.project.readonly ? (
+                  <FontAwesomeIcon
+                    icon={faLock}
+                    className="mt- mr-1 h-3 w-3 translate-y-0.5 text-gray-500"
+                  />
+                ) : (
+                  <Loader size={3} color="text-gray-500 mt-[2px]" />
+                )}
+                <div className="flex max-w-[140px] flex-col">
+                  <Link href={`/projects/${product.project.uuid}`}>
+                    <a className="truncate overflow-ellipsis font-bold hover:underline">
+                      {product.project.title}
+                    </a>
+                  </Link>
                   <span className="">
                     {capitalize(product.type)} - {product.area}m<sup>2</sup>
                   </span>
@@ -77,20 +91,28 @@ export default function Markers({ products }: { products: IProduct[] }) {
               </div>
 
               <span className="my-2 h-[2px] w-full rounded-lg bg-gray-200"></span>
-              <span
-                className="mb-1 cursor-pointer hover:text-gray-700"
-                onClick={() => {
-                  setToDeleteItemProjectId(product.project.uuid);
-                  setToDeleteProductId(product.uuid);
-                  setRemoveModal(true);
-                }}
-              >
-                - Remove this product
-              </span>
-              {!product.project.readonly && (
-                <Link href={`/projects/${product.project.uuid}/add-product`}>
-                  <a>+ Add new product</a>
-                </Link>
+              {product.project.readonly ? (
+                <span>
+                  Generated output:{" "}
+                  {(product.totalGeneratedElectricity / 1000).toFixed(2)} kWh
+                </span>
+              ) : (
+                <>
+                  <span
+                    className="mb-1 cursor-pointer text-gray-600 hover:text-gray-700"
+                    onClick={() => {
+                      setToDeleteItemProjectId(product.project.uuid);
+                      setToDeleteProductId(product.uuid);
+                      setRemoveModal(true);
+                    }}
+                  >
+                    - Remove this product
+                  </span>
+
+                  <Link href={`/projects/${product.project.uuid}/add-product`}>
+                    <a>+ Add new product to this project</a>
+                  </Link>
+                </>
               )}
             </div>
           </Popup>

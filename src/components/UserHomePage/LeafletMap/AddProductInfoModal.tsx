@@ -54,12 +54,10 @@ export default function AddProductInfoModal({
           </Dialog.Title>
           <div className="mt-2">
             <span className="text-sm text-gray-400">
-              Do you want to add a new product at the clicked coordinates?
+              Do you want to add a new product at {latitude}
+              <sup>°</sup>, {longitude}
+              <sup>°</sup>?
             </span>
-            <div className="mt-2 flex flex-col text-sm text-gray-400">
-              <span>Latitude: {latitude}</span>
-              <span>Longitude: {longitude}</span>
-            </div>
             <span className="mt-2 block text-sm text-gray-400">
               If yes, please select a project to add the product to:
             </span>

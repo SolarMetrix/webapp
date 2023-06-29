@@ -164,6 +164,10 @@ body {
     z-index: 40;
 }
 
+.leaflet-container a {
+    color: #4B5563 !important;
+}
+
 .request-popup .leaflet-popup-content-wrapper {
     border-radius: 5px;
 }

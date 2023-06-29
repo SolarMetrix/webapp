@@ -6,11 +6,25 @@ export default function Loader({
   color = "text-smMain-500",
   classes = "mr-2",
 }: {
-  size?: 4 | 5;
+  size?: 3 | 4 | 5;
   color?: string;
   classes?: string;
 }) {
-  const sizeClass = size === 4 ? "h-4 w-4" : "h-5 w-5";
+  let sizeClass;
+  switch (size) {
+    case 3:
+      sizeClass = "h-3 w-3";
+      break;
+    case 4:
+      sizeClass = "h-4 w-4";
+      break;
+    case 5:
+      sizeClass = "h-5 w-5";
+      break;
+    default:
+      sizeClass = "h-4 w-4";
+      break;
+  }
 
   return (
     <div role="status">

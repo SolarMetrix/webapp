@@ -264,7 +264,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                             <span className="truncate">{product.name}</span>
                             <div>
                               <span className="text-xs font-normal text-gray-400">
-                                {product.powerPeak}W -{" "}
+                                {product.powerPeak} Wp -{" "}
                               </span>
                               <span className="text-xs font-normal text-gray-400">
                                 {product.efficiency}% efficiency
