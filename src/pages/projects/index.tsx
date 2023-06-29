@@ -25,7 +25,7 @@ import Project from "../../components/UserHomePage/ProjectsPage/Project";
 export default function ProjectsPage(): JSX.Element {
   const [newProjectModalOpen, setNewProjectModalOpen] =
     useState<boolean>(false);
-  const [selected, setSelected] = useState(filterTypes[0]);
+  const [selectedFilter, setSelectedFilter] = useState(filterTypes[0]);
 
   const springAnimation = useSpring({
     from: { opacity: 0 },
@@ -58,12 +58,14 @@ export default function ProjectsPage(): JSX.Element {
           </h1>
           {projects?.length! > 0 && (
             <div className="float-right w-[250px] justify-end">
-              <Listbox value={selected} onChange={setSelected}>
+              <Listbox value={selectedFilter} onChange={setSelectedFilter}>
                 {({ open }) => (
                   <>
                     <div className="relative mt-2">
                       <Listbox.Button className="sm:text-md relative w-full cursor-default rounded-md bg-white py-2.5 pl-3 pr-10 text-left text-gray-600 shadow-sm ring-1 ring-gray-300 transition hover:shadow-md focus:outline-none sm:leading-6">
-                        <span className="block truncate">{selected?.name}</span>
+                        <span className="block truncate">
+                          {selectedFilter?.name}
+                        </span>
                         <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                           <ChevronUpDownIcon
                             className="h-5 w-5 text-gray-400"
@@ -166,7 +168,7 @@ export default function ProjectsPage(): JSX.Element {
               <animated.div style={springAnimation} className="projects-grid">
                 {projects
                   ?.filter((elem) => {
-                    switch (selected?.value) {
+                    switch (selectedFilter?.value) {
                       case "all":
                         return true;
                       case "active":
@@ -181,20 +183,22 @@ export default function ProjectsPage(): JSX.Element {
                     <Project key={idx} project={project} />
                   ))}
 
-                <div
-                  className="relative flex min-h-[220px] cursor-pointer flex-col justify-start rounded-md border-2 border-dashed bg-transparent px-5 py-7 shadow-md transition hover:shadow-lg"
-                  onClick={() => setNewProjectModalOpen(true)}
-                >
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <FontAwesomeIcon
-                      icon={faFolderPlus}
-                      className="h-12 w-12 text-gray-600 transition"
-                    />
-                    <span className="mt-2 text-sm font-semibold text-gray-600">
-                      Add new project
-                    </span>
+                {selectedFilter?.value !== "old" && (
+                  <div
+                    className="relative flex min-h-[220px] cursor-pointer flex-col justify-start rounded-md border-2 border-dashed bg-transparent px-5 py-7 shadow-md transition hover:shadow-lg"
+                    onClick={() => setNewProjectModalOpen(true)}
+                  >
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <FontAwesomeIcon
+                        icon={faFolderPlus}
+                        className="h-12 w-12 text-gray-600 transition"
+                      />
+                      <span className="mt-2 text-sm font-semibold text-gray-600">
+                        Add new project
+                      </span>
+                    </div>
                   </div>
-                </div>
+                )}
               </animated.div>
             </div>
           </>
