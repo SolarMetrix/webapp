@@ -14,7 +14,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
   const [lastname, setLastname] = useState<string>(user?.lastname);
   const [country, setCountry] = useState<string>(user?.country);
   const [city, setCity] = useState<string>(user?.city);
-  
+
   const valuesAreDifferent =
     (firstname?.length > 2 && firstname !== user?.firstname) ||
     (lastname?.length > 2 && lastname !== user?.lastname) ||

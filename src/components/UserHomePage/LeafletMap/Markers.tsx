@@ -94,7 +94,10 @@ export default function Markers({ products }: { products: IProduct[] }) {
               {product.project.readonly ? (
                 <span>
                   Generated output:{" "}
-                  {(product.totalGeneratedElectricity / 1000).toFixed(2)} kWh
+                  {(
+                    product.finalStats.totalGeneratedElectricity / 1000
+                  ).toFixed(2)}{" "}
+                  kWh
                 </span>
               ) : (
                 <>

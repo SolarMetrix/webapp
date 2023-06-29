@@ -14,6 +14,7 @@ import Tooltip from "../../../HelperComponents/Tooltip";
 import { useState } from "react";
 import GenerateReportModal from "./GenerateReportModal";
 import DeleteProductModal from "../DeleteProductModal";
+import classnames from "../../../../utils/classnames";
 
 export default function ProductsTable({
   project,
@@ -31,13 +32,13 @@ export default function ProductsTable({
 
   return (
     <>
-      <div className="inline-block w-full min-w-full overflow-x-scroll align-middle">
+      <div className="inline-block w-full min-w-full overflow-x-scroll rounded-b-md align-middle shadow-sm">
         <table className="min-w-full">
           <thead className="bg-gray-200">
             <tr>
               <th
                 scope="col"
-                className="py-3.5 text-left text-sm font-semibold text-gray-600 sm:pl-6"
+                className="rounded-tl-md py-3.5 text-left text-sm font-semibold text-gray-600 sm:pl-6"
               >
                 PV-system
               </th>
@@ -79,23 +80,15 @@ export default function ProductsTable({
               </th>
               <th
                 scope="col"
-                className="py-3.5 text-left text-sm font-semibold text-gray-600"
+                className="rounded-tr-md py-3.5 text-left text-sm font-semibold text-gray-600"
               >
                 Date added
               </th>
               {!project.readonly && (
                 <th
                   scope="col"
-                  className="py-3.5 text-left text-sm font-semibold text-gray-600"
+                  className="rounded-tr-md py-3.5 text-left text-sm font-semibold text-gray-600"
                 ></th>
-              )}
-              {project.readonly && (
-                <th
-                  scope="col"
-                  className="py-3.5 text-left text-sm font-semibold text-gray-600"
-                >
-                  Total output
-                </th>
               )}
             </tr>
           </thead>
@@ -148,11 +141,6 @@ export default function ProductsTable({
                         }}
                       />
                     </Tooltip>
-                  </td>
-                )}
-                {project.readonly && (
-                  <td className="text-md whitespace-nowrap py-6 text-gray-500">
-                    {(product.totalGeneratedElectricity / 1000).toFixed(2)} kWh
                   </td>
                 )}
               </tr>

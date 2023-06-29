@@ -24,6 +24,9 @@ import { getProjectProducts } from "../../../services/product.service";
 import { getProject } from "../../../services/project.service";
 import NotFoundPage from "../../404";
 import ProductsTable from "../../../components/UserHomePage/ProjectsPage/ProjectPage/ProductsTable";
+import Charts from "../../../components/UserHomePage/ProjectsPage/Statistics/Charts";
+import capitalize from "../../../utils/capitalize";
+import FinalStatistics from "../../../components/UserHomePage/ProjectsPage/ProjectPage/FinalStatistics";
 
 export default function ProjectPage() {
   const router = useRouter();
@@ -60,7 +63,7 @@ export default function ProjectPage() {
   return (
     <>
       <SEO title={project?.title} />
-      <div className="mb-32 px-5 md:px-0">
+      <div className="px-5 md:px-0">
         <div className="mb-14 flex flex-col justify-between md:flex-row md:items-center">
           <div className="mb-3 md:mb-0 md:w-2/3">
             <h1 className="flex text-2xl font-bold text-gray-600 md:text-3xl">
@@ -86,6 +89,16 @@ export default function ProjectPage() {
         {products?.length > 0 && (
           <animated.div style={springAnimation}>
             <ProductsTable project={project} products={products} />
+          </animated.div>
+        )}
+
+        {project.readonly && (
+          <animated.div
+            style={springAnimation}
+            className="mt-10 flex w-full justify-between gap-x-4"
+          >
+            <FinalStatistics products={products} />
+            <Charts products={products} />
           </animated.div>
         )}
 

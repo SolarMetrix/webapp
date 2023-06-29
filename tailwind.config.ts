@@ -26,18 +26,6 @@ export default {
       colors: {
         background: "#fafafa",
         foreground: "#222222",
-        neutral: {
-          50: "#fafafa",
-          100: "#f1f1f1",
-          200: "#e0e0e0",
-          300: "#cbcbcb",
-          400: "#999999",
-          500: "#6a6a6a",
-          600: "#4c4c4c",
-          700: "#393939",
-          800: "#222222",
-          900: "#181818",
-        },
         smMain: {
           "50": "#e6f4f2",
           "100": "#cce9e5",

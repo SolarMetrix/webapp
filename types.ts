@@ -32,6 +32,11 @@ export interface IProduct {
   longitude: number;
   latitude: number;
   createdAt: string;
+  finalStats: {
+    averageDailyRadiation: number;
+    totalInsolation: number;
+    totalGeneratedElectricity: number;
+  };
   totalGeneratedElectricity: number;
   project: {
     uuid: string;
