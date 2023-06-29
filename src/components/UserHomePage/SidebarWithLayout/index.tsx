@@ -287,7 +287,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                 <li className="-mx-6 mt-auto flex items-center justify-between px-7 py-3">
                   <Link href="/profile">
                     <a className="flex w-[180px] items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-                      <span className="inline-flex h-7 w-10 items-center justify-center rounded-md bg-smMain-500">
+                      <span className="inline-flex min-h-[30px] min-w-[30px] items-center justify-center rounded-md bg-smMain-500">
                         <span className="text-xs font-medium leading-none text-white">
                           {constructUserInitials(user)}
                         </span>
@@ -331,7 +331,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
           </div>
           <Link href="/profile">
             <a className="flex items-center gap-x-2 text-sm font-semibold leading-6 text-gray-900">
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-smMain-500">
+            <span className="inline-flex min-h-[30px] min-w-[30px] items-center justify-center rounded-md bg-smMain-500">
                 <span className="text-xs font-medium leading-none text-white">
                   {constructUserInitials(user)}
                 </span>
