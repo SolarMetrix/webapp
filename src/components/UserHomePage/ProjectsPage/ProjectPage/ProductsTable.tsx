@@ -14,7 +14,6 @@ import Tooltip from "../../../HelperComponents/Tooltip";
 import { useState } from "react";
 import GenerateReportModal from "./GenerateReportModal";
 import DeleteProductModal from "../DeleteProductModal";
-import classnames from "../../../../utils/classnames";
 
 export default function ProductsTable({
   project,
@@ -32,7 +31,7 @@ export default function ProductsTable({
 
   return (
     <>
-      <div className="inline-block w-full min-w-full overflow-x-scroll rounded-b-md align-middle shadow-sm">
+      <div className="inline-block w-full min-w-full overflow-x-scroll rounded-b-md align-middle">
         <table className="min-w-full">
           <thead className="bg-gray-200">
             <tr>

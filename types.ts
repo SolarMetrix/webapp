@@ -17,6 +17,7 @@ export interface IProject {
   title: string;
   description: string;
   productsNumber: number;
+  totalGeneratedElectricity: number;
   readonly: boolean;
   createdAt: Date | string;
 }

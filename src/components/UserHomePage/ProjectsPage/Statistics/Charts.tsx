@@ -84,7 +84,7 @@ export default function Charts({
       datasets: [
         {
           fill: true,
-          label: "b.ab",
+          label: "Output (kWh)",
           data: arr,
           backgroundColor: "#33a796",
           borderColor: "#00b7ad",

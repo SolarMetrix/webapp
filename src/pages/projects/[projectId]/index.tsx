@@ -97,7 +97,10 @@ export default function ProjectPage() {
             style={springAnimation}
             className="mt-10 flex w-full justify-between gap-x-4"
           >
-            <FinalStatistics products={products} />
+            <FinalStatistics
+              products={products}
+              totalProjectOutput={project.totalGeneratedElectricity}
+            />
             <Charts products={products} />
           </animated.div>
         )}
