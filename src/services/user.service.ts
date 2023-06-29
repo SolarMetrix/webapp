@@ -90,3 +90,33 @@ export const deleteAccount = async () => {
     console.log(error?.response.data);
   }
 };
+
+export const updateUser = async ({
+  firstname,
+  lastname,
+  country,
+  city,
+}: {
+  firstname: string;
+  lastname: string;
+  country: string;
+  city: string;
+}): Promise<void> => {
+  try {
+    return axios.patch(
+      `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/users/`,
+      {
+        firstname,
+        lastname,
+        country,
+        city,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+  } catch (error: any) {
+    console.log(error?.response.data);
+    return Promise.reject(error?.response.data);
+  }
+};

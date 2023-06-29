@@ -7,13 +7,29 @@ import { FETCH_AUTH_USER_KEY } from "../../../utils/queryKeys";
 import { useMutation } from "@tanstack/react-query";
 import HttpButton from "../../HelperComponents/HttpButton";
 import classnames from "../../../utils/classnames";
+import { updateUser } from "../../../services/user.service";
 
 export default function PersonalInformation({ user }: { user: IUser }) {
   const [firstname, setFirstname] = useState<string>(user?.firstname);
   const [lastname, setLastname] = useState<string>(user?.lastname);
+  const [country, setCountry] = useState<string>(user?.country);
+  const [city, setCity] = useState<string>(user?.city);
+  
   const valuesAreDifferent =
     (firstname?.length > 2 && firstname !== user?.firstname) ||
-    (lastname?.length > 2 && lastname !== user?.lastname);
+    (lastname?.length > 2 && lastname !== user?.lastname) ||
+    (country?.length > 1 && country !== user?.country) ||
+    (city?.length > 1 && city !== user?.city);
+
+  const { mutate: updateUserMutation, isLoading: updateUserLoading } =
+    useMutation(updateUser, {
+      onSuccess: () => {
+        close();
+        queryClient.invalidateQueries({
+          queryKey: [FETCH_AUTH_USER_KEY],
+        });
+      },
+    });
 
   return (
     <div className="mb-20">
@@ -24,7 +40,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
       <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
         <div className="sm:col-span-3">
           <label
-            htmlFor="first-name"
+            htmlFor="firstname"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
             First name
@@ -32,8 +48,8 @@ export default function PersonalInformation({ user }: { user: IUser }) {
           <div className="mt-2">
             <input
               type="text"
-              name="first-name"
-              id="first-name"
+              name="firstname"
+              id="firstname"
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
               className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
@@ -43,7 +59,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
 
         <div className="sm:col-span-3">
           <label
-            htmlFor="last-name"
+            htmlFor="lastname"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
             Last name
@@ -51,8 +67,8 @@ export default function PersonalInformation({ user }: { user: IUser }) {
           <div className="mt-2">
             <input
               type="text"
-              name="last-name"
-              id="last-name"
+              name="lastname"
+              id="lastname"
               value={lastname}
               onChange={(e) => setLastname(e.target.value)}
               className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
@@ -76,7 +92,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
 
         <div className="sm:col-span-3">
           <label
-            htmlFor="first-name"
+            htmlFor="country"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
             Country
@@ -84,8 +100,10 @@ export default function PersonalInformation({ user }: { user: IUser }) {
           <div className="mt-2">
             <input
               type="text"
-              name="Country"
-              id="Country"
+              name="country"
+              id="country"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
               className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
             />
           </div>
@@ -103,6 +121,8 @@ export default function PersonalInformation({ user }: { user: IUser }) {
               type="text"
               name="city"
               id="city"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
               className="sm:text-md block w-full rounded-md border-0 py-2 text-gray-600 shadow transition focus:shadow-md focus:ring-0 sm:leading-6"
             />
           </div>
@@ -117,9 +137,11 @@ export default function PersonalInformation({ user }: { user: IUser }) {
               "w-full shadow-md py-3 bg-smMain-500",
               valuesAreDifferent && "hover:bg-smMain-600 transition"
             )}
-            fnc={() => {}}
-            isLoading={false}
-            disabled={!valuesAreDifferent}
+            fnc={() =>
+              updateUserMutation({ firstname, lastname, country, city })
+            }
+            isLoading={updateUserLoading}
+            disabled={!valuesAreDifferent || updateUserLoading}
           />
         </div>
       </div>

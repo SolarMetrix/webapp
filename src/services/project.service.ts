@@ -72,7 +72,7 @@ export const updateProject = async ({
   description: string;
 }): Promise<void> => {
   try {
-    return axios.put(
+    return axios.patch(
       `${process.env.NEXT_PUBLIC_SERVER_API_ENDPOINT}/projects/${projectId}`,
       {
         title,

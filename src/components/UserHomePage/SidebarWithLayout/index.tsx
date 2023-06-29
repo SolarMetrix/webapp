@@ -331,7 +331,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
           </div>
           <Link href="/profile">
             <a className="flex items-center gap-x-2 text-sm font-semibold leading-6 text-gray-900">
-            <span className="inline-flex min-h-[30px] min-w-[30px] items-center justify-center rounded-md bg-smMain-500">
+              <span className="inline-flex min-h-[30px] min-w-[30px] items-center justify-center rounded-md bg-smMain-500">
                 <span className="text-xs font-medium leading-none text-white">
                   {constructUserInitials(user)}
                 </span>

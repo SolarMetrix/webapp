@@ -8,6 +8,8 @@ export interface IUser {
   firstname: string;
   lastname: string;
   email: string;
+  country: string;
+  city: string;
 }
 
 export interface IProject {
