@@ -8,17 +8,11 @@ import {
   Legend,
   PointElement,
   LineElement,
-  ChartType,
   Filler,
 } from "chart.js";
-import { Line, Bar } from "react-chartjs-2";
-import Switch from "react-switch";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartLine, faChartColumn } from "@fortawesome/free-solid-svg-icons";
+import { Bar } from "react-chartjs-2";
 import { IProduct } from "../../../../../types";
 import capitalize from "../../../../utils/capitalize";
-
-// import groupByMonth from "../../../../helpers/group-by-month";
 
 ChartJS.register(
   CategoryScale,
@@ -76,7 +70,7 @@ export default function Charts({
       );
       setDataset(dates);
     }
-  }, []);
+  }, [products]);
 
   async function setDataset(arr: any) {
     setData({
