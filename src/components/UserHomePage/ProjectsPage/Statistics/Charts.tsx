@@ -32,10 +32,16 @@ const optionsWithoutLines = {
       display: false,
     },
   },
+  elements: {
+    bar: {
+      borderRadius: 7,
+    },
+  },
   scales: {
     x: {
       grid: {
         display: false,
+        text: "test"
       },
       offset: true,
     },
@@ -59,7 +65,12 @@ export default function Charts({
   products: Partial<IProduct>[];
 }) {
   const [data, setData] = useState<any>({
-    labels: products.map((product) => capitalize(product.type as string)),
+    labels: products.map(
+      (product) =>
+        `${capitalize(product.type as string)} (${(+product.latitude!).toFixed(
+          4
+        )}°, ${(+product.longitude!).toFixed(4)}°)`
+    ),
     datasets: [],
   });
 
@@ -84,7 +95,7 @@ export default function Charts({
           borderColor: "#00b7ad",
           pointRadius: 7,
           tension: 0.4,
-          barPercentage: 0.3,
+          barPercentage: 0.4,
         },
       ],
     });
