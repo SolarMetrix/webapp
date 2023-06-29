@@ -41,7 +41,6 @@ const optionsWithoutLines = {
     x: {
       grid: {
         display: false,
-        text: "test"
       },
       offset: true,
     },

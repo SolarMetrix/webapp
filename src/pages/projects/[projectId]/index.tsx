@@ -25,7 +25,6 @@ import { getProject } from "../../../services/project.service";
 import NotFoundPage from "../../404";
 import ProductsTable from "../../../components/UserHomePage/ProjectsPage/ProjectPage/ProductsTable";
 import Charts from "../../../components/UserHomePage/ProjectsPage/Statistics/Charts";
-import capitalize from "../../../utils/capitalize";
 import FinalStatistics from "../../../components/UserHomePage/ProjectsPage/ProjectPage/FinalStatistics";
 
 export default function ProjectPage() {
@@ -93,15 +92,17 @@ export default function ProjectPage() {
         )}
 
         {project.readonly && (
-          <animated.div
-            style={springAnimation}
-            className="mt-10 flex w-full justify-between gap-x-4"
-          >
-            <FinalStatistics
-              products={products}
-              totalProjectOutput={project.totalGeneratedElectricity}
-            />
-            <Charts products={products} />
+          <animated.div style={springAnimation} className="mt-10">
+            <h2 className="block text-2xl font-bold text-gray-600 md:text-3xl">
+              Project report
+            </h2>
+            <div className="mt-10 flex w-full justify-between gap-x-4">
+              <FinalStatistics
+                products={products}
+                totalProjectOutput={project.totalGeneratedElectricity}
+              />
+              <Charts products={products} />
+            </div>
           </animated.div>
         )}
 

@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faChartPie,
   faFolderClosed,
   faHouse,
   faRightFromBracket,
@@ -32,13 +31,6 @@ const navigation = [
     href: "/projects",
     icon: faFolderClosed,
     isFontAwesomeIcon: true,
-    current: false,
-  },
-  {
-    name: "Reports",
-    href: "/reports",
-    icon: faChartPie,
-    isFontAwesomeIcon: false,
     current: false,
   },
 ];

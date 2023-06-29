@@ -52,7 +52,7 @@ export default function ProjectsPage(): JSX.Element {
         title="Projects"
       />
       <div className="px-3 md:px-0">
-        <div className="mb-14 flex items-center justify-between">
+        <div className="mb-14 flex justify-between">
           <h1 className="inline-block text-2xl font-bold text-gray-600 md:text-3xl">
             Projects
           </h1>
