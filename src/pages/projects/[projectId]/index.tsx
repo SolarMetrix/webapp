@@ -93,15 +93,23 @@ export default function ProjectPage() {
 
         {project.readonly && (
           <animated.div style={springAnimation} className="mt-20">
-            <h2 className="block text-2xl font-bold text-gray-600 md:text-3xl">
+            <h2 className="block text-2xl font-medium text-gray-600 md:text-3xl">
               Project report
             </h2>
-            <div className="mt-10 flex w-full justify-between gap-x-4">
-              <FinalStatistics
-                products={products}
-                totalProjectOutput={project.totalGeneratedElectricity}
-              />
-              <Charts products={products} />
+            <span className="text-lg font-medium text-gray-400">
+              30-day statistics
+            </span>
+            <div className="mt-4 gap-x-4">
+              <FinalStatistics products={products} />
+              <div className="mb-20 flex justify-between gap-x-10">
+                <div className="flex flex-col gap-y-3 text-4xl text-gray-500 ">
+                  <span>Total output:</span>
+                  <span className="total-output-underline">
+                    {(project.totalGeneratedElectricity / 1000).toFixed(3)} kWh
+                  </span>
+                </div>
+                <Charts products={products} />
+              </div>
             </div>
           </animated.div>
         )}
