@@ -103,8 +103,8 @@ export default function ProjectPage() {
               <FinalStatistics products={products} />
               <div className="mb-20 flex justify-between gap-x-10">
                 <div className="flex flex-col gap-y-3 text-4xl text-gray-500 ">
-                  <span>Total output:</span>
-                  <span className="total-output-underline">
+                  <h2 className="block text-2xl font-medium text-gray-600 md:text-3xl">Total output</h2>
+                  <span className="text-gray-600 font-semibold total-output-underline">
                     {(project.totalGeneratedElectricity / 1000).toFixed(3)} kWh
                   </span>
                 </div>
