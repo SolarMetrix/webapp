@@ -3,7 +3,7 @@ import classnames from "../../utils/classnames";
 
 export default function Loader({
   size = 4,
-  color = "text-smMain-500",
+  color = "text-smMain-400",
   classes = "mr-2",
 }: {
   size?: 3 | 4 | 5;
