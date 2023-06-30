@@ -92,7 +92,7 @@ export default function ProjectPage() {
         )}
 
         {project.readonly && (
-          <animated.div style={springAnimation} className="mt-10">
+          <animated.div style={springAnimation} className="mt-20">
             <h2 className="block text-2xl font-bold text-gray-600 md:text-3xl">
               Project report
             </h2>

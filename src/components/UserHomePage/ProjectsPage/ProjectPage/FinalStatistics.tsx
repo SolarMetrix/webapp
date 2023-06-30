@@ -14,7 +14,7 @@ export default function FinalStatistics({
       <h2 className="text-2xl font-medium text-gray-600">30-day statistics</h2>
       <div className="mt-4 max-h-[380px] overflow-y-scroll">
         {products.map((product, idx) => (
-          <div className="flex items-center justify-between" key={idx}>
+          <div className="flex items-center justify-between mb-5" key={idx}>
             <div className="flex flex-col">
               <div className="flex items-center text-gray-500">
                 <div className="mr-2 h-3 w-3 rounded-sm bg-gray-500"></div>
