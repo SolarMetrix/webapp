@@ -21,14 +21,14 @@ export default function UserHomePage() {
   }
 
   return (
-    <div className="px-3 md:px-0">
-      <h1 className="inline-block text-2xl font-bold text-gray-600 md:text-3xl">
+    <div>
+      <h1 className="inline-block text-2xl font-bold text-gray-600 md:text-3xl px-4 sm:px-6 lg:px-8">
         Home
       </h1>
-      <h2 className="text-gray-500">See your products on the map below</h2>
+      <h2 className="text-gray-500 px-4 sm:px-6 lg:px-8">See your products on the map below</h2>
 
       <div className="mt-10">
-        <span className="mb-2 block text-lg font-semibold text-gray-600">
+        <span className="mb-2 block text-lg font-semibold text-gray-600 px-4 sm:px-6 lg:px-8">
           You have {products!.length} products
         </span>
         <Leaflet products={products as IProduct[]} />

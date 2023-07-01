@@ -25,7 +25,7 @@ export default function ProfilePage(): JSX.Element {
         description="User profile page"
         title="Profile"
       />
-      <div className="px-3 md:px-0">
+      <div className="px-4 sm:px-6 lg:px-8">
         <h1 className="inline-block text-2xl font-bold text-gray-600 md:text-3xl">
           Profile
         </h1>

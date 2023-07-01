@@ -7,7 +7,7 @@ import DbClickDetectorLayer from "./DbClickDetectorLayer";
 
 export default function Leaflet({ products }: { products: IProduct[] }) {
   return (
-    <div className="h-[869px] w-[105%] -translate-x-10">
+    <div className="h-[869px] w-full">
       <MapContainer
         style={{ height: "100%" }}
         maxBounds={[

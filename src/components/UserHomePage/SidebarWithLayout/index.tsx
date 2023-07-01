@@ -333,7 +333,8 @@ export default function SidebarWithLayout({ children }: { children: any }) {
         </div>
 
         <main className="pt-10 lg:pl-72">
-          <div className="px-4 sm:px-6 lg:px-8">{children}</div>
+          {/* <div className="px-4 sm:px-6 lg:px-8">{children}</div> */}
+          {children}
         </main>
       </div>
     </>

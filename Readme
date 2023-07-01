@@ -1,5 +1,4 @@
 # SolarMetrix frontend application
 
-To run this application, first make sure you have installed all the dependencies by running `pnpm install`. If pnpm is not installed on your machine, first install it globally by running `npm install -g pnpm`.
-
-To run the application, run `pnpm run dev`, this will start the next.js app on port `3000`.
+- Install dependencies by running `pnpm install`. If pnpm is not installed on your machine, first install it globally by running `npm install -g pnpm`.
+- Run `pnpm run dev`, which will start the frontend app on port `3000`.
