@@ -30,7 +30,7 @@ export default function ProfilePage(): JSX.Element {
           Profile
         </h1>
 
-        <div className="mt-10 max-w-[520px]">
+        <div className="my-10 max-w-[520px]">
           <PersonalInformation user={user} />
           <div>
             <h2 className="text-xls inline-block text-gray-600 md:text-2xl">

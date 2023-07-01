@@ -41,7 +41,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
         <div className="sm:col-span-3">
           <label
             htmlFor="firstname"
-            className="block text-sm font-medium leading-6 text-gray-900"
+            className="block text-sm font-medium leading-6 text-gray-700"
           >
             First name
           </label>
@@ -60,7 +60,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
         <div className="sm:col-span-3">
           <label
             htmlFor="lastname"
-            className="block text-sm font-medium leading-6 text-gray-900"
+            className="block text-sm font-medium leading-6 text-gray-700"
           >
             Last name
           </label>
@@ -79,7 +79,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
         <div className="sm:col-span-6">
           <label
             htmlFor="email"
-            className="block text-sm font-medium leading-6 text-gray-900"
+            className="block text-sm font-medium leading-6 text-gray-700"
           >
             Email address
           </label>
@@ -93,7 +93,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
         <div className="sm:col-span-3">
           <label
             htmlFor="country"
-            className="block text-sm font-medium leading-6 text-gray-900"
+            className="block text-sm font-medium leading-6 text-gray-700"
           >
             Country
           </label>
@@ -112,7 +112,7 @@ export default function PersonalInformation({ user }: { user: IUser }) {
         <div className="sm:col-span-3">
           <label
             htmlFor="city"
-            className="block text-sm font-medium leading-6 text-gray-900"
+            className="block text-sm font-medium leading-6 text-gray-700"
           >
             City
           </label>
