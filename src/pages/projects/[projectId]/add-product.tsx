@@ -42,7 +42,7 @@ export default function AddProductPage() {
   return (
     <>
       <SEO title={project?.title} />
-      <div className="mb-32 px-5 md:px-0">
+      <div className="mb-32 px-4 sm:px-6 lg:px-8">
         <div className="mb-14 flex flex-col justify-between md:flex-row md:items-center">
           <div className="md:mb-0 md:w-2/3">
             <h1 className="flex text-2xl font-bold text-gray-600 md:text-3xl">

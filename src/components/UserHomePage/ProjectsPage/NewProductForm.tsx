@@ -108,18 +108,11 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
       >
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold leading-7 text-gray-900">
-              Personal Information
-            </h2>
-            <p className="mt-1 text-sm leading-6 text-gray-600">
-              Use a permanent address where you can receive mail.
-            </p>
-
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-6">
                 <label
                   htmlFor="country"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-gray-700"
                 >
                   PV system
                 </label>
@@ -143,7 +136,7 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
               </div>
 
               <div className="sm:col-span-3">
-                <label className="block text-sm font-medium leading-6 text-gray-900">
+                <label className="block text-sm font-medium leading-6 text-gray-700">
                   Power peak
                 </label>
                 <div className="mt-2">
@@ -159,7 +152,7 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
               <div className="sm:col-span-3">
                 <label
                   htmlFor="area"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-gray-700"
                 >
                   Area (m<sup>2</sup>)
                 </label>
@@ -184,7 +177,7 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
               <div className="sm:col-span-3">
                 <label
                   htmlFor="orientation"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-gray-700"
                 >
                   Orientation
                 </label>
@@ -209,7 +202,7 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
               <div className="sm:col-span-3">
                 <label
                   htmlFor="inclination"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-gray-700"
                 >
                   Inclination (degrees)
                 </label>
@@ -229,7 +222,7 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
               <div className="sm:col-span-3">
                 <label
                   htmlFor="latitude"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-gray-700"
                 >
                   Latitude
                 </label>
@@ -248,7 +241,7 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
               <div className="sm:col-span-3">
                 <label
                   htmlFor="longitude"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-gray-700"
                 >
                   Longitude
                 </label>
@@ -270,7 +263,7 @@ export default function NewProductForm({ projectId }: { projectId: string }) {
         <div className="mt-6 flex items-center justify-end gap-x-6">
           <button
             type="button"
-            className="text-sm font-semibold leading-6 text-gray-900"
+            className="text-sm font-semibold leading-6 text-gray-700"
           >
             Cancel
           </button>

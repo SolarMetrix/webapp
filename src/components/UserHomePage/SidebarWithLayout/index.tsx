@@ -135,28 +135,31 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                         <li>
                           <ul role="list" className="-mx-2 space-y-1">
                             {navigation.map((item) => (
-                              <Link href={item.href} key={item.name}>
-                                <a
+                              <div
+                                key={item.name}
+                                className={classnames(
+                                  router.pathname === item.href
+                                    ? "bg-gray-100 text-gray-600"
+                                    : "text-gray-400 hover:bg-gray-50 hover:text-gray-600",
+                                  "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+                                )}
+                                onClick={() => {
+                                  router.push(item.href);
+                                  setSidebarOpen(false);
+                                }}
+                              >
+                                <FontAwesomeIcon
+                                  icon={item.icon}
                                   className={classnames(
                                     router.pathname === item.href
-                                      ? "bg-gray-100 text-gray-600"
-                                      : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
-                                    "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+                                      ? "text-gray-600"
+                                      : "text-gray-400 group-hover:text-gray-600",
+                                    "h-6 w-6 shrink-0"
                                   )}
-                                >
-                                  <FontAwesomeIcon
-                                    icon={item.icon}
-                                    className={classnames(
-                                      router.pathname === item.href
-                                        ? "text-indigo-600"
-                                        : "text-gray-400 group-hover:text-indigo-600",
-                                      "h-6 w-6 shrink-0"
-                                    )}
-                                    aria-hidden="true"
-                                  />
-                                  {item.name}
-                                </a>
-                              </Link>
+                                  aria-hidden="true"
+                                />
+                                {item.name}
+                              </div>
                             ))}
                           </ul>
                         </li>
@@ -168,7 +171,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                             {products.map((product) => (
                               <li key={product.name}>
                                 <div className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-50 hover:text-gray-600">
-                                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600">
+                                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-gray-600 group-hover:text-gray-600">
                                     {product.initial}
                                   </span>
                                   <span className="truncate">
@@ -179,7 +182,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                             ))}
                             <li>
                               <div className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-50 hover:text-gray-600">
-                                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600">
+                                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-gray-600 group-hover:text-gray-600">
                                   F
                                 </span>
                                 <span className="truncate">
@@ -190,6 +193,18 @@ export default function SidebarWithLayout({ children }: { children: any }) {
                           </ul>
                         </li>
                       </ul>
+                      <div
+                        className="flex items-center gap-x-3"
+                        onClick={() => signout()}
+                      >
+                        <span className="font-semibold text-gray-500">
+                          Sign out
+                        </span>
+                        <FontAwesomeIcon
+                          icon={faRightFromBracket}
+                          className="h-5 w-5 cursor-pointer text-gray-500"
+                        />
+                      </div>
                     </nav>
                   </div>
                 </Dialog.Panel>
@@ -309,7 +324,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
           </div>
         </div>
 
-        <div className="sticky top-0 z-20 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden">
+        <div className="sticky top-0 z-20 flex items-center justify-between gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden">
           <button
             type="button"
             className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
@@ -318,9 +333,6 @@ export default function SidebarWithLayout({ children }: { children: any }) {
             <span className="sr-only">Open sidebar</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
-          <div className="flex-1 text-sm font-semibold leading-6 text-gray-900">
-            Home
-          </div>
           <Link href="/profile">
             <a className="flex items-center gap-x-2 text-sm font-semibold leading-6 text-gray-900">
               <span className="inline-flex min-h-[30px] min-w-[30px] items-center justify-center rounded-md bg-smMain-500">
@@ -332,10 +344,7 @@ export default function SidebarWithLayout({ children }: { children: any }) {
           </Link>
         </div>
 
-        <main className="pt-10 lg:pl-72">
-          {/* <div className="px-4 sm:px-6 lg:px-8">{children}</div> */}
-          {children}
-        </main>
+        <main className="pt-10 lg:pl-72">{children}</main>
       </div>
     </>
   );
