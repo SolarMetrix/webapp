@@ -52,30 +52,37 @@ export default function AddProductInfoModal({
           >
             Add new product
           </Dialog.Title>
-          <div className="mt-2">
-            <span className="text-sm text-gray-400">
-              Do you want to add a new product at {latitude}
-              <sup>°</sup>, {longitude}
-              <sup>°</sup>?
-            </span>
-            <span className="mt-2 block text-sm text-gray-400">
-              If yes, please select a project to add the product to:
-            </span>
+          {projects && projects.length > 0 ? (
             <div className="mt-2">
-              {projects
-                ?.filter((project) => !project.readonly)
-                .map((project, idx) => (
-                  <Link
-                    key={idx}
-                    href={`/projects/${project.uuid}/add-product?latitude=${latitude}&longitude=${longitude}`}
-                  >
-                    <a className="mb-2 block text-sm text-gray-400 underline hover:text-gray-500">
-                      {project.title}
-                    </a>
-                  </Link>
-                ))}
+              <span className="text-sm text-gray-400">
+                Do you want to add a new product at {latitude}
+                <sup>°</sup>, {longitude}
+                <sup>°</sup>?
+              </span>
+              <span className="mt-2 block text-sm text-gray-400">
+                If yes, please select a project to add the product to:
+              </span>
+              <div className="mt-2">
+                {projects
+                  ?.filter((project) => !project.readonly)
+                  .map((project, idx) => (
+                    <Link
+                      key={idx}
+                      href={`/projects/${project.uuid}/add-product?latitude=${latitude}&longitude=${longitude}`}
+                    >
+                      <a className="mb-2 block text-sm text-gray-400 underline hover:text-gray-500">
+                        {project.title}
+                      </a>
+                    </Link>
+                  ))}
+              </div>
             </div>
-          </div>
+          ) : (
+            <span className="mt-2 block text-sm text-gray-400">
+              You do not have any projects yet. Please create a new project
+              first.
+            </span>
+          )}
         </div>
       </div>
       <div className="mt-5 flex flex-row-reverse">
