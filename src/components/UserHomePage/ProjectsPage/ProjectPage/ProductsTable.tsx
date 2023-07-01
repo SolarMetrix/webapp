@@ -146,8 +146,9 @@ export default function ProductsTable({
             ))}
           </tbody>
         </table>
-        {!project.readonly && (
-          <div className="mt-7 flex justify-end gap-5 pb-3">
+      </div>
+      {!project.readonly && (
+          <div className="mt-7 flex flex-col sm:flex-row sm:justify-end gap-5 pb-3">
             <Link href={`/projects/${project.uuid}/add-product`}>
               <a className="inline-flex items-center rounded-md bg-smMain-400 p-3 text-center font-semibold text-white shadow-md transition hover:bg-smMain-500">
                 <FontAwesomeIcon
@@ -169,7 +170,6 @@ export default function ProductsTable({
             </button>
           </div>
         )}
-      </div>
       <DeleteProductModal
         isOpen={removeModal}
         close={() => setRemoveModal(false)}

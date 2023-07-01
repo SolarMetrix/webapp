@@ -65,7 +65,7 @@ export default function ProjectPage() {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mb-14 flex flex-col justify-between md:flex-row md:items-center">
           <div className="mb-3 md:mb-0 md:w-2/3">
-            <h1 className="flex text-2xl font-bold text-gray-600 md:text-3xl">
+            <h1 className="flex flex-col sm:flex-row text-2xl font-bold text-gray-600 md:text-3xl">
               <Link href="/projects" prefetch={false}>
                 <a className="text-gray-400">
                   Projects
@@ -75,7 +75,7 @@ export default function ProjectPage() {
                   />
                 </a>
               </Link>
-              {project?.title}
+              <span>{project?.title}</span>
             </h1>
             {project?.description && (
               <span className="mt-1 block text-lg text-gray-400">

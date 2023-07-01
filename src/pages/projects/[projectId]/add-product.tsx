@@ -45,7 +45,7 @@ export default function AddProductPage() {
       <div className="mb-32 px-4 sm:px-6 lg:px-8">
         <div className="mb-14 flex flex-col justify-between md:flex-row md:items-center">
           <div className="md:mb-0 md:w-2/3">
-            <h1 className="flex text-2xl font-bold text-gray-600 md:text-3xl">
+            <h1 className="flex flex-wrap text-2xl font-bold text-gray-600 md:text-3xl">
               <Link href="/projects" prefetch={false}>
                 <a className="text-gray-400">
                   Projects
@@ -68,7 +68,7 @@ export default function AddProductPage() {
             </h1>
           </div>
         </div>
-        <div className="w-[500px]">
+        <div className="w-full sm:w-[500px]">
           <NewProductForm projectId={projectId as string} />
         </div>
       </div>
