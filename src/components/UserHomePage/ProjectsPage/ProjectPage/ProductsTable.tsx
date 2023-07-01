@@ -148,28 +148,28 @@ export default function ProductsTable({
         </table>
       </div>
       {!project.readonly && (
-          <div className="mt-7 flex flex-col sm:flex-row sm:justify-end gap-5 pb-3">
-            <Link href={`/projects/${project.uuid}/add-product`}>
-              <a className="inline-flex items-center rounded-md bg-smMain-400 p-3 text-center font-semibold text-white shadow-md transition hover:bg-smMain-500">
-                <FontAwesomeIcon
-                  icon={faPlus}
-                  className="mr-1 h-5 w-5 text-white"
-                />
-                Add new product
-              </a>
-            </Link>
-            <button
-              className="inline-flex items-center rounded-md bg-smMain-400 p-3 text-center font-semibold text-white shadow-md transition hover:bg-smMain-500"
-              onClick={() => setGenerateReportModalOpen(true)}
-            >
+        <div className="mt-7 flex flex-col gap-5 pb-3 sm:flex-row sm:justify-end">
+          <Link href={`/projects/${project.uuid}/add-product`}>
+            <a className="inline-flex items-center rounded-md bg-smMain-400 p-3 text-center font-semibold text-white shadow-md transition hover:bg-smMain-500">
               <FontAwesomeIcon
-                icon={faFileLines}
+                icon={faPlus}
                 className="mr-1 h-5 w-5 text-white"
               />
-              Generate report
-            </button>
-          </div>
-        )}
+              Add new product
+            </a>
+          </Link>
+          <button
+            className="inline-flex items-center rounded-md bg-smMain-400 p-3 text-center font-semibold text-white shadow-md transition hover:bg-smMain-500"
+            onClick={() => setGenerateReportModalOpen(true)}
+          >
+            <FontAwesomeIcon
+              icon={faFileLines}
+              className="mr-1 h-5 w-5 text-white"
+            />
+            Generate report
+          </button>
+        </div>
+      )}
       <DeleteProductModal
         isOpen={removeModal}
         close={() => setRemoveModal(false)}

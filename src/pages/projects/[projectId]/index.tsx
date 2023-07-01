@@ -65,7 +65,7 @@ export default function ProjectPage() {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mb-14 flex flex-col justify-between md:flex-row md:items-center">
           <div className="mb-3 md:mb-0 md:w-2/3">
-            <h1 className="flex flex-col sm:flex-row text-2xl font-bold text-gray-600 md:text-3xl">
+            <h1 className="flex flex-col text-2xl font-bold text-gray-600 sm:flex-row md:text-3xl">
               <Link href="/projects" prefetch={false}>
                 <a className="text-gray-400">
                   Projects
@@ -101,8 +101,8 @@ export default function ProjectPage() {
             </span>
             <div className="mt-4 gap-x-4">
               <FinalStatistics products={products} />
-              <div className="mb-20 flex justify-between gap-x-10">
-                <div className="flex flex-col gap-y-3 text-4xl text-gray-500 ">
+              <div className="mb-20 flex flex-col justify-between gap-x-10 sm:flex-row">
+                <div className="mb-20 flex flex-col gap-y-3 text-4xl text-gray-500 sm:mb-0">
                   <h2 className="block text-2xl font-medium text-gray-600 md:text-3xl">
                     Total output
                   </h2>

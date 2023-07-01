@@ -101,7 +101,7 @@ export default function Charts({
   }
 
   return (
-    <div className="w-[1000px] rounded-md bg-white px-2 py-4 md:px-10">
+    <div className="w-full rounded-md bg-white px-2 py-4 sm:w-[1000px] md:px-10">
       <Bar options={optionsWithLines} data={data} />
     </div>
   );
